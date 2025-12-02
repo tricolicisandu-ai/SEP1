@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 
 /**
- * A class representing a Trade Offer with a offer name, point cost and the seller.
+ * A class representing a GreenAction with name and green points
  * @author Christina Jacob
  * @version 1.0
  */
 
-public class GreenAction
+public class GreenAction implements Serializable
 {
   private String name;
   private int greenPoints;
 
 
   /**
-   * Three-argument constructor.
+   * Two-argument constructor.
    * @param name the name of the green action
    * @param greenPoints the points gained by doing green action
    */
@@ -65,8 +65,8 @@ public class GreenAction
   }
 
   /**
-   * returns a string representation of green action
-   * @return a string representation of the TradeOffer in the format:
+   * returns a string representation of GreenAction
+   * @return a string representation of the GreenAction in the format: name , greenPoints
    */
   public String toString()
   {
@@ -74,6 +74,11 @@ public class GreenAction
           + greenPoints;
   }
 
+  /**
+   * Compares name and green points of two GreenActions.
+   * @param obj the object to compare with
+   * @return true if the given object is equal to this GreenAction
+   */
   public boolean equals(Object obj)
   {
     if (obj == null || getClass()!= obj.getClass())
