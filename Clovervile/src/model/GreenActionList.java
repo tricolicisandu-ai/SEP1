@@ -31,10 +31,10 @@ public class GreenActionList implements Serializable
   }
 
   /**
-   * 
-   * @param name
-   * @param greenPoints
-   * @return
+   *
+   * @param name gets name to compare
+   * @param greenPoints gets greenPoints to compare
+   * @return object by index
    */
   public int getIndex(String name, int greenPoints)
   {
