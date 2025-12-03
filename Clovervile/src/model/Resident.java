@@ -105,6 +105,7 @@ public class Resident
         this.lastName.equals(resid.lastName) &&
         this.personalPoints==(resid.personalPoints);
   }
+
   public String toString()
   {
     return "The first name: " + firstName + " ,the last name: " + lastName + " ,the personal points: " +personalPoints;
