@@ -98,13 +98,11 @@ public class Resident
         this.personalPoints==(resid.personalPoints);
   }
 
-<<<<<<< HEAD
-=======
+
   /**
    * Returns a string representation of the Resident.
    * @return a string representation of the Resident in the format: firstName, lastName, personalPoints
    */
->>>>>>> 76c1b8208a03b685fe1351625afad5a554ebd515
   public String toString()
   {
     return "The first name: " + firstName + " ,the last name: " + lastName + " ,the personal points: " +personalPoints;
