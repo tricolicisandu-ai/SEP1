@@ -13,7 +13,6 @@ public class Resident
 
   /**
    * Constructs a Resident with the given first name, last name, and personal points.
-   *
    * @param firstName      the resident's first name
    * @param lastName       the resident's last name
    * @param personalPoints the number of personal points assigned to the resident
@@ -27,7 +26,6 @@ public class Resident
 
   /**
    * Returns the resident's first name.
-   *
    * @return the first name
    */
 
@@ -38,7 +36,6 @@ public class Resident
 
   /**
    * Returns the resident's last name.
-   *
    * @return the last name
    */
   public String getLastName()
@@ -48,7 +45,6 @@ public class Resident
 
   /**
    * Returns the resident's personal points.
-   *
    * @return the personal points
    */
   public int getPersonalPoints()
@@ -58,7 +54,6 @@ public class Resident
 
   /**
    * Updates the resident's first name.
-   *
    * @param firstName the new first name
    */
   public void setFirstName(String firstName)
@@ -68,7 +63,6 @@ public class Resident
 
   /**
    * Updates the resident's last name.
-   *
    * @param lastName the new last name
    */
   public void setLastName(String lastName)
@@ -78,7 +72,6 @@ public class Resident
 
   /**
    * Updates the resident's personal points.
-   *
    * @param personalPoints the new amount of personal points
    */
   public void setPersonalPoints(int personalPoints)
@@ -90,7 +83,6 @@ public class Resident
    * Compares this resident to another object for equality.
    * Two residents are considered equal if their first name,
    * last name, and personal points are the same.
-   *
    * @param obj the object to compare with
    * @return true if the objects represent the same resident, false otherwise
    */
@@ -105,6 +97,12 @@ public class Resident
         this.lastName.equals(resid.lastName) &&
         this.personalPoints==(resid.personalPoints);
   }
+
+
+  /**
+   * Returns a string representation of the Resident.
+   * @return a string representation of the Resident in the format: firstName, lastName, personalPoints
+   */
   public String toString()
   {
     return "The first name: " + firstName + " ,the last name: " + lastName + " ,the personal points: " +personalPoints;

@@ -14,8 +14,7 @@ public class Threshold
 
   /**
    * Constructs a Thresholds object with the given goal name and required points.
-   *
-   * @param goalName       the name of the goal
+   * @param goalName the name of the goal
    * @param requiredPoints the number of points required to reach the goal
    */
   public Threshold(String goalName, int requiredPoints)
@@ -26,7 +25,6 @@ public class Threshold
 
   /**
    * Returns the name of the goal.
-   *
    * @return the goal name
    */
   public String getGoalName()
@@ -36,7 +34,6 @@ public class Threshold
 
   /**
    * Returns the number of points required to reach the goal.
-   *
    * @return the required number of points
    */
   public int getRequiredPoints()
@@ -46,7 +43,6 @@ public class Threshold
 
   /**
    * Sets a new goal name.
-   *
    * @param goalName the new goal name
    */
   public void setGoalName(String goalName)
@@ -56,7 +52,6 @@ public class Threshold
 
   /**
    * Updates the number of required points for the goal.
-   *
    * @param requiredPoints the new required points value
    */
   public void setRequiredPoints(int requiredPoints)
@@ -67,7 +62,6 @@ public class Threshold
   /**
    * Determines whether this Thresholds object is equal to another object.
    * Two thresholds are equal if both the goal name and required points match.
-   *
    * @param obj the object to compare with
    * @return true if both objects represent the same threshold, false otherwise
    */
@@ -81,6 +75,11 @@ public class Threshold
     return this.goalName.equals(thres.goalName) &&
         this.requiredPoints==thres.requiredPoints;
   }
+
+  /**
+   * Returns a string representation of the Threshold.
+   * @return a string representation of the Threshold in the format: goalName, requiredPoints.
+   */
   public String toString()
   {
     return "The name of goal: " +goalName + " ,the required points: " +requiredPoints;
