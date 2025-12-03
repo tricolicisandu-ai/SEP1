@@ -1,12 +1,11 @@
 package model;
-
+/**
+ * Represents a goal threshold consisting of a name and the number
+ * of points required to reach that goal.
+ * @author Yuliia Iliienko
+ * @version 1.0
+ */
 public class Threshold
-    /**
-     * Represents a goal threshold consisting of a name and the number
-     * of points required to reach that goal.
-     * @author Yuliia Iliienko
-     * @version 1.0
-     */
 {
   private String goalName;
   private int requiredPoints;
