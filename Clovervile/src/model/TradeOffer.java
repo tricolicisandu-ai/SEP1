@@ -92,7 +92,7 @@ public class TradeOffer implements Serializable
 
   /**
    * Returns a string representation of the TradeOffer.
-   * @return a string representation of the TradeOffer in the format: "firstName lastName (country)"
+   * @return a string representation of the TradeOffer in the format: "OfferName: pointCost, The seller: SellerName"
    */
   public String toString()
   {
@@ -116,4 +116,6 @@ public class TradeOffer implements Serializable
     return offerName.equals(other.offerName) && pointCost == other.pointCost && seller.equals(other.seller);
   }
 }
+
+
 

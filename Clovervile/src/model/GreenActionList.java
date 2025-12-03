@@ -96,4 +96,26 @@ public class GreenActionList implements Serializable
     return returnStr;
   }
 
+
+  /**
+   * Compares this GreenActionList to another object.
+   *
+   * @param obj another object
+   * @return true if both GreenList objects contain the same greenActions
+   */
+  public boolean equals(Object obj)
+  {
+    if (this == obj)
+    {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass())
+    {
+      return false;
+    }
+    GreenActionList other = (GreenActionList) obj;
+    {
+      return greenActions.equals(other.greenActions);
+    }
+  }
 }
