@@ -45,7 +45,7 @@ public class TradeOfferList implements Serializable
    * Gets how many TradeOffers objects are in the list.
    * @return the number of TradeOffers objects in the list
    */
-  public int size()
+  public int getNumberOfTradeOffers()
   {
     return offers.size();
   }
@@ -65,6 +65,15 @@ public class TradeOfferList implements Serializable
       returnStr += temp +"\n";
     }
     return returnStr;
+  }
+
+
+  public void removeTradeOffer(int index)
+  {
+    if (index >= 0 && index < offers.size())
+    {
+      offers.remove(index);
+    }
   }
 }
 

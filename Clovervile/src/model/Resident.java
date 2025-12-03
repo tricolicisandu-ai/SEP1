@@ -98,6 +98,7 @@ public class Resident
         this.personalPoints==(resid.personalPoints);
   }
 
+
   /**
    * Returns a string representation of the Resident.
    * @return a string representation of the Resident in the format: firstName, lastName, personalPoints
