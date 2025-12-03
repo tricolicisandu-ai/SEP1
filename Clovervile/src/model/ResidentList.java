@@ -22,7 +22,6 @@ public class ResidentList
 
   /**
    * Returns the number of residents in the list.
-   *
    * @return number of residents
    */
   public int getNumberOfResidents()
@@ -32,7 +31,6 @@ public class ResidentList
 
   /**
    * Returns the resident stored at a specific index.
-   *
    * @param index the position of the resident
    * @return the resident at the given index
    */
@@ -43,7 +41,6 @@ public class ResidentList
 
   /**
    * Adds a new resident to the list.
-   *
    * @param resident the resident to add
    */
   public void addResident(Resident resident)
@@ -53,7 +50,6 @@ public class ResidentList
 
   /**
    * Removes a resident at the given index and returns it.
-   *
    * @param index index of the resident to remove
    * @return the removed resident
    */
@@ -61,18 +57,23 @@ public class ResidentList
   {
     return residents.remove(index);
   }
-/*
 
-public void addPersonalPoints(Resident resident, int points ??)
+
+/*
+public void addPersonalPoints(Resident resident)
 {
-  resident.addPersonalPoints(points);  // де номер повинен прописуватися кількість балів яку хочемо додати(вручну) до певного резидента
+  for (int i = 0; i < residents.size(); i++)
+  {
+
+  }
+
+   // де номер повинен прописуватися кількість балів яку хочемо додати(вручну) до певного резидента
 }
 */
 
   /**
    * Calculates the total number of personal points
    * accumulated by all residents in the list.
-   *
    * @return sum of all personal points
    */
   public int getAllPersonalPoints()
@@ -87,7 +88,6 @@ public void addPersonalPoints(Resident resident, int points ??)
 
   /**
    * Compares this ResidentList to another object.
-   *
    * @param obj another object
    * @return true if both ResidentList objects contain the same residents
    */
@@ -110,7 +110,6 @@ public void addPersonalPoints(Resident resident, int points ??)
   /**
    * Returns a string representation of the list,
    * displaying each resident on a new line.
-   *
    * @return string containing all residents
    */
   public String toString()
