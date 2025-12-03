@@ -19,7 +19,7 @@ public class CommunityPool
    * @param residents list of residents
    * @param greenActions list of green actions
    */
-  public CommunityPool(ResidentList residents, GreenActionList greenActions)     //потрібно додати конструктор в цей клас
+  public CommunityPool(ResidentList residents, GreenActionList greenActions)
   {
     this.residents=residents;
     this.greenActions=greenActions;
@@ -29,7 +29,6 @@ public class CommunityPool
   /**
    * Returns the total amount of green points accumulated
    * through all green actions.
-   *
    * @return total green points
    */
   public int getAllGreenPoints()
@@ -39,7 +38,6 @@ public class CommunityPool
 
   /**
    * Returns the total amount of personal points gained by all residents.
-   *
    * @return total personal points
    */
   public int getAllPersonalPoints()
@@ -50,7 +48,6 @@ public class CommunityPool
   /**
    * Calculates and returns the total points of the community
    * (green points + personal points).
-   *
    * @return total community points
    */
   public int getTotalPoints()
