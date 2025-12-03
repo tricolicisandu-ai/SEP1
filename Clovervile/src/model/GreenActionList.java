@@ -30,6 +30,12 @@ public class GreenActionList implements Serializable
     greenActions.add(greenAction);
   }
 
+  /**
+   * returns the green action stored at a specific index
+   * @param index the position of the green action
+   * @return returns the green action at the given index
+   */
+
   public GreenAction getIndex(int index)
   {
    return greenActions.get(index);
@@ -64,8 +70,12 @@ public class GreenActionList implements Serializable
 
   }
 
-
-
+  /**
+   * removes a green action at the given index and returns it
+   * @param index index of the green action to remove
+   * @return the removed green action
+   */
+  
   public GreenAction removeGreenAction(int index)
   {
      return greenActions.remove(index);
