@@ -6,9 +6,6 @@ public class CloverVilleModelManager
   private String tradeOffersFile;
   private String residentsFile;
 
-  /**
-   *
-   */
 
   public CloverVilleModelManager(String greenActionsFile, String tradeOffersFile, String residentsFile)
   {
@@ -17,5 +14,8 @@ public class CloverVilleModelManager
     this.residentsFile = residentsFile;
   }
 
-  public
+  public ResidentList getAllResidents()
+  {
+
+  }
 }

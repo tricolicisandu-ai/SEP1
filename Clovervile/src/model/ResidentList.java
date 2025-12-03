@@ -59,17 +59,21 @@ public class ResidentList
   }
 
 
-/*
-public void addPersonalPoints(Resident resident)
+
+public void addPersonalPoints(Resident resident, int points)
 {
   for (int i = 0; i < residents.size(); i++)
   {
+    if (residents.get(i).equals(resident))
+    {
+      residents.get(i).setPersonalPoints(residents.get(i).getPersonalPoints()+points);
+    }
 
   }
 
    // де номер повинен прописуватися кількість балів яку хочемо додати(вручну) до певного резидента
 }
-*/
+
 
   /**
    * Calculates the total number of personal points

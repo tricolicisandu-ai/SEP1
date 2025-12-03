@@ -36,7 +36,7 @@ public class TradeOfferList implements Serializable
   }
 
   // Get offer by index
-  public TradeOffer get(int index)
+  public TradeOffer getTradeOffer(int index)
   {
     return offers.get(index);
   }

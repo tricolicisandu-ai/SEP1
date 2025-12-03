@@ -30,24 +30,9 @@ public class GreenActionList implements Serializable
     greenActions.add(greenAction);
   }
 
-  /**
-   *
-   * @param name gets name to compare
-   * @param greenPoints gets greenPoints to compare
-   * @return object by index
-   */
-  public int getIndex(String name, int greenPoints)
+  public GreenAction getIndex(int index)
   {
-    for (int i = 0; i < greenActions.size(); i++)
-    {
-      GreenAction temp = greenActions.get(i);
-
-      if (temp.getName().equals(name) && temp.getGreenPoints() == greenPoints)
-      {
-        return i;
-      }
-    }
-    return -1;
+   return greenActions.get(index);
   }
 
   /**
@@ -55,7 +40,7 @@ public class GreenActionList implements Serializable
    * @return nothing after cleared
    */
 
-  public int removeGreenAction()
+  public int resetGreenAction()
   {
     int all = greenActions.size();
     greenActions.clear();
@@ -77,6 +62,13 @@ public class GreenActionList implements Serializable
 
     return total;
 
+  }
+
+
+
+  public GreenAction removeGreenAction(int index)
+  {
+     return greenActions.remove(index);
   }
 
   /**
