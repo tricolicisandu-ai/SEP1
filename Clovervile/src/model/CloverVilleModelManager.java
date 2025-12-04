@@ -86,4 +86,33 @@ public class CloverVilleModelManager
     }
     return allGreenActions;
   }
+
+  /**
+   * Uses MyFieHandler class to retrieve a TradeOfferList object with all trade offers
+   * @return a TradeOfferList object with all stored trade offers
+   */
+  public TradeOfferList getAllTradeOffers()
+  {
+    TradeOfferList allTradeOffers = new TradeOfferList();
+
+    try
+  {
+    allTradeOffers = (TradeOfferList) MyFileHandler.readFromBinaryFile(tradeOffersFile);
+  }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File Not Found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+    return allTradeOffers;
+  }
+
+
 }
