@@ -29,13 +29,34 @@ public class TradeOfferList implements Serializable
     offers.add(tradeOffer);
   }
 
+  /**
+   * Removes a TradeOffer from the list at the specified index.
+   * @param index the index of the TradeOffer to remove
+   */
+  public void removeTradeOffer(int index)
+  {
+    if (index >= 0 && index < offers.size())
+    {
+      offers.remove(index);
+    }
+  }
 
+
+/**
+   * Removes a TradeOffer from the list.
+   * @param offer the TradeOffer to remove
+   * @return true if the TradeOffer was successfully removed, false otherwise
+   */
   public boolean remove(TradeOffer offer)
   {
     return offers.remove(offer);
   }
 
-  // Get offer by index
+  /**
+   * Gets the TradeOffer stored at a specific index.
+   * @param index the position of the TradeOffer
+   * @return the TradeOffer at the given index
+   */
   public TradeOffer getTradeOffer(int index)
   {
     return offers.get(index);
@@ -68,12 +89,19 @@ public class TradeOfferList implements Serializable
   }
 
 
-  public void removeTradeOffer(int index)
+  /**
+   * Compares this TradeOfferList with another object for equality.
+   * @param obj The object to compare with this TradeOfferList
+   * @return true if the objects are equal, false otherwise
+   */
+  public boolean equals(Object obj)
   {
-    if (index >= 0 && index < offers.size())
+    if (obj == null || getClass() != obj.getClass())
     {
-      offers.remove(index);
+      return false;
     }
+    TradeOfferList other = (TradeOfferList) obj;
+    return offers.equals(other.offers);
   }
 }
 
