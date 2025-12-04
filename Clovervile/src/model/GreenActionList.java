@@ -75,7 +75,7 @@ public class GreenActionList implements Serializable
    * @param index index of the green action to remove
    * @return the removed green action
    */
-  
+
   public GreenAction removeGreenAction(int index)
   {
      return greenActions.remove(index);
