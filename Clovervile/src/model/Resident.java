@@ -1,11 +1,12 @@
 package model;
+import java.io.Serializable;
 /**
  * Represents a resident with a first name, last name, and a personal points score.
  * The class provides methods for accessing and modifying resident data.
  * @author Yuliia Iliienko
  * @version 1.0
  */
-public class Resident
+public class Resident implements Serializable
 {
   private String firstName;
   private String lastName;
