@@ -1,4 +1,5 @@
 package model;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * A class that represents a list of residents.
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  *  @version 1.0
  */
 
-public class ResidentList
+public class ResidentList implements Serializable
 {
   private ArrayList<Resident> residents;
 
