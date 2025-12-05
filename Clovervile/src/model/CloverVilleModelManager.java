@@ -39,6 +39,7 @@ public class CloverVilleModelManager
 
   public ResidentList getAllResidents()
   {
+    // Initialize empty resident list
     ResidentList allResidents = new ResidentList();
 
     try
@@ -114,5 +115,53 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
+
+  public void saveResidents(ResidentList residents)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(residentsFile, residents);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found ");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
+  public void saveGreenActions(GreenActionList greenActions)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(greenActionsFile, greenActions);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found ");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file ");
+    }
+  }
+
+  public void saveTradeOffers(TradeOfferList tradeOffers)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(tradeOffersFile, tradeOffers);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
 
 }
