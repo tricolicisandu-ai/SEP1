@@ -29,22 +29,22 @@
         <tabs>
           <Tab text="Residents List ">
             <content>
-                <fx:include fx:id="Residents-List" source="ListResidentsView.fxml" />
+                <fx:include fx:id="residentsList" source="ListResidentsView.fxml" />
             </content>
           </Tab>
           <Tab text="Add Residents">
             <content>
-                <fx:include fx:id="Add-Residents" source="AddResidentView.fxml" />
+                <fx:include fx:id="addResidents" source="AddResidentView.fxml" />
             </content>
           </Tab>
             <Tab text="Manage Residents">
               <content>
-                  <fx:include fx:id="Manage-Residents" source="ManageResidentsView.fxml" />
+                  <fx:include fx:id="manageResidents" source="ManageResidentsView.fxml" />
               </content>
             </Tab>
             <Tab text="Personal Points">
               <content>
-                  <fx:include fx:id="Personal-Points" source="PersonalPointsView.fxml" />
+                  <fx:include fx:id="personalPoints" source="PersonalPointsView.fxml" />
               </content>
             </Tab>
         </tabs>
