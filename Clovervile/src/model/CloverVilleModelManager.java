@@ -164,4 +164,29 @@ public class CloverVilleModelManager
     }
   }
 
+  public void addPersonalPoints(ResidentList residents, int points){
+
+    ResidentList all = getAllResidents();
+
+    for (int i = 0; i < residents.getNumberOfResidents() ; i++)
+    {
+      for (int j = 0; j < all.getNumberOfResidents() ; j++)
+      {
+        if(all.getResident(j).equals(residents.getResident(i)))
+        {
+          all.getResident(j).setPersonalPoints(all.getResident(j).getPersonalPoints()+points);
+          break;
+        }
+      }
+    }
+
+    saveResidents(all);
+
+    }
+
+    public void resetResidentsPoints
+
+
+
+
 }

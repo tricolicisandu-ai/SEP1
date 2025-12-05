@@ -1,6 +1,8 @@
 package model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A class that represents a list of residents.
  * Provides functionality for adding, removing, and retrieving residents,
@@ -126,6 +128,14 @@ public void addPersonalPoints(Resident resident, int points)
     }
     return returnStr;
   }
+
+  /*
+
+  public List<Resident> getAllResidents(){
+    return residents;
+  }
+  */
+
 
 }
 
