@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
@@ -24,27 +25,27 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="330.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="ResidentsList">
-                <content>
-                    <fx:include fx:id="Residents List" source="ListResidentsView.fxml" />
-                </content>
-            </Tab>
-            <Tab text="Add Residents">
-                <content>
-                    <fx:include fx:id="Add Resident" source="AddResidentView.fxml" />
-                </content>
-            </Tab>
+          <Tab text="Residents List ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Add Residents">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
             <Tab text="Manage Residents">
-                <content>
-                    <fx:include fx:id="Manage Residents" source="ManageResidentsView.fxml" />
-                </content>
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
             </Tab>
             <Tab text="Personal Points">
-                <content>
-                    <fx:include fx:id="Personal Points" source="PersonalPointsView.fxml" />
-                </content>
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
             </Tab>
         </tabs>
       </TabPane>
