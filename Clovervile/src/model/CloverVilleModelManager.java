@@ -163,5 +163,13 @@ public class CloverVilleModelManager
       System.out.println("IO Error writing to file");
     }
   }
+/*
+  public void addPersonalPoints(ResidentList residents, int points){
+    for(Resident resident : residents.getAllResidents()){
+      if(resident.)
+    }
+
+  }
+*/
 
 }
