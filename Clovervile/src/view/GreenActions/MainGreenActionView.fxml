@@ -36,11 +36,11 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane prefHeight="376.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="340.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="All green actions">
                <content>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="346.0" prefWidth="600.0">
                      <children>
                         <TableView layoutY="1.0" prefHeight="344.0" prefWidth="600.0">
                           <columns>
@@ -155,5 +155,10 @@
           </Tab>
         </tabs>
       </TabPane>
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Back">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>
