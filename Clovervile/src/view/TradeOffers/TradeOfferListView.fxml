@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView prefHeight="320.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="200.0" text="Trade Offer Name" />
+          <TableColumn prefWidth="200.0" text="Value" />
+            <TableColumn prefWidth="200.0" text="Resident(Seller)" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>
