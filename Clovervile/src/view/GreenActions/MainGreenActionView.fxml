@@ -148,11 +148,7 @@
                   </VBox>
                </content>
           </Tab>
-          <Tab text="Manage Green Actions" >
-            <content>
-                <fx:include fx:id="Manage Green Action" source="ManageGreenActionView.fxml" />
-            </content>
-            </Tab>
+          <Tab text="Manage Green Actions" />
         </tabs>
       </TabPane>
    </children>
