@@ -29,22 +29,22 @@
         <tabs>
           <Tab text="Residents List ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <fx:include fx:id="Residents-List" source="ListResidentsView.fxml" />
             </content>
           </Tab>
           <Tab text="Add Residents">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <fx:include fx:id="Add-Residents" source="AddResidentView.fxml" />
             </content>
           </Tab>
             <Tab text="Manage Residents">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <fx:include fx:id="Manage-Residents" source="ManageResidentsView.fxml" />
               </content>
             </Tab>
             <Tab text="Personal Points">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <fx:include fx:id="Personal-Points" source="PersonalPointsView.fxml" />
               </content>
             </Tab>
         </tabs>
