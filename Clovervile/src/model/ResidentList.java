@@ -136,5 +136,6 @@ public void addPersonalPoints(Resident resident, int points)
   }
   */
 
+
 }
 
