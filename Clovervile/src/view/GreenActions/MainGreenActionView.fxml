@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Add Green Action">
+               <content>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" spacing="4.0">
+                     <children>
+                        <GridPane alignment="CENTER" prefHeight="155.0" prefWidth="600.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.5999755859375" minWidth="10.0" prefWidth="106.40001678466797" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="516.0000076293945" minWidth="10.0" prefWidth="493.59998321533203" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="86.0" text="Green Task">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label prefHeight="18.0" prefWidth="46.0" text="Points" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField prefHeight="26.0" prefWidth="242.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="300.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="400.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.800048828125" minWidth="10.0" prefWidth="260.800048828125" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.199951171875" minWidth="10.0" prefWidth="339.199951171875" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="Add" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="200.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </content>
+               <content>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" spacing="4.0">
+                     <children>
+                        <GridPane alignment="CENTER" prefHeight="133.0" prefWidth="600.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.5999755859375" minWidth="10.0" prefWidth="106.40001678466797" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="516.0000076293945" minWidth="10.0" prefWidth="493.59998321533203" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="86.0" text="Green Task">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label prefHeight="18.0" prefWidth="46.0" text="Points" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField prefHeight="26.0" prefWidth="242.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="300.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="400.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.800048828125" minWidth="10.0" prefWidth="260.800048828125" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.199951171875" minWidth="10.0" prefWidth="339.199951171875" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="Add" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="200.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </content>
+          </Tab>
+          <Tab text="Manage Green Actions">
+               <content>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
+                     <children>
+                        <GridPane prefHeight="229.0" prefWidth="282.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.79998779296875" minWidth="10.0" prefWidth="52.00001220703125" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.39998779296872" minWidth="10.0" prefWidth="178.39998779296872" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="160.80001220703124" minHeight="10.0" prefHeight="70.79998931884765" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="151.00001068115236" minHeight="10.0" prefHeight="55.3999816894531" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="205.00001068115233" minHeight="10.0" prefHeight="185.00001831054686" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button mnemonicParsing="false" text="Remove green action" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" text="Confirm Edit" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="20.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Label text="Green Task">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Points" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="30.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField GridPane.columnIndex="1" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                        <FlowPane prefHeight="352.0" prefWidth="318.0">
+                           <children>
+                              <FlowPane prefHeight="32.0" prefWidth="318.0" rowValignment="BOTTOM">
+                                 <children>
+                                    <ComboBox prefWidth="150.0">
+                                       <padding>
+                                          <Insets left="100.0" />
+                                       </padding>
+                                    </ComboBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="100.0" top="50.0" />
+                                 </padding>
+                              </FlowPane>
+                              <FlowPane columnHalignment="RIGHT" prefHeight="0.0" prefWidth="318.0" rowValignment="BASELINE">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Reset All" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="200.0" top="50.0" />
+                                 </padding>
+                              </FlowPane>
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </HBox>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>
