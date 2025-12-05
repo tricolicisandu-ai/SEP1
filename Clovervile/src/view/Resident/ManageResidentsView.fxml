@@ -46,12 +46,15 @@
             <Insets />
          </FlowPane.margin>
       </VBox>
-      <FlowPane prefHeight="200.0" prefWidth="365.0">
+      <FlowPane prefHeight="200.0" prefWidth="267.0">
          <children>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox prefWidth="150.0">
+               <FlowPane.margin>
+                  <Insets left="50.0" />
+               </FlowPane.margin></ComboBox>
          </children>
          <FlowPane.margin>
-            <Insets left="5.0" top="18.0" />
+            <Insets left="50.0" top="18.0" />
          </FlowPane.margin></FlowPane>
       <Pane prefHeight="94.0" prefWidth="595.0">
          <children>
