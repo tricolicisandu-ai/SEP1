@@ -7,13 +7,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddResidentViewFXML extends Application
+public class MainResidentViewFXML extends Application
 {
   public void start(Stage window) throws IOException
   {
-    window.setTitle("AddResidentView GUI FXML");
+    window.setTitle("MainResidentView GUI FXML");
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("AddResidentView.fxml"));
+    loader.setLocation(getClass().getResource("MainResidentView.fxml"));
     Scene scene = new Scene(loader.load());
     window.setScene(scene);
     window.show();

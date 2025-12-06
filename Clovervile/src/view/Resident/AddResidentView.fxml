@@ -45,7 +45,7 @@
       <HBox alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="602.0" spacing="20.0">
          <children>
             <Button mnemonicParsing="false" onAction="#AddResident" text="Add" />
-            <Button mnemonicParsing="false" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#CancelResident" text="Cancel" />
          </children>
          <FlowPane.margin>
             <Insets top="20.0" />

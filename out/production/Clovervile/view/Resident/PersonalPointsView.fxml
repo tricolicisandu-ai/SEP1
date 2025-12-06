@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Resident.PersonalPointsViewController">
    <children>
       <VBox prefHeight="155.0" prefWidth="243.0" spacing="20.0">
          <children>
@@ -28,8 +28,8 @@
               </rowConstraints>
                <children>
                   <Label text="Add Points:" GridPane.rowIndex="1" />
-                  <TextField prefHeight="26.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Confirm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="addPoints" prefHeight="26.0" prefWidth="182.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#confirm" text="Confirm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <VBox.margin>
                   <Insets right="10.0" />
@@ -50,14 +50,14 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <ListView blendMode="MULTIPLY" prefHeight="200.0" prefWidth="345.0" />
+                  <ListView fx:id="residentList" blendMode="MULTIPLY" prefHeight="200.0" prefWidth="345.0" />
                </children>
             </FlowPane>
          </children>
       </VBox>
       <Pane prefHeight="94.0" prefWidth="597.0">
          <children>
-            <Button layoutX="484.0" layoutY="22.0" mnemonicParsing="false" text="Reset Points" />
+            <Button layoutX="484.0" layoutY="22.0" mnemonicParsing="false" onAction="#resetPoints" text="Reset Points" />
          </children>
       </Pane>
    </children>

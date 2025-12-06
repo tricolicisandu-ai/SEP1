@@ -19,7 +19,11 @@ public class AddResidentViewController
   }
   public void AddResident(ActionEvent actionEvent)
   {
-    JOptionPane.showMessageDialog(null, "Hello");
+    JOptionPane.showMessageDialog(null, "Do you want to add?");
   }
 
+  public void CancelResident(ActionEvent actionEvent)
+  {
+    JOptionPane.showMessageDialog(null, "Do you want to cancel?");
+  }
 }
