@@ -28,11 +28,13 @@ public class CloverVilleModelManager
    */
 
 
-  public CloverVilleModelManager(String greenActionsFile, String tradeOffersFile, String residentsFile)
+  public CloverVilleModelManager(String greenActionsFile, String tradeOffersFile, String residentsFile,String communityPoolFile, String thresholdsFile)
   {
     this.greenActionsFile = greenActionsFile;
     this.tradeOffersFile = tradeOffersFile;
     this.residentsFile = residentsFile;
+    this.communityPoolFile = communityPoolFile;
+    this.thresholdsFile = thresholdsFile;
   }
 
   /**
@@ -173,7 +175,7 @@ public class CloverVilleModelManager
     }
   }
 
-<<<<<<< HEAD
+
   public void saveCommunityPool(CommunityPool communityPool)
   {
     try
@@ -205,7 +207,7 @@ public class CloverVilleModelManager
       System.out.println("IO Error writing to file");
     }
   }
-=======
+
   public void addPersonalPoints(ResidentList residents, int points){
 
     ResidentList all = getAllResidents();
@@ -226,10 +228,8 @@ public class CloverVilleModelManager
 
     }
 
-    public void resetResidentsPoints
 
 
 
->>>>>>> 9b002ba9f7047ba9dea142b3cd256396187754f2
 
 }
