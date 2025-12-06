@@ -173,6 +173,7 @@ public class CloverVilleModelManager
     }
   }
 
+<<<<<<< HEAD
   public void saveCommunityPool(CommunityPool communityPool)
   {
     try
@@ -204,5 +205,31 @@ public class CloverVilleModelManager
       System.out.println("IO Error writing to file");
     }
   }
+=======
+  public void addPersonalPoints(ResidentList residents, int points){
+
+    ResidentList all = getAllResidents();
+
+    for (int i = 0; i < residents.getNumberOfResidents() ; i++)
+    {
+      for (int j = 0; j < all.getNumberOfResidents() ; j++)
+      {
+        if(all.getResident(j).equals(residents.getResident(i)))
+        {
+          all.getResident(j).setPersonalPoints(all.getResident(j).getPersonalPoints()+points);
+          break;
+        }
+      }
+    }
+
+    saveResidents(all);
+
+    }
+
+    public void resetResidentsPoints
+
+
+
+>>>>>>> 9b002ba9f7047ba9dea142b3cd256396187754f2
 
 }
