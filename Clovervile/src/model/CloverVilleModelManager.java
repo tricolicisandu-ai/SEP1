@@ -183,9 +183,10 @@ public class CloverVilleModelManager
     saveResidents(all);
 
     }
+    /*
 
     public void resetResidentsPoints
-
+    */
 
 
 
