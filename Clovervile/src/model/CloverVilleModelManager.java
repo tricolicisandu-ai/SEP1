@@ -13,9 +13,12 @@ import java.io.IOException;
 
 public class CloverVilleModelManager
 {
+  private String residentsFile;
   private String greenActionsFile;
   private String tradeOffersFile;
-  private String residentsFile;
+  private String communityPoolFile;
+  private String thresholdsFile;
+
 
   /**
    * 3-argument constructor setting the file name
@@ -25,11 +28,13 @@ public class CloverVilleModelManager
    */
 
 
-  public CloverVilleModelManager(String greenActionsFile, String tradeOffersFile, String residentsFile)
+  public CloverVilleModelManager(String greenActionsFile, String tradeOffersFile, String residentsFile,String communityPoolFile, String thresholdsFile)
   {
     this.greenActionsFile = greenActionsFile;
     this.tradeOffersFile = tradeOffersFile;
     this.residentsFile = residentsFile;
+    this.communityPoolFile = communityPoolFile;
+    this.thresholdsFile = thresholdsFile;
   }
 
   /**
@@ -115,6 +120,12 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
+  /*public void editGreenAction(String name, int greenPoints)
+  {
+
+  }*/
+
+  /*public void editResident(String firstName, int personalPoints)*/
 
   public void saveResidents(ResidentList residents)
   {
@@ -164,6 +175,39 @@ public class CloverVilleModelManager
     }
   }
 
+
+  public void saveCommunityPool(CommunityPool communityPool)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(communityPoolFile, communityPool);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File Not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
+  public void saveThresholds(Threshold threshold)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
   public void addPersonalPoints(ResidentList residents, int points){
 
     ResidentList all = getAllResidents();
@@ -182,12 +226,6 @@ public class CloverVilleModelManager
 
     saveResidents(all);
 
-    }
-    /*
-
-    public void resetResidentsPoints
-    */
-
-
+  }
 
 }
