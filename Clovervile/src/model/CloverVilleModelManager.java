@@ -120,12 +120,43 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-  /*public void editGreenAction(String name, int greenPoints)
+  public void editGreenAction(String editedName, int editedGreenPoints)
   {
 
-  }*/
+    GreenActionList newGreenActions = getAllGreenActions();
 
-  /*public void editResident(String firstName, int personalPoints)*/
+    try
+    {
+      MyFileHandler.writeToBinaryFile(greenActionsFile, newGreenActions);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+
+  }
+
+  public void editResident(String firstName, int personalPoints)
+  {
+    ResidentList newResidents = getAllResidents();
+
+    try
+    {
+      MyFileHandler.writeToBinaryFile(residentsFile, newResidents);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to the file");
+    }
+  }
 
   public void saveResidents(ResidentList residents)
   {
