@@ -13,9 +13,12 @@ import java.io.IOException;
 
 public class CloverVilleModelManager
 {
+  private String residentsFile;
   private String greenActionsFile;
   private String tradeOffersFile;
-  private String residentsFile;
+  private String communityPoolFile;
+  private String thresholdsFile;
+
 
   /**
    * 3-argument constructor setting the file name
@@ -115,6 +118,12 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
+  /*public void editGreenAction(String name, int greenPoints)
+  {
+
+  }*/
+
+  /*public void editResident(String firstName, int personalPoints)*/
 
   public void saveResidents(ResidentList residents)
   {
@@ -153,6 +162,38 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile(tradeOffersFile, tradeOffers);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
+  public void saveCommunityPool(CommunityPool communityPool)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(communityPoolFile, communityPool);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File Not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
+  public void saveThresholds(Threshold threshold)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
     }
     catch (FileNotFoundException e)
     {
