@@ -257,10 +257,6 @@ public class CloverVilleModelManager
 
     saveResidents(all);
 
-    }
-
-
-
-
+  }
 
 }
