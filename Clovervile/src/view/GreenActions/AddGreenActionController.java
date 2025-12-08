@@ -12,7 +12,6 @@ public class AddGreenActionController
 {
   @FXML private TextField GreenTaskField;
   @FXML private  TextField PointField;
-
   private GreenAction newGreenAction;
 
   @FXML private void handleAdd (ActionEvent event)
