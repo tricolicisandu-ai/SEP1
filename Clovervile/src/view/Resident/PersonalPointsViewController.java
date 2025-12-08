@@ -50,6 +50,6 @@ public class PersonalPointsViewController
 
   public void confirm(ActionEvent actionEvent)
   {
-    JOptionPane.showMessageDialog(null, "Do you want to confirm?");
+
   }
 }
