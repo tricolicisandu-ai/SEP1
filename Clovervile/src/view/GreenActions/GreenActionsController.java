@@ -20,7 +20,7 @@ public class GreenActionsController
 
   @FXML private TableView<GreenAction> greenActionTableView;
   @FXML private TableColumn<GreenAction, String> greenActionColumn;
-  @FXML private TableColumn<GreenAction, String> pointColumn;
+  @FXML private TableColumn<GreenAction, > pointColumn;
 
 
 }
