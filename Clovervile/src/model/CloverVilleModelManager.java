@@ -206,40 +206,8 @@ public class CloverVilleModelManager
     }
   }
 
-
-  public void saveCommunityPool(CommunityPool communityPool)
+  public void addPersonalPoints(ResidentList residents, int points)
   {
-    try
-    {
-      MyFileHandler.writeToBinaryFile(communityPoolFile, communityPool);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File Not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error writing to file");
-    }
-  }
-
-  public void saveThresholds(Threshold threshold)
-  {
-    try
-    {
-      MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error writing to file");
-    }
-  }
-
-  public void addPersonalPoints(ResidentList residents, int points){
 
     ResidentList all = getAllResidents();
 
@@ -257,6 +225,57 @@ public class CloverVilleModelManager
 
     saveResidents(all);
 
+  }
+
+  //methods for Community Pool and Thresholds can be added here
+
+  public void saveThresholds(Threshold threshold)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
+  public void saveCommunityPool(CommunityPool communityPool)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(communityPoolFile, communityPool);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File Not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
+  // compute total community points (green + personal) using available lists
+  public int getCommunityPoints()
+  {
+    // build a CommunityPool from current residents and green actions and return its total
+    ResidentList residents = getAllResidents();
+    GreenActionList greenActions = getAllGreenActions();
+    CommunityPool pool = new CommunityPool(residents, greenActions);
+    return pool.getTotalPoints();
+  }
+
+  // create a Threshold from UI values and persist it using existing saveThresholds
+  public void createAndSaveThreshold(String goalName, int requiredPoints)
+  {
+    Threshold t = new Threshold(goalName, requiredPoints);
+    saveThresholds(t);
   }
 
 }
