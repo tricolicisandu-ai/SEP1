@@ -35,15 +35,24 @@
                         <Insets left="50.0" />
                      </GridPane.margin>
                   </Label>
+<<<<<<< Updated upstream
                   <TextField fx:id="greenTask" GridPane.columnIndex="1" />
                   <TextField fx:id="point" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+=======
+                  <TextField fx:id="GreenTaskField" onInputMethodTextChanged="#handleAdd" GridPane.columnIndex="1" />
+                  <TextField fx:id="PointField" onInputMethodTextChanged="#handleAdd" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+>>>>>>> Stashed changes
                </children>
             </GridPane>
          </children>
       </VBox>
       <Pane prefHeight="300.0" prefWidth="299.0">
          <children>
+<<<<<<< Updated upstream
             <Button layoutX="223.0" layoutY="164.0" mnemonicParsing="false" onAction="#AddGreenAction" prefHeight="25.0" prefWidth="47.0" text="Add" />
+=======
+            <Button fx:id="AddButton" layoutX="223.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#handleAdd" prefHeight="25.0" prefWidth="47.0" text="Add" />
+>>>>>>> Stashed changes
          </children>
       </Pane>
    </children>

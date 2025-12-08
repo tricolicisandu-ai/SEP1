@@ -3,14 +3,25 @@ package view.GreenActions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+<<<<<<< Updated upstream
 import model.GreenAction;
 
 
+=======
+import javafx.scene.control.Button;
+import model.GreenAction;
+
+
+
+
+>>>>>>> Stashed changes
 public class AddGreenActionController
 {
   @FXML private TextField GreenTaskField;
-  @FXML private  TextField PointField;
+  @FXML private TextField PointField;
+  @FXML private Button AddButton;
 
+<<<<<<< Updated upstream
   private GreenAction newGreenAction;
 
 
@@ -24,6 +35,14 @@ public class AddGreenActionController
       int point = Integer.parseInt(PointField.getText().trim());
 
       newGreenAction = new GreenAction(name, point);
+=======
+  public void handleAdd(ActionEvent event)
+  {
+    try
+    {
+      String GreenTask = GreenTaskField.getText().trim();
+      String Point = PointField.getText().trim();
+>>>>>>> Stashed changes
 
 
     }
@@ -33,8 +52,11 @@ public class AddGreenActionController
     }
   }
 
+<<<<<<< Updated upstream
   public GreenAction getNewCustomer()
   {
     return newGreenAction;
   }
+=======
+>>>>>>> Stashed changes
 }
