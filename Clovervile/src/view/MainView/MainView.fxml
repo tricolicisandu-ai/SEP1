@@ -8,34 +8,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView.MainViewController">
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" text="Exit">
+          <Menu fx:id="exitMenuItem" mnemonicParsing="false" text="Exit">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="About">
+          <Menu fx:id="aboutMenuItem" mnemonicParsing="false" text="About">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <VBox alignment="CENTER" prefHeight="329.0" prefWidth="600.0" spacing="15.0">
+      <VBox alignment="CENTER" prefHeight="344.0" prefWidth="600.0" spacing="15.0">
          <children>
             <ImageView fitHeight="137.0" fitWidth="445.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ClovervilleImage.png" />
                </image>
             </ImageView>
-            <Button cancelButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Residents" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Trade Offers" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Green Actions" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Community Progress" />
+            <Button fx:id="residentsButton" cancelButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Residents" />
+            <Button fx:id="tradeOfferButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Trade Offers" />
+            <Button fx:id="greenActionButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Green Actions" />
+            <Button fx:id="communityProgressButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Community Progress" />
          </children>
       </VBox>
    </children>
