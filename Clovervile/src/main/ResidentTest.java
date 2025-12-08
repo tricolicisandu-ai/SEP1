@@ -1,12 +1,12 @@
 package main;
 
 import javafx.application.Application;
-import view.Resident.MainResidentViewController;
+import view.Resident.MainResidentViewFXML;
 
 public class ResidentTest
 {
   public static void main(String[] args)
   {
-    Application.launch(MainResidentViewController.class);
+    Application.launch(MainResidentViewFXML.class);
   }
 }

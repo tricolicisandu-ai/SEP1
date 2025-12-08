@@ -206,44 +206,6 @@ public class CloverVilleModelManager
     }
   }
 
-  public void addPersonalPoints(ResidentList residents, int points)
-  {
-
-    ResidentList all = getAllResidents();
-
-    for (int i = 0; i < residents.getNumberOfResidents() ; i++)
-    {
-      for (int j = 0; j < all.getNumberOfResidents() ; j++)
-      {
-        if(all.getResident(j).equals(residents.getResident(i)))
-        {
-          all.getResident(j).setPersonalPoints(all.getResident(j).getPersonalPoints()+points);
-          break;
-        }
-      }
-    }
-
-    saveResidents(all);
-
-  }
-
-  //methods for Community Pool and Thresholds can be added here
-
-  public void saveThresholds(Threshold threshold)
-  {
-    try
-    {
-      MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error writing to file");
-    }
-  }
 
   public void saveCommunityPool(CommunityPool communityPool)
   {
@@ -261,21 +223,40 @@ public class CloverVilleModelManager
     }
   }
 
-  // compute total community points (green + personal) using available lists
-  public int getCommunityPoints()
+  public void saveThresholds(Threshold threshold)
   {
-    // build a CommunityPool from current residents and green actions and return its total
-    ResidentList residents = getAllResidents();
-    GreenActionList greenActions = getAllGreenActions();
-    CommunityPool pool = new CommunityPool(residents, greenActions);
-    return pool.getTotalPoints();
+    try
+    {
+      MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
   }
 
-  // create a Threshold from UI values and persist it using existing saveThresholds
-  public void createAndSaveThreshold(String goalName, int requiredPoints)
-  {
-    Threshold t = new Threshold(goalName, requiredPoints);
-    saveThresholds(t);
+  public void addPersonalPoints(ResidentList residents, int points){
+
+    ResidentList all = getAllResidents();
+
+    for (int i = 0; i < residents.getNumberOfResidents() ; i++)
+    {
+      for (int j = 0; j < all.getNumberOfResidents() ; j++)
+      {
+        if(all.getResident(j).equals(residents.getResident(i)))
+        {
+          all.getResident(j).setPersonalPoints(all.getResident(j).getPersonalPoints()+points);
+          break;
+        }
+      }
+    }
+
+    saveResidents(all);
+
   }
 
 }

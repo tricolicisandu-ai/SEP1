@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GreenActions.MainGreenActionController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="400.0" prefWidth="325.0">
          <children>
@@ -38,14 +38,14 @@
                         <Insets left="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="GreenTaskField" GridPane.columnIndex="1" />
-                  <TextField fx:id="PointField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="EditButton" mnemonicParsing="false" onAction="#edit" text="Confirm Edit" GridPane.rowIndex="2">
+                  <TextField GridPane.columnIndex="1" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" text="Confirm Edit" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="50.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="RemoveButton" mnemonicParsing="false" onAction="#remove" text="Remove Green Action" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" text="Remove Green Action" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
@@ -57,12 +57,12 @@
                   <Insets left="60.0" top="50.0" />
                </VBox.margin>
                <children>
-                  <ComboBox fx:id="ListBox" prefWidth="150.0" />
+                  <ComboBox prefWidth="150.0" />
                </children>
             </FlowPane>
             <Pane prefHeight="139.0" prefWidth="306.0">
                <children>
-                  <Button fx:id="ResetButton" alignment="BOTTOM_LEFT" layoutX="106.0" layoutY="45.0" mnemonicParsing="false" onAction="#reset" text="Reset All" />
+                  <Button alignment="BOTTOM_LEFT" layoutX="106.0" layoutY="45.0" mnemonicParsing="false" text="Reset All" />
                </children>
             </Pane>
          </children>
