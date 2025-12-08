@@ -14,7 +14,7 @@ public class AddResidentViewController
   @FXML private TextField firstName;
   @FXML private TextField lastName;
   @FXML private TextField points;
-  private ResidentList resdentList;
+  private ResidentList residentList;
 
 
   public void initialize()
@@ -26,9 +26,9 @@ public class AddResidentViewController
 
   }
 
-  public void setResdentList(ResidentList resdentList)
+  public void setResidentList(ResidentList residentList)
   {
-    this.resdentList = resdentList;
+    this.residentList = residentList;
   }
 
   @FXML private void AddResident(ActionEvent actionEvent)
