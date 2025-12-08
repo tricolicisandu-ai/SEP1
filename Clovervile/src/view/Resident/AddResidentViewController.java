@@ -2,6 +2,8 @@ package view.Resident;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import model.ResidentList;
 
@@ -12,8 +14,8 @@ public class AddResidentViewController
   @FXML private TextField firstName;
   @FXML private TextField lastName;
   @FXML private TextField points;
-  private RedentList resdentList;
-  private Object showError;
+  private ResidentList resdentList;
+
 
   public void initialize()
   {
@@ -31,14 +33,19 @@ public class AddResidentViewController
 
   @FXML private void AddResident(ActionEvent actionEvent)
   {
-    String firstName = firstName.getText();
-    String lastName = lastName.getText();
-    String points = points.getText();
+    String firstName = this.firstName.getText();
+    String lastName = this.lastName.getText();
+    String points = this.points.getText();
 
     if(firstName.isEmpty() || lastName.isEmpty() || points.isEmpty() )
     {
-      showError("All fields must be filled out")
-      return;
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+          "All fields must be filled out");
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+
     }
 
   }

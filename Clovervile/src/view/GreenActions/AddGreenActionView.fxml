@@ -11,9 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="view.GreenActions.AddGreenActionController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GreenActions.AddGreenActionController">
    <children>
       <VBox prefHeight="400.0" prefWidth="300.0">
          <children>
@@ -37,15 +35,16 @@
                         <Insets left="50.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="GreenTaskField" GridPane.columnIndex="1" />
+                  <TextField fx:id="PointField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </VBox>
       <Pane prefHeight="300.0" prefWidth="299.0">
          <children>
-            <Button layoutX="223.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="47.0" text="Add" />
+            <Button fx:id="addButton" layoutX="223.0" layoutY="164.0" mnemonicParsing="false"
+                    onAction="#handleAdd" prefHeight="25.0" prefWidth="47.0" text="Add" />
          </children>
       </Pane>
    </children>
