@@ -3,6 +3,7 @@ package view.Resident;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import model.Resident;
 import model.ResidentList;
 
 import javax.swing.*;
@@ -12,21 +13,19 @@ public class AddResidentViewController
   @FXML private TextField firstName;
   @FXML private TextField lastName;
   @FXML private TextField points;
-  private RedentList resdentList;
+  private ResidentList residentList;
   private Object showError;
 
   public void initialize()
   {
-
-    firstName.setText("Anna");
-    lastName.setText("Olsen");
-    points.setText("0");
-
+    firstName.setText("");
+    lastName.setText("");
+    points.setText("");
   }
 
-  public void setResdentList(ResidentList resdentList)
+  public void setResidentList(ResidentList residentList)
   {
-    this.resdentList = resdentList;
+    this.residentList = residentList;
   }
 
   @FXML private void AddResident(ActionEvent actionEvent)
@@ -37,13 +36,29 @@ public class AddResidentViewController
 
     if(firstName.isEmpty() || lastName.isEmpty() || points.isEmpty() )
     {
-      showError("All fields must be filled out")
+      showError("All fields must be filled out.")
       return;
     }
 
+    int points;
+    try
+    {
+      String pointsText;
+      points = Integer.parseInt(pointsText);
+    }
+      catch (NumberFormatException e)
+      {
+        showError("Points must be an integer.");
+        return;
+      }
+    Resident newResident = new Resident(firstName, lastName, points);
+    ResidentList list = model.getAllResidents();
+    list.addResident(newResident);
+    model.saveResidents(list);
+
   }
 
-  public void CancelResident(ActionEvent actionEvent)
+  @FXML private void CancelResident(ActionEvent actionEvent)
   {
     JOptionPane.showMessageDialog(null, "Do you want to cancel?");
   }
