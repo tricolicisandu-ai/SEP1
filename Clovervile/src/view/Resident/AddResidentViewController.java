@@ -2,8 +2,9 @@ package view.Resident;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import model.Resident;
 import model.ResidentList;
 
 import javax.swing.*;
@@ -14,13 +15,15 @@ public class AddResidentViewController
   @FXML private TextField lastName;
   @FXML private TextField points;
   private ResidentList residentList;
-  private Object showError;
+
 
   public void initialize()
   {
-    firstName.setText("");
-    lastName.setText("");
-    points.setText("");
+
+    firstName.setText("Anna");
+    lastName.setText("Olsen");
+    points.setText("0");
+
   }
 
   public void setResidentList(ResidentList residentList)
@@ -30,35 +33,24 @@ public class AddResidentViewController
 
   @FXML private void AddResident(ActionEvent actionEvent)
   {
-    String firstName = firstName.getText();
-    String lastName = lastName.getText();
-    String points = points.getText();
+    String firstName = this.firstName.getText();
+    String lastName = this.lastName.getText();
+    String points = this.points.getText();
 
     if(firstName.isEmpty() || lastName.isEmpty() || points.isEmpty() )
     {
-      showError("All fields must be filled out.")
-      return;
-    }
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+          "All fields must be filled out");
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
 
-    int points;
-    try
-    {
-      String pointsText;
-      points = Integer.parseInt(pointsText);
+      alert.showAndWait();
+
     }
-      catch (NumberFormatException e)
-      {
-        showError("Points must be an integer.");
-        return;
-      }
-    Resident newResident = new Resident(firstName, lastName, points);
-    ResidentList list = model.getAllResidents();
-    list.addResident(newResident);
-    model.saveResidents(list);
 
   }
 
-  @FXML private void CancelResident(ActionEvent actionEvent)
+  public void CancelResident(ActionEvent actionEvent)
   {
     JOptionPane.showMessageDialog(null, "Do you want to cancel?");
   }
