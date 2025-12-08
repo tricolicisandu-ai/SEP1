@@ -73,9 +73,17 @@ public void addPersonalPoints(Resident resident, int points)
     }
 
   }
-
-   // де номер повинен прописуватися кількість балів яку хочемо додати(вручну) до певного резидента
 }
+
+  public void resetAllPersonalPoints()
+  {
+    for (int i = 0; i < residents.size(); i++)
+    {
+
+      residents.get(i).setPersonalPoints(0);
+    }
+
+  }
 
 
   /**

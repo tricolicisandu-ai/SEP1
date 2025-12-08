@@ -259,4 +259,29 @@ public class CloverVilleModelManager
 
   }
 
+  public CommunityPool getCommunityPool()
+  {
+    // Initialize empty resident list
+    CommunityPool pool = null;
+
+    try
+    {
+      pool = (CommunityPool) MyFileHandler.readFromBinaryFile(communityPoolFile);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+    return pool;
+  }
+
+
 }
