@@ -261,6 +261,20 @@ public class CloverVilleModelManager
 
   }
 
+  public void resetPoints()// в дужках??  овторюю метод з Controller
+  {
+    ResidentList residents = getAllResidents();
+    int total = residents.getAllPersonalPoints();
+    residents.resetAllPersonalPoints();  // скидаю персональні бали
+    saveResidents(residents); //чи потрібно зберігати оновлений список резидентів
+
+    CommunityPool pool = getCommunityPool();
+    pool.setTotalPoints(pool.getTotalPoints() + total);
+    saveCommunityPool(pool);
+
+  }
+
+
   public CommunityPool getCommunityPool()
   {
     // Initialize empty resident list
