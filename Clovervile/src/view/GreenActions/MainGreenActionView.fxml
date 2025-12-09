@@ -27,11 +27,6 @@
       </MenuBar>
       <TabPane prefHeight="340.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Green Actions List">
-                <content>
-                    <fx:include fx:id="greenActionList" source="GreenActionsView.fxml" />
-                </content>
-            </Tab>
             <Tab text="Add Green Action">
                 <content>
                     <fx:include fx:id="addGreenAction" source="AddGreenActionView.fxml" />

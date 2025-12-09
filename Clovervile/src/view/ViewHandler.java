@@ -96,4 +96,57 @@ public class ViewHandler
     }
   }
 
+  public void openGreenAction()
+  {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GreenActions/MainGreenActionView.fxml"));
+    try
+    {
+      Parent root = loader.load();
+      Scene scene = new Scene(root);
+      MainGreenActionController controller = loader.getController();
+      controller.init(this, scene, modelManager);
+      stage.setScene(scene);
+      stage.show();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  public void openResidents()
+  {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Resident/MainResidentView.fxml"));
+    try
+    {
+      Parent root = loader.load();
+      Scene scene = new Scene(root);
+      MainResidentViewController controller = loader.getController();
+      controller.init(this, scene, modelManager);
+      stage.setScene(scene);
+      stage.show();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  public void openTradeOffers()
+  {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TradeOffers/MainTradeOfferView.fxml"));
+    try
+    {
+      Parent root = loader.load();
+      Scene scene = new Scene(root);
+      MainTradeOfferController controller = loader.getController();
+      controller.init(this, scene, modelManager);
+      stage.setScene(scene);
+      stage.show();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
 }
