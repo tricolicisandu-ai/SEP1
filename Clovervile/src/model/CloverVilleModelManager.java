@@ -283,5 +283,74 @@ public class CloverVilleModelManager
     return pool;
   }
 
+  public void removeGreenAction(GreenAction greenAction)
+  {
+    GreenActionList greenActionList = getAllGreenActions();
+    greenActionList.removeGreenAction(greenAction);
+    saveGreenActions(greenActionList);
+  }
 
+  public void resetGreenAction()
+  {
+    GreenActionList greenActionList = getAllGreenActions();
+    greenActionList.resetGreenAction();
+    saveGreenActions(greenActionList);
+
+  }
+
+
+  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
+  {
+    TradeOfferList offers = getAllTradeOffers();
+    TradeOffer theOffer = null;
+    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
+    {
+      if(offers.getTradeOffer(i).equals(tradeOffer))
+      {
+        theOffer = offers.getTradeOffer(i);
+      }
+    }
+
+    if(theOffer!=null)
+    {
+      ResidentList residents = getAllResidents();
+      Resident seller = tradeOffer.getSeller();
+
+Resident theBuyer = null;
+Resident theSeller = null;
+
+      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
+      {
+         if(residents.getResident(i).equals(buyer))
+         {
+          theBuyer = residents.getResident(i);
+         }
+        if(residents.getResident(i).equals(seller))
+        {
+          theSeller = residents.getResident(i);
+        }
+      }
+
+      if(theBuyer!=null && theSeller!=null)
+      {
+        if (theSeller.getPersonalPoints() >= theOffer.getPointCost())
+        {
+  theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
+          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
+         theOffer.setBuyer(theBuyer);
+
+
+         saveTradeOffers(offers);
+         saveResidents(residents);
+
+
+          return true;
+        }
+
+      }
+
+    }
+
+    return false;
+  }
 }
