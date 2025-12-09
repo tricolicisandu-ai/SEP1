@@ -346,11 +346,8 @@ Resident theSeller = null;
 
           return true;
         }
-
       }
-
     }
-
     return false;
   }
 }

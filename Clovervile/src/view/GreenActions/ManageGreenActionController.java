@@ -2,12 +2,8 @@ package view.GreenActions;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-
 
 import model.CloverVilleModelManager;
 import model.GreenAction;
@@ -42,6 +38,7 @@ public class ManageGreenActionController
 
   public void initialize()
   {
+
 
     greenTaskField.setText("");
     pointField.setText("");
@@ -78,23 +75,77 @@ public class ManageGreenActionController
     }
 
   }
+
+
+
     public void handleRemove(ActionEvent e)
     {
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to remove?",
+          ButtonType.YES, ButtonType.NO);
+      alert.setTitle("Exit");
+      alert.setHeaderText(null);
 
-      if (e.getSource()== removeButton)
+      alert.showAndWait();
+
+
+      if (alert.getResult() == ButtonType.YES)
       {
-
         GreenAction greenTask = listBox.getSelectionModel().getSelectedItem();
         modelManager.removeGreenAction(greenTask);
         updateListBox();
       }
 
+      else if (e.getSource() == listBox)
+      {
+        GreenAction temp = listBox.getSelectionModel().getSelectedItem();
 
+        if (temp != null)
+        {
+          greenTaskField.setText(temp.getName());
+          pointField.setPrefColumnCount(temp.getGreenPoints());
 
+        }
+      }
 
   }
 
 
+
+
+
+
+  public void handleReset(ActionEvent e)
+  {
+
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+        "Do you really want to reset?",
+        ButtonType.YES, ButtonType.NO);
+    alert.setTitle("Exit");
+    alert.setHeaderText(null);
+
+    alert.showAndWait();
+
+
+    if (alert.getResult() == ButtonType.YES)
+    {
+
+        modelManager.resetGreenAction();
+        updateListBox();
+    }
+
+    if (e.getSource() == listBox)
+    {
+      GreenAction temp = listBox.getSelectionModel().getSelectedItem();
+
+      if (temp != null)
+      {
+        greenTaskField.setText(temp.getName());
+        pointField.setPrefColumnCount(temp.getGreenPoints());
+
+      }
+     }
+  }
 
 
 
@@ -112,15 +163,6 @@ public class ManageGreenActionController
     for (int i = 0; i < greenActions.getNumberOfGreenActions(); i++)
     {
       listBox.getItems().add(greenActions.getIndex(i));
-    }
-
-    if (currentIndex == -1 && listBox.getItems().size() > 0)
-    {
-      listBox.getSelectionModel().select(0);
-    }
-    else
-    {
-      listBox.getSelectionModel().select(currentIndex);
     }
   }
 
