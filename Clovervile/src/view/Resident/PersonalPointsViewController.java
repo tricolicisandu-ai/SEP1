@@ -8,8 +8,6 @@ import javafx.scene.control.TextField;
 import model.CloverVilleModelManager;
 import model.CommunityPool;
 
-import javax.swing.*;
-
 public class PersonalPointsViewController
 {
   @FXML private TextField addPoints;

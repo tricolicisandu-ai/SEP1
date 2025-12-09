@@ -1,28 +1,48 @@
 package view.Resident;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import model.CloverVilleModelManager;
+import view.ViewHandler;
+
+import java.awt.*;
+
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import model.Resident;
 import model.ResidentList;
 
-import javax.swing.*;
+
 
 public class AddResidentViewController
 {
+  private Scene scene;
+  private CloverVilleModelManager modelManager;
+  private ViewHandler viewHandler;
+
+
   @FXML private TextField firstName;
   @FXML private TextField lastName;
   @FXML private TextField points;
   private ResidentList residentList;
+  private CloverVilleModelManager manager;
 
-
+  public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
+  {
+    this.viewHandler = viewHandler;
+    this.modelManager = modelManager;
+    this.scene = scene;
+  }
   public void initialize()
   {
 
-    firstName.setText("Anna");
-    lastName.setText("Olsen");
-    points.setText("0");
+    manager = new CloverVilleModelManager("greenActions.bin", "tradeOffers.bin",
+        "residents.bin", "communityPool.bin", "thresholds.bin");
+    firstName.setText("");
+    lastName.setText("");
+    points.setText("");
 
   }
 
@@ -45,13 +65,12 @@ public class AddResidentViewController
       alert.setHeaderText(null);
 
       alert.showAndWait();
-
     }
-
   }
 
-  public void CancelResident(ActionEvent actionEvent)
+  @FXML private void CancelResident(ActionEvent actionEvent)
   {
-    JOptionPane.showMessageDialog(null, "Do you want to cancel?");
+
+
   }
 }
