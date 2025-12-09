@@ -71,7 +71,7 @@ public class PersonalPointsViewController
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Error");
       alert.setHeaderText("Invalid Input");
-      alert.setContentText("Number cannot be negative.");
+      alert.setContentText("Points must be a non-negative number.");
 
       alert.showAndWait();
     }
@@ -85,14 +85,14 @@ public class PersonalPointsViewController
         alert.setHeaderText(null);
         alert.showAndWait();
       }
-      ResidentList residents = modelManager.getAllResidents();
+      ResidentList selectList = new ResidentList(); // тимчасовий листрезидентів з обраних резидентів
       for (int i = 0; i<selectedResidents.size(); i++)
       {
         Resident resident = selectedResidents.get(i);
-        modelManager.addPersonalPoints(resident, newPoints); //чи вірно викликаний метод і чи вірно в дужках
+        selectList.addResident(resident);
       }
+      modelManager.addPersonalPoints(selectList, newPoints); //чи вірно викликаний метод і чи вірно в дужках
   }
-
 
   public void resetPoints(ActionEvent actionEvent)
   {

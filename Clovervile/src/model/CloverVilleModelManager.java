@@ -8,6 +8,8 @@ import java.io.IOException;
 /**
  * A model manager providing a single access point to the model
  * @author Christina Jacob
+ * @author Sandu Tricolici
+ * @author Yuliia Iliienko
  * @ version 1.0
  */
 
