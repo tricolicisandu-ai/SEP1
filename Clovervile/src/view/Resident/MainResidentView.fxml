@@ -27,11 +27,6 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Residents List ">
-            <content>
-                <fx:include fx:id="residentsList" source="ListResidentsView.fxml" />
-            </content>
-          </Tab>
           <Tab text="Add Residents">
             <content>
                 <fx:include fx:id="addResidents" source="AddResidentView.fxml" />
