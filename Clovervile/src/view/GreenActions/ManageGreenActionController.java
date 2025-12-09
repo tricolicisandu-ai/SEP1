@@ -39,7 +39,7 @@ public class ManageGreenActionController
 
 
 
-  public void init(ViewHandler viewHandler, CloverVilleModelManager modelManager, Scene scene)
+  public void init(ViewHandler viewHandler,  Scene scene, CloverVilleModelManager modelManager)
   {
     this.scene = scene;
     this.viewHandler = viewHandler;
@@ -57,7 +57,7 @@ public class ManageGreenActionController
     resetButton.setDisable(true);
 
 
-    listBox.valueProperty().addListener(greenTaskField, pointField)
+    listBox.valueProperty().addListener(((observable, oldValue, newValue) -> ));
     {
 
     }
