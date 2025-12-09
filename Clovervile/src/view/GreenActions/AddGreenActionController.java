@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import model.CloverVilleModelManager;
 import model.GreenAction;
 import model.GreenActionList;
+import javafx.scene.Scene;
+import view.ViewHandler;
 
 
 public class AddGreenActionController
@@ -15,12 +17,23 @@ public class AddGreenActionController
   @FXML private  TextField PointField;
   private GreenActionList greenActionList;
   private GreenAction newGreenAction;
-  private CloverVilleModelManager manager;
+  private CloverVilleModelManager modelManager;
+  private Scene scene;
+  private ViewHandler viewHandler;
+
+
+
+  public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
+  {
+    this.viewHandler = viewHandler;
+    this.modelManager = modelManager;
+    this.scene = scene;
+  }
 
 
   public void initialize()
   {
-    manager = new CloverVilleModelManager("greenActions.bin", "tradeOffers.bin",
+    modelManager = new CloverVilleModelManager("greenActions.bin", "tradeOffers.bin",
         "residents.bin", "communityPool.bin", "thresholds.bin");
     GreenTaskField.setText("");
     PointField.setText("");
