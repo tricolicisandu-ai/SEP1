@@ -1,11 +1,9 @@
 package view.CommunityProgress;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import model.CloverVilleModelManager;
 import view.ViewHandler;
 
@@ -15,9 +13,10 @@ public class MainSetThresholdController
 
   @FXML private MenuItem exitMenuItem;
   @FXML private MenuItem aboutMenuItem;
+  @FXML private Button backButton;
   @FXML private Tab setThresholdTab;
   @FXML private TabPane tabPane;
-  @FXML private Button backButton;
+
 
 
   private Scene scene;
@@ -34,6 +33,38 @@ public class MainSetThresholdController
     if (setThresholdController != null)
     {
       setThresholdController.init(viewHandler, scene, modelManager);
+    }
+  }
+
+  public void handleActions(ActionEvent e)
+  {
+    if (e.getSource() == exitMenuItem)
+    {
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to exit the program?", ButtonType.YES,
+          ButtonType.NO);
+      alert.setTitle("Exit");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+
+      if (alert.getResult() == ButtonType.YES)
+      {
+        System.exit(0);
+      }
+    }
+    else if (e.getSource() == aboutMenuItem)
+    {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setHeaderText(null);
+      alert.setTitle("About");
+      alert.setContentText(
+          "---------About---------.");
+      alert.showAndWait();
+    }
+    else if (e.getSource() == backButton)
+    {
+      viewHandler.openView("MainView");
     }
   }
 
