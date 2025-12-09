@@ -58,6 +58,7 @@ public class ManageGreenActionController
       String greenTask = greenTaskField.getText();
       int points = Integer.parseInt(pointField.getText());
 
+
       modelManager.editGreenAction(greenTask, points);
       updateListBox();
       greenTaskField.setText("");

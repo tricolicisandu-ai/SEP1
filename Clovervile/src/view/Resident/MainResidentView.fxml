@@ -5,11 +5,9 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Resident.MainResidentViewController">
    <children>
       <MenuBar>
         <menus>
@@ -27,11 +25,6 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Residents List ">
-            <content>
-                <fx:include fx:id="residentsList" source="ListResidentsView.fxml" />
-            </content>
-          </Tab>
           <Tab text="Add Residents">
             <content>
                 <fx:include fx:id="addResidents" source="AddResidentView.fxml" />

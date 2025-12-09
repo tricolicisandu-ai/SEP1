@@ -42,6 +42,18 @@ public class MainViewController
     {
       viewHandler.openCommunityProgress();
     }
+    else if (e.getSource() == residentsButton)
+    {
+      viewHandler.openResidents();
+    }
+    else if (e.getSource() == tradeOfferButton)
+    {
+      viewHandler.openTradeOffers();
+    }
+    else if (e.getSource() == greenActionButton)
+    {
+      viewHandler.openGreenAction();
+    }
     else if (e.getSource() == exitMenuItem)
     {
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
