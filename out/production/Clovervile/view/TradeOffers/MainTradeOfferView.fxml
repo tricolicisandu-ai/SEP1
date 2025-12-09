@@ -13,12 +13,12 @@
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Exit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="About">
+          <Menu fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#handleActions" text="About">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
@@ -39,7 +39,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button mnemonicParsing="false" text="Back">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back">
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
          </VBox.margin>

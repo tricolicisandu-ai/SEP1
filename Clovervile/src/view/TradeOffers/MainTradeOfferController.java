@@ -1,7 +1,12 @@
 package view.TradeOffers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.MenuItem;
 import model.CloverVilleModelManager;
 import view.ViewHandler;
 
@@ -9,6 +14,10 @@ public class MainTradeOfferController
 {
   @FXML private ManageTradeOfferController manageTradeOfferController;
   @FXML private TradeController tradeController;
+
+  @FXML private MenuItem exitMenuItem;
+  @FXML private MenuItem aboutMenuItem;
+  @FXML private Button backButton;
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
@@ -28,6 +37,38 @@ public class MainTradeOfferController
     if (tradeController != null)
     {
       tradeController.init(viewHandler, scene, modelManager);
+    }
+  }
+
+  public void handleActions(ActionEvent e)
+  {
+    if (e.getSource() == exitMenuItem)
+    {
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+          "Do you really want to exit the program?", ButtonType.YES,
+          ButtonType.NO);
+      alert.setTitle("Exit");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+
+      if (alert.getResult() == ButtonType.YES)
+      {
+        System.exit(0);
+      }
+    }
+    else if (e.getSource() == aboutMenuItem)
+    {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setHeaderText(null);
+      alert.setTitle("About");
+      alert.setContentText(
+          "---------About---------.");
+      alert.showAndWait();
+    }
+    else if (e.getSource() == backButton)
+    {
+      viewHandler.openView("MainView");
     }
   }
 }
