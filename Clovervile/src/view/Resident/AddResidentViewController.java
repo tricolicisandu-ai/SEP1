@@ -3,6 +3,7 @@ package view.Resident;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import model.CloverVilleModelManager;
+import model.GreenAction;
 import view.ViewHandler;
 
 import java.awt.*;
@@ -13,7 +14,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import model.Resident;
 import model.ResidentList;
-
 
 
 public class AddResidentViewController
@@ -37,13 +37,11 @@ public class AddResidentViewController
   }
   public void initialize()
   {
-
     manager = new CloverVilleModelManager("greenActions.bin", "tradeOffers.bin",
         "residents.bin", "communityPool.bin", "thresholds.bin");
     firstName.setText("");
     lastName.setText("");
     points.setText("");
-
   }
 
   public void setResidentList(ResidentList residentList)
@@ -66,6 +64,26 @@ public class AddResidentViewController
 
       alert.showAndWait();
     }
+  }
+
+  try
+  {
+    int Point = Integer.parseInt(points);
+    new Resident = new Resident(firstName, lastName, points);
+
+    if (ResidentList != null)
+    {
+      ResidentList.addResident(new Resident());
+    }
+  }
+    catch (NumberFormatException e)
+  {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText("Invalid Input");
+    alert.setContentText("Enter a valid number ");
+
+    alert.showAndWait();
   }
 
   @FXML private void CancelResident(ActionEvent actionEvent)
