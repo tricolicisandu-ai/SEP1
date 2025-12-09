@@ -18,7 +18,7 @@ public class PersonalPointsViewController
 
   public void initialize()
   {
-    manager=new CloverVilleModelManager("greenActions.bin",  "tradeOffers.bin", "residents.bin", "communityPool.bin", "thresholds.bin");
+    manager = new CloverVilleModelManager("greenActions.bin",  "tradeOffers.bin", "residents.bin", "communityPool.bin", "thresholds.bin");
   }
 
   public void resetPoints(ActionEvent actionEvent)

@@ -18,4 +18,10 @@ public class SetThresholdController
   @FXML private TextField pointsField;
   @FXML private Button addButton;
 
+  public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
+  {
+    this.viewHandler = viewHandler;
+    this.modelManager = modelManager;
+    this.scene = scene;
+  }
 }

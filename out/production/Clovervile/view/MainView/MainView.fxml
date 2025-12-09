@@ -8,8 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView.MainViewController">
    <children>
       <MenuBar>
         <menus>
@@ -32,10 +31,10 @@
                   <Image url="@ClovervilleImage.png" />
                </image>
             </ImageView>
-            <Button cancelButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Residents" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Trade Offers" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Green Actions" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Community Progress" />
+            <Button fx:id="residentsButton" cancelButton="true" mnemonicParsing="false" onAction="#handleActions" prefHeight="30.0" prefWidth="200.0" text="Residents" />
+            <Button fx:id="tradeOfferButton" mnemonicParsing="false" onAction="#handleActions" prefHeight="30.0" prefWidth="200.0" text="Trade Offers" />
+            <Button fx:id="greenActionButton" mnemonicParsing="false" onAction="#handleActions" prefHeight="30.0" prefWidth="200.0" text="Green Actions" />
+            <Button fx:id="communityProgressButton" mnemonicParsing="false" onAction="#handleActions" prefHeight="30.0" prefWidth="200.0" text="Community Progress" />
          </children>
       </VBox>
    </children>
