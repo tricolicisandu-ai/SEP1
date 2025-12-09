@@ -15,6 +15,7 @@ public class PersonalPointsViewController
 
   @FXML private TextField addPoints;
   @FXML private ListView<Resident> residentList;
+  @FXML private Button confirm;
 
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -34,34 +35,28 @@ public class PersonalPointsViewController
     this.residentList = residentList;
   }
 
-  @FXML private void confirm(ActionEvent actionEvent)
+  public void confirm(ActionEvent e)
   {
-    String addPoints = this.addPoints.getText().trim();
 
-    if (addPoints.isEmpty())
+
+    if (e.getSource() == confirm)
     {
-      Alert alert = new Alert(Alert.AlertType.ERROR,
-          "The field must be filled out");
-      alert.setTitle("Error");
-      alert.setHeaderText(null);
 
-      alert.showAndWait();
-      return;
+      ListView newResidentList = new ListView();
+      String newPoints = this.addPoints.getText().trim();
+      residentList.getItems().add(newPoints);
 
+
+      modelManager.addPersonalPoints(newResidentList, newPoints);
     }
 
-    try
-    {
-      int points = Integer.parseInt(addPoints);
 
-      for (int i = 0; i < residentList.; i++)
-      {
+    Alert alert = new Alert(Alert.AlertType.ERROR,
+        "The field must be filled out");
+    alert.setTitle("Error");
+    alert.setHeaderText(null);
 
-      }
-      {
-        modelManager.addPersonalPoints(ResidentList );
-      }
-    }
+
     catch (NumberFormatException e)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -74,7 +69,7 @@ public class PersonalPointsViewController
 
   }
 
-  }
+
 
   public void resetPoints(ActionEvent actionEvent)
   {
@@ -100,4 +95,4 @@ public class PersonalPointsViewController
 
   }
 
-}
+
