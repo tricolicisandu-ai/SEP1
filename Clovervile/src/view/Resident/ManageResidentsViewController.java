@@ -13,11 +13,9 @@ public class ManageResidentsViewController
 
   public void confirmEdit(ActionEvent actionEvent)
   {
-    JOptionPane.showMessageDialog(null, "Do you want to confirm edit?");
   }
 
   public void removeResident(ActionEvent actionEvent)
   {
-    JOptionPane.showMessageDialog(null, "Do you want to remove?");
   }
 }
