@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TradeOffers.MainTradeOfferController">
    <children>
       <MenuBar>
         <menus>
@@ -27,11 +27,6 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="TradeOfferList">
-              <content>
-                  <fx:include fx:id="TradeOfferList" source="TradeOfferListView.fxml" />
-              </content>
-          </Tab>
           <Tab text="Manage TradeOffer">
               <content>
                   <fx:include fx:id="ManageTradeOffer" source="ManageTradeOfferView.fxml" />

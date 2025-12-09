@@ -2,20 +2,22 @@ package view.Resident;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.CloverVilleModelManager;
 import model.CommunityPool;
+import model.Resident;
 
 public class PersonalPointsViewController
 {
   @FXML private TextField addPoints;
+  @FXML private ListView<Resident> residentList;
 
   private CloverVilleModelManager manager;
 
   public void initialize()
   {
+residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
     manager = new CloverVilleModelManager("greenActions.bin",  "tradeOffers.bin", "residents.bin", "communityPool.bin", "thresholds.bin");
   }
 

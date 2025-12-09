@@ -33,8 +33,6 @@ public class AddGreenActionController
 
   public void initialize()
   {
-    modelManager = new CloverVilleModelManager("greenActions.bin", "tradeOffers.bin",
-        "residents.bin", "communityPool.bin", "thresholds.bin");
     GreenTaskField.setText("");
     PointField.setText("");
 

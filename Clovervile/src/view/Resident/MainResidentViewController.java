@@ -28,12 +28,12 @@ public class MainResidentViewController
 
     if (manageResidentsViewController != null)
     {
-      manageResidentsViewController.init(viewHandler, scene, modelManager);
+      //manageResidentsViewController.init(viewHandler, scene, modelManager);
     }
 
     if (personalPointsViewController != null)
     {
-      personalPointsViewController.init(viewHandler, scene, modelManager);
+      //personalPointsViewController.init(viewHandler, scene, modelManager);
     }
   }
 

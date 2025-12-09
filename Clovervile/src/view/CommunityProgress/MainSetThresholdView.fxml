@@ -27,14 +27,14 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Set Threshold">
+          <Tab fx:id="setThresholdTab" text="Set Threshold">
             <content>
                 <fx:include fx:id="setThreshold" source="SetThresholdView.fxml" />
             </content>
           </Tab>
         </tabs>
       </TabPane>
-      <Button mnemonicParsing="false" text="Back">
+      <Button fx:id="backButton" mnemonicParsing="false" text="Back">
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
          </VBox.margin>
