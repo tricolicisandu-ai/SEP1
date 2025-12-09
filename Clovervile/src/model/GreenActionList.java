@@ -21,6 +21,17 @@ public class GreenActionList implements Serializable
     greenActions = new ArrayList<>();
   }
 
+  public int getNumberOfGreenActions()
+  {
+    return greenActions.size();
+  }
+
+
+  public void removeGreenAction(GreenAction greenAction)
+  {
+    greenActions.remove(greenAction);
+  }
+
   /**
    * Adds a GreenAction to the list
    * @param greenAction the GreenAction to add to the list
@@ -46,11 +57,11 @@ public class GreenActionList implements Serializable
    * @return nothing after cleared
    */
 
-  public int resetGreenAction()
+  public void resetGreenAction()
   {
-    int all = greenActions.size();
+
     greenActions.clear();
-    return all;
+
   }
 
   /**
@@ -76,10 +87,7 @@ public class GreenActionList implements Serializable
    * @return the removed green action
    */
 
-  public GreenAction removeGreenAction(int index)
-  {
-     return greenActions.remove(index);
-  }
+
 
   /**
    * returns a string representation of GreenAction
