@@ -43,12 +43,9 @@ public class ManageGreenActionController
     greenTaskField.setText("");
     pointField.setText("");
 
-    editButton.setDisable(true);
-    removeButton.setDisable(true);
-    resetButton.setDisable(true);
   }
 
-  public void handleActions(ActionEvent e)
+  public void handleEdit(ActionEvent e)
   {
     if (e.getSource() == editButton)
     {
