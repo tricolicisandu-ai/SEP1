@@ -32,9 +32,7 @@ public class AddResidentViewController
 
   public void initialize()
   {
-    modelManager = new CloverVilleModelManager("greenActions.bin",
-        "tradeOffers.bin", "residents.bin", "communityPool.bin",
-        "thresholds.bin");
+
     firstName.setText("");
     lastName.setText("");
     points.setText("");

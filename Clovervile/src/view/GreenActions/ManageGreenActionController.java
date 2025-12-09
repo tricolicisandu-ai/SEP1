@@ -57,7 +57,7 @@ public class ManageGreenActionController
     resetButton.setDisable(true);
 
 
-    listBox.valueProperty().addListener(((observable, oldValue, newValue) -> ));
+    //listBox.valueProperty().addListener(((observable, oldValue, newValue) -> ));
     {
 
     }
