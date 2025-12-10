@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import model.ResidentList;
 import  model.TradeOfferList;
 
-public class ManageTradeOfferController
+public class AddTradeOfferController
 {
   private Scene scene;
   private CloverVilleModelManager modelManager;

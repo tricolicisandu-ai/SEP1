@@ -10,7 +10,7 @@ import view.ViewHandler;
 
 public class MainTradeOfferController
 {
-  @FXML private ManageTradeOfferController manageTradeOfferController;
+  @FXML private AddTradeOfferController manageTradeOfferController;
   @FXML private TradeController tradeController;
 
   @FXML private MenuItem exitMenuItem;
