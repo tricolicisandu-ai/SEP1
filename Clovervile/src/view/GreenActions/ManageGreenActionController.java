@@ -36,7 +36,6 @@ public class ManageGreenActionController
   {
     greenTaskField.setText("");
     pointField.setText("");
-
   }
 
   public void reset()
@@ -164,8 +163,6 @@ public class ManageGreenActionController
       listBox.getItems().add(greenActions.getIndex(i));
     }
   }
-
-
 
 }
 
