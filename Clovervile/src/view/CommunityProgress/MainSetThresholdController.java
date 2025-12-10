@@ -1,6 +1,7 @@
 package view.CommunityProgress;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,8 +17,6 @@ public class MainSetThresholdController
   @FXML private Button backButton;
   @FXML private Tab setThresholdTab;
   @FXML private TabPane tabPane;
-
-
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
@@ -65,6 +64,27 @@ public class MainSetThresholdController
     else if (e.getSource() == backButton)
     {
       viewHandler.openView("MainView");
+    }
+  }
+
+  public void tabChanged(Event event)
+  {
+    if (modelManager != null)
+    {
+      if (customersTab.isSelected())
+      {
+        if (customersController != null)
+        {
+          customersController.reset();
+        }
+      }
+      else if (manageCustomersTab.isSelected())
+      {
+        if (manageCustomersController != null)
+        {
+          manageCustomersController.reset();
+        }
+      }
     }
   }
 
