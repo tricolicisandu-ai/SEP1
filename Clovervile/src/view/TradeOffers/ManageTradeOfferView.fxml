@@ -20,7 +20,7 @@
             <VBox prefHeight="260.0" prefWidth="300.0" spacing="5.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="295.0" text="Choose Seller" />
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="sellerBox" prefHeight="200.0" prefWidth="200.0">
                     <columns>
                       <TableColumn prefWidth="100.0" text="First Name" />
                       <TableColumn prefWidth="100.0" text="Last Name" />
@@ -52,18 +52,18 @@
                      <children>
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="203.0" text="Trade Offer Name" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="153.0" text="Point Value" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField prefHeight="25.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="tradeOfferName" GridPane.columnIndex="1" />
+                        <TextField fx:id="pointValue" prefHeight="25.0" prefWidth="116.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <FlowPane alignment="TOP_CENTER" prefHeight="30.0" prefWidth="295.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Remove">
+                        <Button fx:id="removeBurron" mnemonicParsing="false" onAction="#handleRemove" text="Remove">
                            <FlowPane.margin>
                               <Insets right="20.0" />
                            </FlowPane.margin>
                         </Button>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Add" />
+                        <Button fx:id="addButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -32,7 +32,6 @@ public class AddResidentViewController
 
   public void initialize()
   {
-
     firstName.setText("");
     lastName.setText("");
     points.setText("");
