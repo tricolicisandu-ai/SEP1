@@ -10,7 +10,6 @@ import model.CommunityPool;
 import model.Threshold;
 import view.ViewHandler;
 
-import java.security.cert.PolicyNode;
 
 public class SetThresholdController
 {
