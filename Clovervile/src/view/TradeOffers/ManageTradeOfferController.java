@@ -60,7 +60,7 @@ public class ManageTradeOfferController
     try
     {
       int tradePoint = Integer.parseInt(pointValue);
-      Resident seller = sellerBox.getSelectionModel().getSelectedItem(); //???
+      Resident seller = sellerBox.getSelectionModel().getSelectedItem (); //???
       TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint,
           seller);
 

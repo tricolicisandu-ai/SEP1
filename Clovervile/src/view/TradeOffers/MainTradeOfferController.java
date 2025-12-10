@@ -10,16 +10,14 @@ import view.ViewHandler;
 
 public class MainTradeOfferController
 {
-  @FXML private AddTradeOfferController addTradeOfferController;
+  @FXML private ManageTradeOfferController manageTradeOfferController;
   @FXML private TradeController tradeController;
-  @FXML private RemoveTradeOfferController removeTradeOfferController;
 
   @FXML private MenuItem exitMenuItem;
   @FXML private MenuItem aboutMenuItem;
   @FXML private Button backButton;
-  @FXML private Tab addTradeOfferTab;
+  @FXML private Tab manageTradeOfferTab;
   @FXML private Tab tradeTab;
-  @FXML private Tab removeTradeOfferTab;
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
@@ -31,19 +29,14 @@ public class MainTradeOfferController
     this.viewHandler = viewHandler;
     this.scene = scene;
 
-    if (addTradeOfferController != null)
+    if (manageTradeOfferController != null)
     {
-      addTradeOfferController.init(viewHandler, scene, modelManager);
+      manageTradeOfferController.init(viewHandler, scene, modelManager);
     }
 
     if (tradeController != null)
     {
       tradeController.init(viewHandler, scene, modelManager);
-    }
-
-    if (removeTradeOfferController != null)
-    {
-      //removeTradeOfferController.init(viewHandler, scene, modelManager);
     }
   }
 
@@ -83,11 +76,11 @@ public class MainTradeOfferController
   {
     if (modelManager != null)
     {
-      if (addTradeOfferTab.isSelected())
+      if (manageTradeOfferTab.isSelected())
       {
-        if (addTradeOfferController != null)
+        if (manageTradeOfferController != null)
         {
-          //addTradeOfferController.reset();
+          //manageTradeOfferController.reset();
         }
       }
       else if (tradeTab.isSelected())
@@ -95,13 +88,6 @@ public class MainTradeOfferController
         if (tradeController != null)
         {
           //tradeController.reset();
-        }
-      }
-      else if (removeTradeOfferTab.isSelected())
-      {
-        if (removeTradeOfferController != null)
-        {
-          //removeTradeOfferController.reset();
         }
       }
     }
