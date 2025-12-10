@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TradeOffers.AddTradeOfferController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TradeOffers.ManageTradeOfferController">
    <children>
       <HBox prefHeight="260.0" prefWidth="600.0">
          <children>
@@ -58,6 +58,11 @@
                   </GridPane>
                   <FlowPane alignment="TOP_CENTER" prefHeight="30.0" prefWidth="295.0">
                      <children>
+                        <Button fx:id="removeBurron" mnemonicParsing="false" onAction="#handleRemove" text="Remove">
+                           <FlowPane.margin>
+                              <Insets right="20.0" />
+                           </FlowPane.margin>
+                        </Button>
                         <Button fx:id="addButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
                      </children>
                      <padding>

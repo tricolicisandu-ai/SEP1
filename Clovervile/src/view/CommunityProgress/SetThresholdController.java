@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 
 import model.CloverVilleModelManager;
 import model.CommunityPool;
+import model.Threshold;
 import view.ViewHandler;
+
 
 public class SetThresholdController
 {
@@ -20,6 +22,9 @@ public class SetThresholdController
   @FXML private TextField pointsField;
   @FXML private Button addButton;
 
+  private Threshold newThreshold;
+
+
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.viewHandler = viewHandler;
@@ -31,7 +36,57 @@ public class SetThresholdController
   {
     thresholdGoalField.setText("");
     pointsField.setText("");
+    handleCommunity();
   }
+
+
+
+  @FXML private void handleAdd (ActionEvent event)
+  {
+
+
+    String threshold = this.thresholdGoalField.getText().trim();
+    String pointCost = this.pointsField.getText().trim();
+
+
+
+    if (threshold.isEmpty() || pointCost.isEmpty())
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+          "All fields must be filled out");
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
+
+      alert.showAndWait();
+      return;
+
+    }
+
+    try
+    {
+      int Point = Integer.parseInt(pointCost);
+      newThreshold= new Threshold(threshold, Point);
+      modelManager.setThreshold(newThreshold);
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText("Invalid Input");
+      alert.setContentText("Enter a valid number ");
+
+      alert.showAndWait();
+    }
+
+  }
+
+  private void handleCommunity()
+  {
+    CommunityPool communityPool = modelManager.getCommunityPool();
+    communityPointsField.setText(communityPool.getTotalPoints()+"");
+
+  }
+
 
 
 }
