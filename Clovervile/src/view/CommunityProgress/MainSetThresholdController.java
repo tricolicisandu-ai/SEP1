@@ -16,7 +16,6 @@ public class MainSetThresholdController
   @FXML private MenuItem aboutMenuItem;
   @FXML private Button backButton;
   @FXML private Tab setThresholdTab;
-  @FXML private TabPane tabPane;
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
