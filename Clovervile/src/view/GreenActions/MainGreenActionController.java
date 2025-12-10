@@ -1,12 +1,10 @@
 package view.GreenActions;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import model.CloverVilleModelManager;
 import view.ViewHandler;
 
@@ -18,6 +16,8 @@ public class MainGreenActionController
   @FXML private MenuItem exitMenuItem;
   @FXML private MenuItem aboutMenuItem;
   @FXML private Button backButton;
+  @FXML private Tab addGreenActionTab;
+  @FXML private Tab manageGreenActionTab;
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
@@ -69,6 +69,27 @@ public class MainGreenActionController
     else if (e.getSource() == backButton)
     {
       viewHandler.openView("MainView");
+    }
+  }
+
+  public void tabChanged(Event event)
+  {
+    if (modelManager != null)
+    {
+      if (addGreenActionTab.isSelected())
+      {
+        if (addGreenActionController != null)
+        {
+          addGreenActionController.reset();
+        }
+      }
+      else if (manageGreenActionTab.isSelected())
+      {
+        if (manageGreenActionController != null)
+        {
+          manageGreenActionController.reset();
+        }
+      }
     }
   }
 }

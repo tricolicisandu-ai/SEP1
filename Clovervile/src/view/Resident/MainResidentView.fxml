@@ -27,17 +27,17 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Add Residents">
+          <Tab fx:id="addResidentsTab" onSelectionChanged="#tabChanged" text="Add Residents">
             <content>
                 <fx:include fx:id="addResidents" source="AddResidentView.fxml" />
             </content>
           </Tab>
-            <Tab text="Manage Residents">
+            <Tab fx:id="manageResidentsTab" onSelectionChanged="#tabChanged" text="Manage Residents">
               <content>
                   <fx:include fx:id="manageResidents" source="ManageResidentsView.fxml" />
               </content>
             </Tab>
-            <Tab text="Personal Points">
+            <Tab fx:id="personalPontsTab" onSelectionChanged="#tabChanged" text="Personal Points">
               <content>
                   <fx:include fx:id="personalPoints" source="PersonalPointsView.fxml" />
               </content>

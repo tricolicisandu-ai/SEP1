@@ -22,7 +22,6 @@ public class MainSetThresholdController
   private CloverVilleModelManager modelManager;
   private ViewHandler viewHandler;
 
-
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.modelManager = modelManager;
@@ -57,8 +56,7 @@ public class MainSetThresholdController
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setHeaderText(null);
       alert.setTitle("About");
-      alert.setContentText(
-          "---------About---------.");
+      alert.setContentText("---------About---------.");
       alert.showAndWait();
     }
     else if (e.getSource() == backButton)
@@ -71,22 +69,14 @@ public class MainSetThresholdController
   {
     if (modelManager != null)
     {
-      if (customersTab.isSelected())
+      if (setThresholdTab.isSelected())
       {
-        if (customersController != null)
+        if (setThresholdController != null)
         {
-          customersController.reset();
-        }
-      }
-      else if (manageCustomersTab.isSelected())
-      {
-        if (manageCustomersController != null)
-        {
-          manageCustomersController.reset();
+          //setThresholdController.reset();
         }
       }
     }
   }
-
-
 }
+

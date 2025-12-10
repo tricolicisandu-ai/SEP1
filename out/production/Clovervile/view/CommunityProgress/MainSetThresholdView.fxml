@@ -27,7 +27,7 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="setThresholdTab" text="Set Threshold">
+          <Tab fx:id="setThresholdTab" onSelectionChanged="#tabChanged" text="Set Threshold">
             <content>
                 <fx:include fx:id="setThreshold" source="SetThresholdView.fxml" />
             </content>

@@ -1,12 +1,10 @@
 package view.TradeOffers;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import model.CloverVilleModelManager;
 import view.ViewHandler;
 
@@ -18,6 +16,8 @@ public class MainTradeOfferController
   @FXML private MenuItem exitMenuItem;
   @FXML private MenuItem aboutMenuItem;
   @FXML private Button backButton;
+  @FXML private Tab manageTradeOfferTab;
+  @FXML private Tab tradeTab;
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
@@ -69,6 +69,27 @@ public class MainTradeOfferController
     else if (e.getSource() == backButton)
     {
       viewHandler.openView("MainView");
+    }
+  }
+
+  public void tabChanged(Event event)
+  {
+    if (modelManager != null)
+    {
+      if (manageTradeOfferTab.isSelected())
+      {
+        if (manageTradeOfferController != null)
+        {
+          //manageTradeOfferController.reset();
+        }
+      }
+      else if (tradeTab.isSelected())
+      {
+        if (tradeController != null)
+        {
+          //tradeController.reset();
+        }
+      }
     }
   }
 }
