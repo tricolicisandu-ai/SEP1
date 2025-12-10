@@ -22,9 +22,9 @@
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="295.0" text="Choose Seller" />
                   <TableView fx:id="sellerBox" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn prefWidth="100.0" text="First Name" />
-                      <TableColumn prefWidth="100.0" text="Last Name" />
-                        <TableColumn prefWidth="100.0" text="Points" />
+                      <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="First Name" />
+                      <TableColumn fx:id="lastNameColumn" prefWidth="100.0" text="Last Name" />
+                        <TableColumn fx:id="pointsColumn" prefWidth="100.0" text="Points" />
                     </columns>
                   </TableView>
                </children>

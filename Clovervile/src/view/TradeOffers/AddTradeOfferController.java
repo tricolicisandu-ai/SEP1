@@ -2,7 +2,9 @@ package view.TradeOffers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 import view.ViewHandler;
 import javafx.event.ActionEvent;
@@ -19,7 +21,10 @@ public class AddTradeOfferController
 
   @FXML private TextField tradeOfferName;
   @FXML private TextField pointValue;
-  @FXML private TableView sellerBox;
+  @FXML private TableView<Resident> sellerBox;
+  @FXML private TableColumn<Resident, String> firstNameColumn;
+  @FXML private TableColumn<Resident, String> lastNameColumn;
+  @FXML private TableColumn<Resident, Integer> pointsColumn;
   private TradeOfferList tradeOfferList;
   private ResidentList residentList;
 
@@ -35,6 +40,14 @@ public class AddTradeOfferController
   {
     tradeOfferName.setText("");
     pointValue.setText("");
+
+    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("firstName"));
+    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("lastName"));
+    pointsColumn.setCellValueFactory(new PropertyValueFactory<Resident, Integer>("personalPoints"));
+
+    updateTable();
+
+
 
   }
 
@@ -60,11 +73,12 @@ public class AddTradeOfferController
     try
     {
       int tradePoint = Integer.parseInt(pointValue);
+
       Resident seller = sellerBox.getSelectionModel().getSelectedItem(); //???
       TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint,
           seller);
 
-      if (tradeOfferList != null)
+      if (tradeOfferList != null && seller!=null)
       {
         tradeOfferList.add(tradeOffer);
       }
@@ -77,4 +91,19 @@ public class AddTradeOfferController
       alert.showAndWait();
     }
   }
+
+  private void updateTable()
+  {
+
+
+    sellerBox.getItems().clear();
+
+    ResidentList residents = modelManager.getAllResidents();
+    for (int i = 0; i < residents.getNumberOfResidents(); i++)
+    {
+      sellerBox.getItems().add(residents.getResident(i));
+    }
+
+  }
+
 }

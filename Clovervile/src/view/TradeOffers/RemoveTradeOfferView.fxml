@@ -15,7 +15,7 @@
       </FlowPane>
       <FlowPane alignment="BOTTOM_RIGHT" prefHeight="260.0" prefWidth="273.0">
          <children>
-            <Button fx:id="removeBatton" mnemonicParsing="false" onAction="#hadleRemove" text="Remove" />
+            <Button fx:id="removeBatton" mnemonicParsing="false" onAction="#handleRemove" text="Remove" />
          </children>
       </FlowPane>
    </children>
