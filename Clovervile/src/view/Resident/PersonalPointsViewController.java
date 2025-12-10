@@ -1,6 +1,5 @@
 package view.Resident;
 
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -85,14 +84,17 @@ public class PersonalPointsViewController
         alert.setHeaderText(null);
         alert.showAndWait();
       }
-      ResidentList selectList = new ResidentList(); // тимчасовий листрезидентів з обраних резидентів
-      for (int i = 0; i<selectedResidents.size(); i++)
+      else
       {
-        Resident resident = selectedResidents.get(i);
-        selectList.addResident(resident);
+        ResidentList selectList = new ResidentList(); // тимчасовий листрезидентів з обраних резидентів
+        for (int i = 0; i < selectedResidents.size(); i++)
+        {
+          Resident resident = selectedResidents.get(i);
+          selectList.addResident(resident);
+        }
+        modelManager.addPersonalPoints(selectList, newPoints); //чи вірно викликаний метод і чи вірно в дужках
       }
-      modelManager.addPersonalPoints(selectList, newPoints); //чи вірно викликаний метод і чи вірно в дужках
-  }
+      }
 
   public void resetPoints(ActionEvent actionEvent)
   {

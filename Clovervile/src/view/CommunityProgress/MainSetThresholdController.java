@@ -1,6 +1,7 @@
 package view.CommunityProgress;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,14 +16,10 @@ public class MainSetThresholdController
   @FXML private MenuItem aboutMenuItem;
   @FXML private Button backButton;
   @FXML private Tab setThresholdTab;
-  @FXML private TabPane tabPane;
-
-
 
   private Scene scene;
   private CloverVilleModelManager modelManager;
   private ViewHandler viewHandler;
-
 
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
@@ -58,8 +55,7 @@ public class MainSetThresholdController
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setHeaderText(null);
       alert.setTitle("About");
-      alert.setContentText(
-          "---------About---------.");
+      alert.setContentText("---------About---------.");
       alert.showAndWait();
     }
     else if (e.getSource() == backButton)
@@ -68,5 +64,18 @@ public class MainSetThresholdController
     }
   }
 
-
+  public void tabChanged(Event event)
+  {
+    if (modelManager != null)
+    {
+      if (setThresholdTab.isSelected())
+      {
+        if (setThresholdController != null)
+        {
+          //setThresholdController.reset();
+        }
+      }
+    }
+  }
 }
+

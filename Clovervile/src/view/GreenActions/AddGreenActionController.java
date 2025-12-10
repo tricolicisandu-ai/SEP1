@@ -26,8 +26,9 @@ public class AddGreenActionController
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.viewHandler = viewHandler;
-    this.modelManager = modelManager;
     this.scene = scene;
+    this.modelManager = modelManager;
+
   }
 
 
@@ -43,6 +44,14 @@ public class AddGreenActionController
     this.greenActionList = greenActionList;
   }
 
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      GreenTaskField.clear();
+      PointField.clear();
+    }
+  }
 
 
   @FXML private void handleAdd (ActionEvent event)

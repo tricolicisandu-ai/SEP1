@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TradeOffers.">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TradeOffers.TradeController">
    <children>
       <HBox prefHeight="260.0" prefWidth="600.0">
          <children>
@@ -18,7 +18,7 @@
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="300.0" text="Choose Trade Offer" />
                   <FlowPane prefHeight="225.0" prefWidth="300.0">
                      <children>
-                        <ChoiceBox prefWidth="292.5">
+                        <ChoiceBox fx:id="tradeBox" prefWidth="292.5">
                            <FlowPane.margin>
                               <Insets left="5.0" />
                            </FlowPane.margin>
@@ -32,7 +32,7 @@
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="300.0" text="Choose The Buyer " />
                   <FlowPane prefHeight="225.0" prefWidth="300.0">
                      <children>
-                        <ComboBox prefHeight="25.0" prefWidth="292.5">
+                        <ComboBox fx:id="residentBox" prefHeight="25.0" prefWidth="292.5">
                            <FlowPane.margin>
                               <Insets right="5.0" />
                            </FlowPane.margin>
@@ -45,7 +45,7 @@
       </HBox>
       <FlowPane alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="600.0">
          <children>
-            <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" text="Confirm" />
+            <Button fx:id="confirmButton" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#handleConfirm" text="Confirm" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

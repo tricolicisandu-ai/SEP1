@@ -52,13 +52,12 @@ public class ResidentList implements Serializable
   }
 
   /**
-   * Removes a resident at the given index and returns it.
-   * @param index index of the resident to remove
-   * @return the removed resident
+   * removes a resident from the list
+   * @param resident the resident that is removed
    */
-  public Resident removeResident(int index)
+  public void removeResident(Resident resident)
   {
-    return residents.remove(index);
+    residents.remove(resident);
   }
 
 

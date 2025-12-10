@@ -27,12 +27,12 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Manage TradeOffer">
+          <Tab fx:id="manageTradeOfferTab" onSelectionChanged="#tabChanged" text="Manage TradeOffer">
               <content>
                   <fx:include fx:id="ManageTradeOffer" source="ManageTradeOfferView.fxml" />
               </content>
           </Tab>
-            <Tab text="Trade">
+            <Tab fx:id="tradeTab" onSelectionChanged="#tabChanged" text="Trade">
                 <content>
                     <fx:include fx:id="TradeView" source="TradeView.fxml" />
                 </content>

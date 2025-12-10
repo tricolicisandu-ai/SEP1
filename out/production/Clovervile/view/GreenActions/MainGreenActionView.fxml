@@ -27,12 +27,12 @@
       </MenuBar>
       <TabPane prefHeight="340.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab text="Add Green Action">
+            <Tab fx:id="addGreenActionTab" onSelectionChanged="#tabChanged" text="Add Green Action">
                 <content>
                     <fx:include fx:id="addGreenAction" source="AddGreenActionView.fxml" />
                 </content>
             </Tab>
-            <Tab text="Manage Green Action">
+            <Tab fx:id="manageGreenActionTab" onSelectionChanged="#tabChanged" text="Manage Green Action">
                 <content>
                     <fx:include fx:id="manageGreenAction" source="ManageGreenActionView.fxml" />
                 </content>

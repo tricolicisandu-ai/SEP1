@@ -29,17 +29,7 @@ public class TradeOfferList implements Serializable
     offers.add(tradeOffer);
   }
 
-  /**
-   * Removes a TradeOffer from the list at the specified index.
-   * @param index the index of the TradeOffer to remove
-   */
-  public void removeTradeOffer(int index)
-  {
-    if (index >= 0 && index < offers.size())
-    {
-      offers.remove(index);
-    }
-  }
+
 
 
 /**

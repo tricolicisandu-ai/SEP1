@@ -15,36 +15,36 @@
         <menus>
           <Menu mnemonicParsing="false" text="Exit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="About">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#handleActions" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Add Residents">
+          <Tab fx:id="addResidentsTab" onSelectionChanged="#tabChanged" text="Add Residents">
             <content>
                 <fx:include fx:id="addResidents" source="AddResidentView.fxml" />
             </content>
           </Tab>
-            <Tab text="Manage Residents">
+            <Tab fx:id="manageResidentsTab" onSelectionChanged="#tabChanged" text="Manage Residents">
               <content>
                   <fx:include fx:id="manageResidents" source="ManageResidentsView.fxml" />
               </content>
             </Tab>
-            <Tab text="Personal Points">
+            <Tab fx:id="personalPontsTab" onSelectionChanged="#tabChanged" text="Personal Points">
               <content>
                   <fx:include fx:id="personalPoints" source="PersonalPointsView.fxml" />
               </content>
             </Tab>
         </tabs>
       </TabPane>
-      <Button mnemonicParsing="false" text="Back">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleActions" text="Back">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </VBox.margin>
