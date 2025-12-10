@@ -331,21 +331,6 @@ public class CloverVilleModelManager
   }
 
 
-  public void setThreshold(Threshold threshold)
-  {
-
-    try
-    {
-      MyFileHandler.writeToBinaryFile("thresholds.bin", threshold);
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error reading file");
-    }
-
-  }
-
-
   public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
     TradeOfferList offers = getAllTradeOffers();

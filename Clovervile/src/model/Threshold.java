@@ -49,7 +49,6 @@ public class Threshold
     this.goalName=goalName;
   }
 
-
   /**
    * Updates the number of required points for the goal.
    * @param requiredPoints the new required points value
