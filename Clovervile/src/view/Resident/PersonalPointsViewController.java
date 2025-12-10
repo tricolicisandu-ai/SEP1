@@ -1,24 +1,97 @@
 package view.Resident;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import model.CloverVilleModelManager;
-import model.CommunityPool;
-import model.Resident;
+import model.*;
+import javafx.scene.Scene;
+import view.ViewHandler;
 
 public class PersonalPointsViewController
 {
+  private Scene scene;
+  private CloverVilleModelManager modelManager;
+  private ViewHandler viewHandler;
+
   @FXML private TextField addPoints;
   @FXML private ListView<Resident> residentList;
+  @FXML private Button confirm;
 
-  private CloverVilleModelManager manager;
+  public void init(ViewHandler viewHandler, Scene scene,
+      CloverVilleModelManager modelManager)
+  {
+    this.viewHandler = viewHandler;
+    this.modelManager = modelManager;
+    this.scene = scene;
+  }
 
   public void initialize()
   {
-residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    addPoints.setText("");
+    residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+  }
+  public void setResidentList( ListView<Resident> residentList)
+  {
+    this.residentList = residentList;
+    this.residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //хочу передати вже готовий ListView  іншого вікна
+  }
 
-    manager = new CloverVilleModelManager("greenActions.bin",  "tradeOffers.bin", "residents.bin", "communityPool.bin", "thresholds.bin");
+  public void confirm(ActionEvent actionEvent)
+  {
+    //if (e.getSource() == confirm)   ??
+
+    if( addPoints.getText().isEmpty())
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+          "The field must be filled out");
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
+      alert.showAndWait();
+    }
+
+    int newPoints = 0;
+    try
+    {
+      newPoints = Integer.parseInt(addPoints.getText());  //??? в дужках
+    }
+    catch (NumberFormatException e)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText("Invalid Input");
+      alert.setContentText("Enter a valid number ");
+
+      alert.showAndWait();
+    }
+
+    if (newPoints < 0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText("Invalid Input");
+      alert.setContentText("Points must be a non-negative number.");
+
+      alert.showAndWait();
+    }
+
+      ObservableList<Resident> selectedResidents = residentList.getSelectionModel().getSelectedItems(); // обрані резиденти
+      if(selectedResidents == null || selectedResidents.isEmpty())
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Please select at least one resident from the list");
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+      }
+      ResidentList selectList = new ResidentList(); // тимчасовий листрезидентів з обраних резидентів
+      for (int i = 0; i<selectedResidents.size(); i++)
+      {
+        Resident resident = selectedResidents.get(i);
+        selectList.addResident(resident);
+      }
+      modelManager.addPersonalPoints(selectList, newPoints); //чи вірно викликаний метод і чи вірно в дужках
   }
 
   public void resetPoints(ActionEvent actionEvent)
@@ -33,23 +106,15 @@ residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     if (alert.getResult() == ButtonType.YES)
     {
-      int total = manager.getAllResidents().getAllPersonalPoints();
+      int total = modelManager.getAllResidents().getAllPersonalPoints();
 
-      manager.getAllResidents().resetAllPersonalPoints();
+      modelManager.getAllResidents().resetAllPersonalPoints();
 
-      CommunityPool pool = manager.getCommunityPool();
+      CommunityPool pool = modelManager.getCommunityPool();
       pool.setTotalPoints(pool.getTotalPoints()+total);
-      manager.saveCommunityPool(pool);
+      modelManager.saveCommunityPool(pool);
 
     }
-
-
-
-
-  }
-
-  public void confirm(ActionEvent actionEvent)
-  {
 
   }
 }

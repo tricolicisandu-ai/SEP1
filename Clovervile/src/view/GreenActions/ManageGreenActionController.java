@@ -22,11 +22,7 @@ public class ManageGreenActionController
   @FXML private ComboBox<GreenAction> listBox;
 
   @FXML private Button editButton;
-  @FXML private Button removeButton;
-  @FXML private Button resetButton;
 
-  private GreenActionList greenActionList;
-  private GreenAction selectedGreenAction;
 
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -38,17 +34,22 @@ public class ManageGreenActionController
 
   public void initialize()
   {
-
-
     greenTaskField.setText("");
     pointField.setText("");
 
-    editButton.setDisable(true);
-    removeButton.setDisable(true);
-    resetButton.setDisable(true);
   }
 
-  public void handleActions(ActionEvent e)
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      updateListBox();
+      greenTaskField.clear();
+      pointField.clear();
+    }
+  }
+
+  public void handleEdit(ActionEvent e)
   {
     if (e.getSource() == editButton)
     {
@@ -88,7 +89,6 @@ public class ManageGreenActionController
 
       alert.showAndWait();
 
-
       if (alert.getResult() == ButtonType.YES)
       {
         GreenAction greenTask = listBox.getSelectionModel().getSelectedItem();
@@ -109,6 +109,7 @@ public class ManageGreenActionController
       }
 
   }
+
 
 
 
@@ -146,8 +147,6 @@ public class ManageGreenActionController
       }
      }
   }
-
-
 
 
 

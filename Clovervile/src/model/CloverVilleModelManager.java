@@ -8,6 +8,8 @@ import java.io.IOException;
 /**
  * A model manager providing a single access point to the model
  * @author Christina Jacob
+ * @author Sandu Tricolici
+ * @author Yuliia Iliienko
  * @ version 1.0
  */
 
@@ -140,7 +142,7 @@ public class CloverVilleModelManager
 
   }
 
-  public void editResident(String firstName, int personalPoints)
+  public void editResident(String firstName, String lastName, int personalPoints)
   {
     ResidentList newResidents = getAllResidents();
 
@@ -259,6 +261,20 @@ public class CloverVilleModelManager
 
   }
 
+  public void resetPoints()// в дужках??  овторюю метод з Controller
+  {
+    ResidentList residents = getAllResidents();
+    int total = residents.getAllPersonalPoints();
+    residents.resetAllPersonalPoints();  // скидаю персональні бали
+    saveResidents(residents); //чи потрібно зберігати оновлений список резидентів
+
+    CommunityPool pool = getCommunityPool();
+    pool.setTotalPoints(pool.getTotalPoints() + total);
+    saveCommunityPool(pool);
+
+  }
+
+
   public CommunityPool getCommunityPool()
   {
     // Initialize empty resident list
@@ -289,6 +305,14 @@ public class CloverVilleModelManager
     greenActionList.removeGreenAction(greenAction);
     saveGreenActions(greenActionList);
   }
+
+  public void removeResident(Resident resident)
+  {
+    ResidentList residentList = getAllResidents();
+    residentList.removeResident(resident);
+    saveResidents(residentList);
+  }
+
 
   public void resetGreenAction()
   {
