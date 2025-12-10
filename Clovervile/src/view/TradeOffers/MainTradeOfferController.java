@@ -10,7 +10,8 @@ import view.ViewHandler;
 
 public class MainTradeOfferController
 {
-  @FXML private ManageTradeOfferController manageTradeOfferController;
+  @FXML private AddTradeOfferController addTradeOfferController;
+  @FXML private RemoveTradeOfferController removeTradeOfferController;
   @FXML private TradeController tradeController;
 
   @FXML private MenuItem exitMenuItem;
@@ -29,9 +30,13 @@ public class MainTradeOfferController
     this.viewHandler = viewHandler;
     this.scene = scene;
 
-    if (manageTradeOfferController != null)
+    if (addTradeOfferController != null)
     {
-      manageTradeOfferController.init(viewHandler, scene, modelManager);
+      addTradeOfferController.init(viewHandler, scene, modelManager);
+    }
+    if (removeTradeOfferController != null)
+    {
+      removeTradeOfferController.init(viewHandler, scene, modelManager);
     }
 
     if (tradeController != null)
