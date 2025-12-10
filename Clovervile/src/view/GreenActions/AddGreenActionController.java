@@ -15,8 +15,6 @@ public class AddGreenActionController
 {
   @FXML private TextField GreenTaskField;
   @FXML private  TextField PointField;
-  private GreenActionList greenActionList;
-  private GreenAction newGreenAction;
   private CloverVilleModelManager modelManager;
   private Scene scene;
   private ViewHandler viewHandler;
@@ -39,10 +37,10 @@ public class AddGreenActionController
 
   }
 
-  public void setGreenActionList(GreenActionList greenActionList)
+  /*public void setGreenActionList(GreenActionList greenActionList)
   {
     this.greenActionList = greenActionList;
-  }
+  }*/
 
   public void reset()
   {
@@ -76,12 +74,15 @@ public class AddGreenActionController
     try
     {
       int Point = Integer.parseInt(PointField);
-      newGreenAction = new GreenAction(GreenTaskField, Point);
+      GreenAction newGreenAction = new GreenAction(GreenTaskField, Point);
 
-      if (greenActionList != null)
-      {
-        greenActionList.addGreenAction(newGreenAction);
-      }
+     // if (greenActionList != null)
+      //{
+      GreenActionList list = modelManager.getAllGreenActions();
+      list.addGreenAction(newGreenAction);
+      modelManager.saveGreenActions(list);
+
+     // }
     }
     catch (NumberFormatException e)
     {
