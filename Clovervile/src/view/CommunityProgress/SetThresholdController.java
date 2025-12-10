@@ -1,11 +1,13 @@
 package view.CommunityProgress;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.Scene;
-import model.CloverVilleModelManager;
-import view.ViewHandler;
 
-import java.awt.*;
+import model.CloverVilleModelManager;
+import model.CommunityPool;
+import view.ViewHandler;
 
 public class SetThresholdController
 {
@@ -23,6 +25,12 @@ public class SetThresholdController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+  }
+
+  public void initialize()
+  {
+    thresholdGoalField.setText("");
+    pointsField.setText("");
   }
 
 

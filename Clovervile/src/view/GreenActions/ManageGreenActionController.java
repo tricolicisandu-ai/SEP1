@@ -45,6 +45,7 @@ public class ManageGreenActionController
       updateListBox();
       greenTaskField.clear();
       pointField.clear();
+      updateListBox();
     }
   }
 
