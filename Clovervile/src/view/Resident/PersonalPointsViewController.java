@@ -1,5 +1,7 @@
 package view.Resident;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -15,6 +17,7 @@ public class PersonalPointsViewController
 
   @FXML private TextField addPoints;
   @FXML private ListView<Resident> residentList;
+  @FXML private Button confirm;
 
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -32,35 +35,26 @@ public class PersonalPointsViewController
   public void setResidentList( ListView<Resident> residentList)
   {
     this.residentList = residentList;
+    this.residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //хочу передати вже готовий ListView  іншого вікна
   }
 
-  @FXML private void confirm(ActionEvent actionEvent)
+  public void confirm(ActionEvent actionEvent)
   {
-    String addPoints = this.addPoints.getText().trim();
+    //if (e.getSource() == confirm)   ??
 
-    if (addPoints.isEmpty())
+    if( addPoints.getText().isEmpty())
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
           "The field must be filled out");
       alert.setTitle("Error");
       alert.setHeaderText(null);
-
       alert.showAndWait();
-      return;
-
     }
 
+    int newPoints = 0;
     try
     {
-      int points = Integer.parseInt(addPoints);
-
-      for (int i = 0; i < residentList.; i++)
-      {
-
-      }
-      {
-        modelManager.addPersonalPoints(ResidentList );
-      }
+      newPoints = Integer.parseInt(addPoints.getText());  //??? в дужках
     }
     catch (NumberFormatException e)
     {
@@ -72,8 +66,32 @@ public class PersonalPointsViewController
       alert.showAndWait();
     }
 
-  }
+    if (newPoints < 0)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Error");
+      alert.setHeaderText("Invalid Input");
+      alert.setContentText("Points must be a non-negative number.");
 
+      alert.showAndWait();
+    }
+
+      ObservableList<Resident> selectedResidents = residentList.getSelectionModel().getSelectedItems(); // обрані резиденти
+      if(selectedResidents == null || selectedResidents.isEmpty())
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Please select at least one resident from the list");
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+      }
+      ResidentList selectList = new ResidentList(); // тимчасовий листрезидентів з обраних резидентів
+      for (int i = 0; i<selectedResidents.size(); i++)
+      {
+        Resident resident = selectedResidents.get(i);
+        selectList.addResident(resident);
+      }
+      modelManager.addPersonalPoints(selectList, newPoints); //чи вірно викликаний метод і чи вірно в дужках
   }
 
   public void resetPoints(ActionEvent actionEvent)
@@ -99,5 +117,4 @@ public class PersonalPointsViewController
     }
 
   }
-
 }
