@@ -5,6 +5,7 @@ import utils.MyFileHandler;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 /**
  * A model manager providing a single access point to the model
  * @author Christina Jacob
@@ -320,6 +321,13 @@ public class CloverVilleModelManager
     greenActionList.resetGreenAction();
     saveGreenActions(greenActionList);
 
+  }
+
+  public void removeTradeOffer(TradeOffer tradeOffer)
+  {
+     TradeOfferList tradeOfferList = getAllTradeOffers();
+    tradeOfferList.remove(tradeOffer);
+    saveTradeOffers(tradeOfferList);
   }
 
 
