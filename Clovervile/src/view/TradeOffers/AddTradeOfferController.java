@@ -25,9 +25,6 @@ public class AddTradeOfferController
   @FXML private TableColumn<Resident, String> firstNameColumn;
   @FXML private TableColumn<Resident, String> lastNameColumn;
   @FXML private TableColumn<Resident, Integer> pointsColumn;
-  private TradeOfferList tradeOfferList;
-  private ResidentList residentList;
-
 
 
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
@@ -51,11 +48,11 @@ public class AddTradeOfferController
 
   }
 
-  public void setTradeOfferList(TradeOfferList tradeOfferList)
+  /*public void setTradeOfferList(TradeOfferList tradeOfferList)
   {
     this.tradeOfferList = tradeOfferList;
   }
-
+*/
   @FXML private void handleAdd(ActionEvent actionEvent)
   {
     String tradeOfferName = this.tradeOfferName.getText();
@@ -78,9 +75,12 @@ public class AddTradeOfferController
       TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint,
           seller);
 
-      if (tradeOfferList != null && seller!=null)
+      if (seller!=null)
       {
+        TradeOfferList tradeOfferList = modelManager.getAllTradeOffers();
+
         tradeOfferList.add(tradeOffer);
+        modelManager.saveTradeOffers(tradeOfferList);
       }
     }
     catch (NumberFormatException e)

@@ -20,7 +20,6 @@ public class AddResidentViewController
   @FXML private TextField firstName;
   @FXML private TextField lastName;
   @FXML private TextField points;
-  private ResidentList residentList;
 
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -37,10 +36,10 @@ public class AddResidentViewController
     points.setText("");
   }
 
-  public void setResidentList(ResidentList residentList)
-  {
-    this.residentList = residentList;
-  }
+ // public void setResidentList(ResidentList residentList)
+  //{
+   // this.residentList = residentList;
+  //}
 
   @FXML private void AddResident(ActionEvent actionEvent)
   {
@@ -62,10 +61,12 @@ public class AddResidentViewController
       int point = Integer.parseInt(points);
       Resident resident = new Resident("firstName", "lastName", 0);
 
-      if (residentList != null)
-      {
-        residentList.addResident(resident);
-      }
+   //   if (residentList != null)
+      //{
+      ResidentList list = modelManager.getAllResidents();
+      list.addResident(resident);
+      modelManager.saveResidents(list);
+
     }
     catch (NumberFormatException e)
     {
