@@ -12,7 +12,7 @@ import javafx.event.ActionEvent;
 import  model.TradeOfferList;
 import model.TradeOffer;
 
-import static javafx.scene.control.skin.TableSkinUtils.getSelectionModel;
+
 
 public class RemoveTradeOfferController
 {
