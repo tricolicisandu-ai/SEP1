@@ -140,7 +140,7 @@ public class CloverVilleModelManager
 
   }
 
-  public void editResident(String firstName, int personalPoints)
+  public void editResident(String firstName, String lastName, int personalPoints)
   {
     ResidentList newResidents = getAllResidents();
 
@@ -289,6 +289,14 @@ public class CloverVilleModelManager
     greenActionList.removeGreenAction(greenAction);
     saveGreenActions(greenActionList);
   }
+
+  public void removeResident(Resident resident)
+  {
+    ResidentList residentList = getAllResidents();
+    residentList.removeResident(resident);
+    saveResidents(residentList);
+  }
+
 
   public void resetGreenAction()
   {
