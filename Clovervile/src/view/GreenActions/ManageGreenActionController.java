@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import model.CloverVilleModelManager;
 import model.GreenAction;
 import model.GreenActionList;
+import model.Resident;
 import view.ViewHandler;
 
 public class ManageGreenActionController
@@ -67,11 +68,18 @@ public class ManageGreenActionController
   {
     if (e.getSource() == editButton)
     {
-      String greenTask = greenTaskField.getText();
-      int points = Integer.parseInt(pointField.getText());
+
+      GreenAction selectedGreenTask = listBox.getSelectionModel().getSelectedItem();
+
+      String oldGreenTask =selectedGreenTask.getName();
+      int oldPersonalPoints = selectedGreenTask.getGreenPoints();
+
+      String newGreenTask = greenTaskField.getText();
+      int newGreenPoints = Integer.parseInt(pointField.getText());
 
 
-      modelManager.editGreenAction(greenTask, points);
+      modelManager.editGreenAction(oldGreenTask, oldPersonalPoints,
+          newGreenTask, newGreenPoints);
       updateListBox();
       greenTaskField.setText("");
       pointField.setText("");
@@ -84,7 +92,7 @@ public class ManageGreenActionController
       if (temp != null)
       {
         greenTaskField.setPromptText(temp.getName());
-        //pointField.se(temp.getGreenPoints());
+        pointField.setPrefColumnCount(temp.getGreenPoints());
 
       }
     }
