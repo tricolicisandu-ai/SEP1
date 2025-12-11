@@ -3,6 +3,7 @@ package view.GreenActions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.CloverVilleModelManager;
 import model.GreenAction;
@@ -15,6 +16,7 @@ public class AddGreenActionController
 {
   @FXML private TextField GreenTaskField;
   @FXML private  TextField PointField;
+  @FXML private Button addButton;
   private CloverVilleModelManager modelManager;
   private Scene scene;
   private ViewHandler viewHandler;
@@ -58,7 +60,6 @@ public class AddGreenActionController
     String PointField = this.PointField.getText().trim();
 
 
-
     if (GreenTaskField.isEmpty() || PointField.isEmpty())
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
@@ -73,14 +74,15 @@ public class AddGreenActionController
 
     try
     {
-      int Point = Integer.parseInt(PointField);
-      GreenAction newGreenAction = new GreenAction(GreenTaskField, Point);
 
-     // if (greenActionList != null)
-      //{
-      GreenActionList list = modelManager.getAllGreenActions();
-      list.addGreenAction(newGreenAction);
-      modelManager.saveGreenActions(list);
+        int Point = Integer.parseInt(PointField);
+        GreenAction newGreenAction = new GreenAction(GreenTaskField, Point);
+
+        // if (greenActionList != null)
+        //{
+        GreenActionList list = modelManager.getAllGreenActions();
+        list.addGreenAction(newGreenAction);
+        modelManager.saveGreenActions(list);
 
      // }
     }
@@ -93,6 +95,9 @@ public class AddGreenActionController
 
       alert.showAndWait();
     }
+    reset();
+
+
 
   }
 }

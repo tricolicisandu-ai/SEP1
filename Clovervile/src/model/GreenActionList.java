@@ -82,13 +82,6 @@ public class GreenActionList implements Serializable
 
   }
 
-  /**
-   * removes a green action at the given index and returns it
-   * @param index index of the green action to remove
-   * @return the removed green action
-   */
-
-
 
   /**
    * returns a string representation of GreenAction

@@ -80,6 +80,18 @@ public class Resident implements Serializable
     this.personalPoints = personalPoints;
   }
 
+
+
+
+  /**
+   * Returns a string representation of the Resident.
+   * @return a string representation of the Resident in the format: firstName, lastName, personalPoints
+   */
+  public String toString()
+  {
+    return "The first name: " + firstName + " ,the last name: " + lastName + " ,the personal points: " +personalPoints;
+  }
+
   /**
    * Compares this resident to another object for equality.
    * Two residents are considered equal if their first name,
@@ -100,12 +112,4 @@ public class Resident implements Serializable
   }
 
 
-  /**
-   * Returns a string representation of the Resident.
-   * @return a string representation of the Resident in the format: firstName, lastName, personalPoints
-   */
-  public String toString()
-  {
-    return "The first name: " + firstName + " ,the last name: " + lastName + " ,the personal points: " +personalPoints;
-  }
 }
