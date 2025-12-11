@@ -16,11 +16,6 @@ import java.io.IOException;
 public class ViewHandler
 {
   private Stage stage;
-  private MainViewController mainViewController;
-  private MainResidentViewController residentsController;
-  private MainGreenActionController greenActionsController;
-  private MainTradeOfferController tradeOffersController;
-  private MainSetThresholdController mainSetThresholdController;
 
   private CloverVilleModelManager modelManager;
 
