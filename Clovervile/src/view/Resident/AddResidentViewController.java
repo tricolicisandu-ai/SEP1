@@ -42,6 +42,16 @@ public class AddResidentViewController
    // this.residentList = residentList;
   //}
 
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      firstName.clear();
+      lastName.clear();
+      points.clear();
+    }
+  }
+
   @FXML private void AddResident(ActionEvent actionEvent)
   {
     String firstName = this.firstName.getText();
@@ -76,6 +86,7 @@ public class AddResidentViewController
       alert.setHeaderText(null);
       alert.showAndWait();
     }
+    reset();
 
   }
 }

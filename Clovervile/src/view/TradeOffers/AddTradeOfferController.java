@@ -99,6 +99,7 @@ public class AddTradeOfferController
       alert.setHeaderText(null);
       alert.showAndWait();
     }
+    reset();
   }
 
   private void updateTable()

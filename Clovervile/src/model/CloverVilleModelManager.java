@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Alert;
 import utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
@@ -173,6 +174,16 @@ public class CloverVilleModelManager
   public void editResident(String firstName, String lastName, int personalPoints)
   {
     ResidentList newResidents = getAllResidents();
+    for (int i = 0;  i <newResidents.getNumberOfResidents(); i++)
+    {
+      Resident resident = newResidents.getResident(i);
+
+      if (resident.getFirstName().equals(firstName) &&
+          resident.getLastName().equals(lastName) && resident.getPersonalPoints() == personalPoints)
+        resident.setFirstName(firstName);
+      resident.setLastName(lastName);
+      resident.setPersonalPoints(personalPoints);
+    }
 
     try
     {
@@ -339,6 +350,8 @@ public class CloverVilleModelManager
     ResidentList residentList = getAllResidents();
     residentList.removeResident(resident);
     saveResidents(residentList);
+
+
   }
 
 
@@ -422,7 +435,13 @@ public class CloverVilleModelManager
 
             return true;
           }
+
         }
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Buyer is fucking poor. Tell that mf to earn some points");
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.showAndWait();
       }
 
       return false;
