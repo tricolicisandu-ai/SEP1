@@ -29,17 +29,17 @@
         <tabs>
           <Tab fx:id="addResidentsTab" onSelectionChanged="#tabChanged" text="Add Residents">
             <content>
-                <fx:include fx:id="addResidents" source="AddResidentView.fxml" />
+                <fx:include source="AddResidentView.fxml" />
             </content>
           </Tab>
             <Tab fx:id="manageResidentsTab" onSelectionChanged="#tabChanged" text="Manage Residents">
               <content>
-                  <fx:include fx:id="manageResidents" source="ManageResidentsView.fxml" />
+                  <fx:include source="ManageResidentsView.fxml" />
               </content>
             </Tab>
             <Tab fx:id="personalPontsTab" onSelectionChanged="#tabChanged" text="Personal Points">
               <content>
-                  <fx:include fx:id="personalPoints" source="PersonalPointsView.fxml" />
+                  <fx:include source="PersonalPointsView.fxml" />
               </content>
             </Tab>
         </tabs>
