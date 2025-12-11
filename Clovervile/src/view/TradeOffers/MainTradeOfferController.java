@@ -87,21 +87,21 @@ public class MainTradeOfferController
       {
         if (addTradeOfferController != null)
         {
-          //addTradeOfferController.reset();
+          addTradeOfferController.reset();
         }
       }
       else if (tradeTab.isSelected())
       {
         if (tradeController != null)
         {
-          //tradeController.reset();
+          tradeController.reset();
         }
       }
       else if (removeTradeOfferTab.isSelected())
       {
         if (removeTradeOfferController != null)
         {
-          //removeTradeOfferController.reset();
+          removeTradeOfferController.reset();
         }
       }
     }

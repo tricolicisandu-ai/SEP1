@@ -38,7 +38,7 @@ public class SetThresholdController
     pointsField.setText("");
     handleCommunity();
   }
-  
+
   @FXML private void handleAdd (ActionEvent event)
   {
     String threshold = this.thresholdGoalField.getText().trim();
@@ -72,7 +72,7 @@ public class SetThresholdController
     }
   }
 
-  private void handleCommunity()
+  @FXML private void handleCommunity()
   {
     CommunityPool communityPool = modelManager.getCommunityPool();
     communityPointsField.setText(communityPool.getTotalPoints()+"");

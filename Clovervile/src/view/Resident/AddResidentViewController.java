@@ -27,6 +27,7 @@ public class AddResidentViewController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+
   }
 
   public void initialize()
@@ -59,7 +60,7 @@ public class AddResidentViewController
     try
     {
       int point = Integer.parseInt(points);
-      Resident resident = new Resident("firstName", "lastName", 0);
+      Resident resident = new Resident(firstName, lastName, point);
 
    //   if (residentList != null)
       //{

@@ -10,6 +10,7 @@ import view.ViewHandler;
 
 public class MainResidentViewController
 {
+
   @FXML private AddResidentViewController addResidentViewController;
   @FXML private ManageResidentsViewController manageResidentsViewController;
   @FXML private PersonalPointsViewController personalPointsViewController;
@@ -40,6 +41,8 @@ public class MainResidentViewController
     {
       manageResidentsViewController.init(viewHandler, scene, modelManager);
     }
+
+
 
     if (personalPointsViewController != null)
     {
@@ -94,7 +97,7 @@ public class MainResidentViewController
       {
         if (manageResidentsTab != null)
         {
-          //manageResidentsViewController.reset();
+          manageResidentsViewController.reset();
         }
       }
       else if (personalPointsTab.isSelected())

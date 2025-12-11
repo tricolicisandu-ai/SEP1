@@ -30,9 +30,9 @@
                   <Label text="First Name:" />
                   <Label text="Last Name:" GridPane.rowIndex="1" />
                   <Label text="Points:" GridPane.rowIndex="2" />
-                  <TextField fx:id="firstName" GridPane.columnIndex="1" />
-                  <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="points" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
+                  <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="pointsField" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="50.0" />
                      </GridPane.margin></TextField>

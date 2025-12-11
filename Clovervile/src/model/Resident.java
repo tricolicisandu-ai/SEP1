@@ -89,7 +89,7 @@ public class Resident implements Serializable
    */
   public String toString()
   {
-    return "The first name: " + firstName + " ,the last name: " + lastName + " ,the personal points: " +personalPoints;
+    return firstName + " " + lastName + " ," +personalPoints;
   }
 
   /**

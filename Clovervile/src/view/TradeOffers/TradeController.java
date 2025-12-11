@@ -26,8 +26,20 @@ public class TradeController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+    updateTradeBox();
+    updateResidentBox();
   }
 
+
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      updateTradeBox();
+      updateResidentBox();
+    }
+
+  }
   public void handleConfirm(ActionEvent e )
   {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
@@ -45,6 +57,7 @@ public class TradeController
       modelManager.executeTrade(tradeOffer,buyer);
     }
     updateTradeBox();
+    updateResidentBox();
 
   }
 
@@ -57,7 +70,24 @@ public class TradeController
 
     for (int i = 0; i < tradeOffer.getNumberOfTradeOffers(); i++)
     {
-    tradeBox.getItems().remove(i);
+      if(tradeOffer.getTradeOffer(i).getBuyer()==null)
+      {
+        tradeBox.getItems().add(tradeOffer.getTradeOffer(i));
+      }
+    }
+
+  }
+
+  public void updateResidentBox()
+  {
+    int currentIndex = residentBox.getSelectionModel().getSelectedIndex();
+    residentBox.getItems().clear();
+
+    ResidentList residents = modelManager.getAllResidents();
+
+    for (int i = 0; i < residents.getNumberOfResidents(); i++)
+    {
+      residentBox.getItems().add(residents.getResident(i));
     }
 
   }

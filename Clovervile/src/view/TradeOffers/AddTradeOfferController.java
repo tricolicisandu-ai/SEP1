@@ -32,18 +32,31 @@ public class AddTradeOfferController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+    updateTable();
+
   }
-//  public void initialize()
-//  {
-//    tradeOfferName.setText("");
-//    pointValue.setText("");
-//
-//    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("firstName"));
-//    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("lastName"));
-//    pointsColumn.setCellValueFactory(new PropertyValueFactory<Resident, Integer>("personalPoints"));
-//
-//    updateTable();
-//  }
+
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      updateTable();
+      tradeOfferName.clear();
+      pointValue.clear();
+    }
+
+  }
+  public void initialize()
+  {
+    tradeOfferName.setText("");
+    pointValue.setText("");
+
+    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("firstName"));
+    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("lastName"));
+    pointsColumn.setCellValueFactory(new PropertyValueFactory<Resident, Integer>("personalPoints"));
+
+
+  }
 
   /*public void setTradeOfferList(TradeOfferList tradeOfferList)
   {
@@ -69,8 +82,7 @@ public class AddTradeOfferController
       int tradePoint = Integer.parseInt(pointValue);
 
       Resident seller = sellerBox.getSelectionModel().getSelectedItem(); //???
-      TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint,
-          seller);
+      TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint, seller);
 
       if (seller!=null)
       {

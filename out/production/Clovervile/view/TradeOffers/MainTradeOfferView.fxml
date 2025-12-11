@@ -29,17 +29,17 @@
         <tabs>
           <Tab fx:id="addTradeOfferTab" onSelectionChanged="#tabChanged" text="Add TradeOffer">
               <content>
-                  <fx:include source="AddTradeOfferView.fxml" />
+                  <fx:include fx:id="addTradeOffer" source="AddTradeOfferView.fxml" />
               </content>
           </Tab>
             <Tab fx:id="removeTradeOfferTab" onSelectionChanged="#tabChanged" text="Remove TradeOffer">
               <content>
-                  <fx:include source="RemoveTradeOfferView.fxml" />
+                  <fx:include fx:id="removeTradeOffer" source="RemoveTradeOfferView.fxml" />
               </content>
             </Tab>
             <Tab fx:id="tradeTab" onSelectionChanged="#tabChanged" text="Trade">
                 <content>
-                    <fx:include source="TradeView.fxml" />
+                    <fx:include fx:id="trade" source="TradeView.fxml" />
                 </content>
             </Tab>
         </tabs>

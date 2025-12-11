@@ -96,7 +96,7 @@ public class TradeOffer implements Serializable
    */
   public String toString()
   {
-    return offerName + ": " + pointCost + "points, " + "The seller: " + seller;
+    return offerName + ": " + pointCost + "p, " + "The seller: " + seller.getFirstName() + " " + seller.getLastName();
   }
 
   /**

@@ -30,14 +30,15 @@ public class ManageResidentsViewController
     this.scene = scene;
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
+    updateResidentsComboBox();
   }
-//  public void initialize()
-//  {
-//    firstNameField.setText("");
-//    lastNameField.setText("");
-//    pointsField.setText("");
-//
-//  }
+ public void initialize()
+  {
+    firstNameField.setText("");
+    lastNameField.setText("");
+    pointsField.setText("");
+
+  }
 
   public void reset()
   {
@@ -48,6 +49,7 @@ public class ManageResidentsViewController
       lastNameField.clear();
       pointsField.clear();
     }
+
   }
 
   public void handleEdit(ActionEvent e)
@@ -119,7 +121,7 @@ public class ManageResidentsViewController
     residentsComboBox.getItems().clear();
 
     ResidentList residents = modelManager.getAllResidents();
-
+    System.out.println(residents.getNumberOfResidents());
     for (int i = 0; i < residents.getNumberOfResidents(); i++)
     {
       residentsComboBox.getItems().add(residents.getResident(i));

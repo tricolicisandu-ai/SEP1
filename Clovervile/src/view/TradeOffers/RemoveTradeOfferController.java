@@ -24,8 +24,17 @@ public class RemoveTradeOfferController
     this.scene = scene;
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
+    updateListBox();
   }
 
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      updateListBox();
+
+    }
+  }
 
   public void handleRemove(ActionEvent e)
   {

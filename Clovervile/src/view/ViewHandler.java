@@ -16,7 +16,6 @@ import java.io.IOException;
 public class ViewHandler
 {
   private Stage stage;
-
   private CloverVilleModelManager modelManager;
 
 
