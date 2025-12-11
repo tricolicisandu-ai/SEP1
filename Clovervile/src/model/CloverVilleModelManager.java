@@ -123,14 +123,22 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-  public void editGreenAction(String editedName, int editedGreenPoints)
+  public void editGreenAction(String name, int greenPoints)
   {
 
-    GreenActionList newGreenActions = getAllGreenActions();
+    GreenActionList allGreenActions = getAllGreenActions();
 
+    for (int i = 0;  i <allGreenActions.getNumberOfGreenActions(); i++)
+    {
+      GreenAction greenAction = allGreenActions.getIndex(i);
+
+      if (greenAction.getName().equals(name) && greenAction.getGreenPoints()==greenPoints)
+      greenAction.setName(name);
+      greenAction.setGreenPoints(greenPoints);
+    }
     try
     {
-      MyFileHandler.writeToBinaryFile(greenActionsFile, newGreenActions);
+      MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
     }
     catch (FileNotFoundException e)
     {
@@ -142,6 +150,25 @@ public class CloverVilleModelManager
     }
 
   }
+
+
+//  // Change the country of the model.Student with the given firstname and lastname
+//  public void changeCountry(String firstName, String lastName, String country)
+//  {
+//    StudentList allStudents = getAllStudents();
+//
+//    for (int i = 0; i < allStudents.size(); i++)
+//    {
+//      Student student = allStudents.get(i);
+//
+//      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
+//      {
+//        student.setCountry(country);
+//      }
+//    }
+//
+//    saveStudents(allStudents);
+//  }
 
   public void editResident(String firstName, String lastName, int personalPoints)
   {

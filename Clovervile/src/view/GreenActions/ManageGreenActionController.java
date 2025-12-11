@@ -43,11 +43,25 @@ public class ManageGreenActionController
     if (modelManager != null)
     {
       updateListBox();
+
       greenTaskField.clear();
       pointField.clear();
       updateListBox();
+
     }
   }
+
+
+  public void handleList(ActionEvent e)
+  {
+    GreenAction selected = listBox.getSelectionModel().getSelectedItem();
+    if (selected!= null)
+    {
+      greenTaskField.setText(selected.getName());
+      pointField.setText(String.valueOf(selected.getGreenPoints()));
+    }
+  }
+
 
   public void handleEdit(ActionEvent e)
   {
@@ -69,8 +83,8 @@ public class ManageGreenActionController
 
       if (temp != null)
       {
-        greenTaskField.setText(temp.getName());
-        pointField.setPrefColumnCount(temp.getGreenPoints());
+        greenTaskField.setPromptText(temp.getName());
+        //pointField.se(temp.getGreenPoints());
 
       }
     }
@@ -163,6 +177,15 @@ public class ManageGreenActionController
     {
       listBox.getItems().add(greenActions.getIndex(i));
     }
+
+    if (currentIndex == -1 && listBox.getItems().size() > 0)
+    {
+      listBox.getSelectionModel().select(0);
+    }
+    else
+    {
+      listBox.getSelectionModel().select(currentIndex);
+   }
   }
 
 }
