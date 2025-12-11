@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.control.Alert;
 import utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
@@ -173,6 +174,16 @@ public class CloverVilleModelManager
   public void editResident(String firstName, String lastName, int personalPoints)
   {
     ResidentList newResidents = getAllResidents();
+    for (int i = 0;  i <newResidents.getNumberOfResidents(); i++)
+    {
+      Resident resident = newResidents.getResident(i);
+
+      if (resident.getFirstName().equals(firstName) &&
+          resident.getLastName().equals(lastName) && resident.getPersonalPoints() == personalPoints)
+        resident.setFirstName(firstName);
+      resident.setLastName(lastName);
+      resident.setPersonalPoints(personalPoints);
+    }
 
     try
     {
@@ -339,6 +350,8 @@ public class CloverVilleModelManager
     ResidentList residentList = getAllResidents();
     residentList.removeResident(resident);
     saveResidents(residentList);
+
+
   }
 
 
@@ -373,55 +386,74 @@ public class CloverVilleModelManager
   }
 
 
-  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
-  {
-    TradeOfferList offers = getAllTradeOffers();
-    TradeOffer theOffer = null;
-    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
-    {
-      if(offers.getTradeOffer(i).equals(tradeOffer))
+  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer) {
+//    if (buyer.getPersonalPoints() < tradeOffer.getPointCost())
+//    {
+//
+//    }
+
+
+
+      TradeOfferList offers = getAllTradeOffers();
+      TradeOffer theOffer = null;
+      for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
       {
-        theOffer = offers.getTradeOffer(i);
-      }
-    }
-
-    if(theOffer!=null)
-    {
-      ResidentList residents = getAllResidents();
-      Resident seller = tradeOffer.getSeller();
-
-Resident theBuyer = null;
-Resident theSeller = null;
-
-      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
-      {
-         if(residents.getResident(i).equals(buyer))
-         {
-          theBuyer = residents.getResident(i);
-         }
-        if(residents.getResident(i).equals(seller))
+        if (offers.getTradeOffer(i).equals(tradeOffer))
         {
-          theSeller = residents.getResident(i);
+          theOffer = offers.getTradeOffer(i);
         }
       }
 
-      if(theBuyer!=null && theSeller!=null)
-      {
-        if (theSeller.getPersonalPoints() >= theOffer.getPointCost())
+      if (theOffer != null) {
+        ResidentList residents = getAllResidents();
+        Resident seller = tradeOffer.getSeller();
+
+        Resident theBuyer = null;
+        Resident theSeller = null;
+
+        for (int i = 0; i < residents.getNumberOfResidents(); i++)
         {
-  theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
-          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
-         theOffer.setBuyer(theBuyer);
-
-
-         saveTradeOffers(offers);
-         saveResidents(residents);
-
-
-          return true;
+          if (residents.getResident(i).equals(buyer))
+          {
+            theBuyer = residents.getResident(i);
+          }
+          if (residents.getResident(i).equals(seller))
+          {
+            theSeller = residents.getResident(i);
+          }
         }
+
+        if (theBuyer != null && theSeller != null)
+        {
+          if (theBuyer.getPersonalPoints() >= theOffer.getPointCost()) {
+            theSeller.setPersonalPoints(theSeller.getPersonalPoints() + theOffer.getPointCost());
+            theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - theOffer.getPointCost());
+            theOffer.setBuyer(theBuyer);
+
+            saveTradeOffers(offers);
+            saveResidents(residents);
+
+            return true;
+          }
+
+        }
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Buyer is fucking poor. Tell that mf to earn some points");
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.showAndWait();
       }
-    }
-    return false;
+
+      return false;
+
+
+
   }
+
+
+
+
+
+
+
 }

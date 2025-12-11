@@ -48,9 +48,22 @@ public class ManageResidentsViewController
       firstNameField.clear();
       lastNameField.clear();
       pointsField.clear();
+      updateResidentsComboBox();
     }
 
   }
+
+  public void handleResidentList(ActionEvent e)
+  {
+    Resident selected = residentsComboBox.getSelectionModel().getSelectedItem();
+    if (selected!= null)
+    {
+      firstNameField.setText(selected.getFirstName());
+      lastNameField.setText(selected.getLastName());
+      pointsField.setText(String.valueOf(selected.getPersonalPoints()));
+    }
+  }
+
 
   public void handleEdit(ActionEvent e)
   {
