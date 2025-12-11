@@ -31,13 +31,13 @@ public class ManageResidentsViewController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
   }
-  public void initialize()
-  {
-    firstNameField.setText("");
-    lastNameField.setText("");
-    pointsField.setText("");
-
-  }
+//  public void initialize()
+//  {
+//    firstNameField.setText("");
+//    lastNameField.setText("");
+//    pointsField.setText("");
+//
+//  }
 
   public void reset()
   {

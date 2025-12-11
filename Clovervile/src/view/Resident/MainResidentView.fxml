@@ -27,7 +27,7 @@
       </MenuBar>
       <TabPane prefHeight="330.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="addResidentsTab" onSelectionChanged="#tabChanged" text="Add Residents">
+          <Tab fx:id="addResidentTab" onSelectionChanged="#tabChanged" text="Add Residents">
             <content>
                 <fx:include source="AddResidentView.fxml" />
             </content>
@@ -37,7 +37,7 @@
                   <fx:include source="ManageResidentsView.fxml" />
               </content>
             </Tab>
-            <Tab fx:id="personalPontsTab" onSelectionChanged="#tabChanged" text="Personal Points">
+            <Tab fx:id="personalPointsTab" onSelectionChanged="#tabChanged" text="Personal Points">
               <content>
                   <fx:include source="PersonalPointsView.fxml" />
               </content>

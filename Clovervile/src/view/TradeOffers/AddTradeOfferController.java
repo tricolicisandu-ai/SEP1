@@ -33,20 +33,17 @@ public class AddTradeOfferController
     this.modelManager = modelManager;
     this.scene = scene;
   }
-  public void initialize()
-  {
-    tradeOfferName.setText("");
-    pointValue.setText("");
-
-    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("firstName"));
-    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("lastName"));
-    pointsColumn.setCellValueFactory(new PropertyValueFactory<Resident, Integer>("personalPoints"));
-
-    updateTable();
-
-
-
-  }
+//  public void initialize()
+//  {
+//    tradeOfferName.setText("");
+//    pointValue.setText("");
+//
+//    firstNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("firstName"));
+//    lastNameColumn.setCellValueFactory(new PropertyValueFactory<Resident, String>("lastName"));
+//    pointsColumn.setCellValueFactory(new PropertyValueFactory<Resident, Integer>("personalPoints"));
+//
+//    updateTable();
+//  }
 
   /*public void setTradeOfferList(TradeOfferList tradeOfferList)
   {

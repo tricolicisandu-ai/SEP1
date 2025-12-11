@@ -94,7 +94,7 @@ public class MainResidentViewController
       {
         if (manageResidentsTab != null)
         {
-          manageResidentsViewController.reset();
+          //manageResidentsViewController.reset();
         }
       }
       else if (personalPointsTab.isSelected())
