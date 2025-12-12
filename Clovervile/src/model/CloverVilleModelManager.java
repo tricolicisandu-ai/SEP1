@@ -173,9 +173,21 @@ public class CloverVilleModelManager
   //    saveStudents(allStudents);
   //  }
 
-  public void editResident(String firstName, String lastName, int personalPoints)
+  public void editResident(String oldFirstName, String oldLastName,int oldPersonalPoints, String newFirstName, String newLastName,
+      int newPersonalPoints)
   {
     ResidentList newResidents = getAllResidents();
+
+
+    for (int i = 0;  i <newResidents.getNumberOfResidents(); i++)
+    {
+      Resident resident = newResidents.getResident(i);
+
+      if (resident.getFirstName().equals(oldFirstName) && resident.getLastName().equals(oldLastName) && resident.getPersonalPoints() == oldPersonalPoints)
+        resident.setFirstName(newFirstName);
+      resident.setLastName(newLastName);
+      resident.setPersonalPoints(newPersonalPoints);
+    }
 
     try
     {
