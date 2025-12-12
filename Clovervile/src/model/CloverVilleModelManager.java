@@ -124,7 +124,8 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-  public void editGreenAction(String name, int greenPoints)
+  public void editGreenAction(String oldName, int oldGreenPoints,
+      String newName, int newGreenPoints)
   {
 
     GreenActionList allGreenActions = getAllGreenActions();
@@ -133,9 +134,12 @@ public class CloverVilleModelManager
     {
       GreenAction greenAction = allGreenActions.getIndex(i);
 
-      if (greenAction.getName().equals(name) && greenAction.getGreenPoints()==greenPoints)
-      greenAction.setName(name);
-      greenAction.setGreenPoints(greenPoints);
+      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
+      {
+        greenAction.setName(newName);
+        greenAction.setGreenPoints(newGreenPoints);
+      }
+      saveGreenActions(allGreenActions);
     }
     try
     {
@@ -153,51 +157,46 @@ public class CloverVilleModelManager
   }
 
 
-//  // Change the country of the model.Student with the given firstname and lastname
-//  public void changeCountry(String firstName, String lastName, String country)
-//  {
-//    StudentList allStudents = getAllStudents();
-//
-//    for (int i = 0; i < allStudents.size(); i++)
-//    {
-//      Student student = allStudents.get(i);
-//
-//      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
-//      {
-//        student.setCountry(country);
-//      }
-//    }
-//
-//    saveStudents(allStudents);
-//  }
 
-  public void editResident(String firstName, String lastName, int personalPoints)
+public void editResident(String oldFirstName, String oldLastName, int oldPersonalPoints,
+    String newFirstName, String newLastName, int newPersonalPoints)
+{
+  ResidentList residents = getAllResidents();
+  for (int i = 0; i < residents.getNumberOfResidents(); i++)
   {
-    ResidentList newResidents = getAllResidents();
-    for (int i = 0;  i <newResidents.getNumberOfResidents(); i++)
-    {
-      Resident resident = newResidents.getResident(i);
+    Resident resident = residents.getResident(i);
 
-      if (resident.getFirstName().equals(firstName) &&
-          resident.getLastName().equals(lastName) && resident.getPersonalPoints() == personalPoints)
-        resident.setFirstName(firstName);
-      resident.setLastName(lastName);
-      resident.setPersonalPoints(personalPoints);
-    }
+    // Find the resident by their current name
+    if (resident.getFirstName().equals(oldFirstName) && resident.getLastName()
+        .equals(oldLastName) && resident.getPersonalPoints() == oldPersonalPoints)
+    {
+      // Update to new values
+      resident.setFirstName(newFirstName);
+      resident.setLastName(newLastName);
+      resident.setPersonalPoints(newPersonalPoints);
 
-    try
-    {
-      MyFileHandler.writeToBinaryFile(residentsFile, newResidents);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error writing to the file");
+      // Save the updated list back
+      saveResidents(residents); // You need this method
+      return; // Exit after finding and editing
     }
   }
+
+      try
+      {
+        MyFileHandler.writeToBinaryFile(residentsFile, residents);
+      }
+      catch (FileNotFoundException e)
+      {
+        System.out.println("File not found");
+      }
+      catch (IOException e)
+      {
+        System.out.println("IO Error writing to the file");
+      }
+    }
+
+
+
 
   public void saveResidents(ResidentList residents)
   {
@@ -386,14 +385,8 @@ public class CloverVilleModelManager
   }
 
 
-  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer) {
-//    if (buyer.getPersonalPoints() < tradeOffer.getPointCost())
-//    {
-//
-//    }
-
-
-
+  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
+  {
       TradeOfferList offers = getAllTradeOffers();
       TradeOffer theOffer = null;
       for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
@@ -425,24 +418,25 @@ public class CloverVilleModelManager
 
         if (theBuyer != null && theSeller != null)
         {
-          if (theBuyer.getPersonalPoints() >= theOffer.getPointCost()) {
+          if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
+          {
             theSeller.setPersonalPoints(theSeller.getPersonalPoints() + theOffer.getPointCost());
             theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - theOffer.getPointCost());
             theOffer.setBuyer(theBuyer);
 
-            saveTradeOffers(offers);
+            removeTradeOffer(theOffer);
             saveResidents(residents);
-
             return true;
           }
 
         }
-        Alert alert = new Alert(Alert.AlertType.ERROR,
-            "Buyer is fucking poor. Tell that mf to earn some points");
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.showAndWait();
+
       }
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+        "Buyer is fucking poor. Tell that mf to earn some points");
+    alert.setTitle("Error");
+    alert.setHeaderText(null);
+    alert.showAndWait();
 
       return false;
 
