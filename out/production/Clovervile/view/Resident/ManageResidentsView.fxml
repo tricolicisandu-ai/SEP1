@@ -48,7 +48,7 @@
       </VBox>
       <FlowPane prefHeight="200.0" prefWidth="267.0">
          <children>
-            <ComboBox fx:id="residentsComboBox" prefWidth="150.0">
+            <ComboBox fx:id="residentsComboBox" onAction="#handleResidentList" prefWidth="150.0">
                <FlowPane.margin>
                   <Insets left="50.0" />
                </FlowPane.margin></ComboBox>

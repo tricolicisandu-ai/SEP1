@@ -1,10 +1,7 @@
 package model;
 
-import parser.ParserException;
-import parser.XmlJsonParser;
 import utils.MyFileHandler;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -426,21 +423,5 @@ Resident theSeller = null;
       }
     }
     return false;
-  }
-
-  public void saveGreenActionsAsJson(GreenActionList list)
-  {
-
-    XmlJsonParser greenActionParser = new XmlJsonParser();
-    try
-    {
-      greenActionParser.toJsonFile(list, "Clovervile/GreenActions.json");
-    }
-    catch (ParserException e)
-    {
-      System.out.println("Error");
-      System.out.println(e.getMessage());
-    }
-
   }
 }

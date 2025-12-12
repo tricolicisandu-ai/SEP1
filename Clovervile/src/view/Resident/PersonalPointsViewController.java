@@ -24,6 +24,8 @@ public class PersonalPointsViewController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+
+    displayResidents(); //для завантаження списку резидентів у таблицю
   }
 
   public void initialize()
@@ -31,6 +33,29 @@ public class PersonalPointsViewController
     addPoints.setText("");
     residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
   }
+
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      addPoints.clear();
+    }
+  }
+
+
+  // для відображення резидентів у таблиці
+  private void displayResidents()
+  {
+    residentList.getItems().clear();
+    ResidentList residentTab = modelManager.getAllResidents();
+    for(int i = 0; i< residentTab.getNumberOfResidents(); i++)
+    {
+      residentList.getItems().add(residentTab.getResident(i));
+    }
+  }
+
+
+
   public void setResidentList( ListView<Resident> residentList)
   {
     this.residentList = residentList;
@@ -39,7 +64,7 @@ public class PersonalPointsViewController
 
   public void confirm(ActionEvent actionEvent)
   {
-    //if (e.getSource() == confirm)   ??
+    //if (e.getSource() == confirm)
 
     if( addPoints.getText().isEmpty())
     {
@@ -48,41 +73,45 @@ public class PersonalPointsViewController
       alert.setTitle("Error");
       alert.setHeaderText(null);
       alert.showAndWait();
-    }
 
-    int newPoints = 0;
-    try
+    }
+    else
     {
-      newPoints = Integer.parseInt(addPoints.getText());  //??? в дужках
-    }
-    catch (NumberFormatException e)
-    {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
-      alert.setHeaderText("Invalid Input");
-      alert.setContentText("Enter a valid number ");
+      int newPoints = 0;
+      try
+      {
+        newPoints = Integer.parseInt(addPoints.getText());
+      }
+      catch (NumberFormatException e)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Invalid Input");
+        alert.setContentText("Enter a valid number ");
+        alert.showAndWait();
+        return;
+      }
 
-      alert.showAndWait();
-    }
+      if (newPoints < 0)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Invalid Input");
+        alert.setContentText("Points must be a non-negative number.");
+        alert.showAndWait();
+        return;
+      }
 
-    if (newPoints < 0)
-    {
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("Error");
-      alert.setHeaderText("Invalid Input");
-      alert.setContentText("Points must be a non-negative number.");
-
-      alert.showAndWait();
-    }
-
-      ObservableList<Resident> selectedResidents = residentList.getSelectionModel().getSelectedItems(); // обрані резиденти
-      if(selectedResidents == null || selectedResidents.isEmpty())
+      ObservableList<Resident> selectedResidents = residentList.getSelectionModel()
+          .getSelectedItems(); // обрані резиденти
+      if (selectedResidents == null || selectedResidents.isEmpty())
       {
         Alert alert = new Alert(Alert.AlertType.ERROR,
             "Please select at least one resident from the list");
         alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.showAndWait();
+
       }
       else
       {
@@ -92,9 +121,12 @@ public class PersonalPointsViewController
           Resident resident = selectedResidents.get(i);
           selectList.addResident(resident);
         }
-        modelManager.addPersonalPoints(selectList, newPoints); //чи вірно викликаний метод і чи вірно в дужках
+        modelManager.addPersonalPoints(selectList,
+            newPoints);//чи вірно викликаний метод і чи вірно в дужках
+        displayResidents();
       }
-      }
+    }
+  }
 
   public void resetPoints(ActionEvent actionEvent)
   {
@@ -103,7 +135,6 @@ public class PersonalPointsViewController
         ButtonType.YES, ButtonType.NO);
     alert.setTitle("Exit");
     alert.setHeaderText(null);
-
     alert.showAndWait();
 
     if (alert.getResult() == ButtonType.YES)
@@ -115,6 +146,9 @@ public class PersonalPointsViewController
       CommunityPool pool = modelManager.getCommunityPool();
       pool.setTotalPoints(pool.getTotalPoints()+total);
       modelManager.saveCommunityPool(pool);
+
+      //для оновлення списка резидентів
+      displayResidents();
 
     }
 

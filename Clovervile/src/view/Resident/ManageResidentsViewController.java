@@ -40,6 +40,7 @@ public class ManageResidentsViewController
 
   }
 
+
   public void reset()
   {
     if (modelManager != null)
@@ -48,40 +49,85 @@ public class ManageResidentsViewController
       firstNameField.clear();
       lastNameField.clear();
       pointsField.clear();
+      updateResidentsComboBox();
     }
 
   }
 
-  public void handleEdit(ActionEvent e)
+  public void handleResidentList(ActionEvent e)
   {
-
-    if (e.getSource() == editButton)
+    Resident selected = residentsComboBox.getSelectionModel().getSelectedItem();
+    if (selected!= null)
     {
-      String firstName = firstNameField.getText();
-      String lastName = lastNameField.getText();
-      int points = Integer.parseInt(pointsField.getText());
-
-
-      modelManager.editResident(firstName,lastName, points);
-      updateResidentsComboBox();
-      firstNameField.setText("");
-      lastNameField.setText("");
-      pointsField.setText("");
+      firstNameField.setText(selected.getFirstName());
+      lastNameField.setText(selected.getLastName());
+      pointsField.setText(String.valueOf(selected.getPersonalPoints()));
     }
+  }
 
-    else if (e.getSource() == residentsComboBox)
-    {
+
+//  public void handleEdit(ActionEvent e)
+//  {
+//
+//    if (e.getSource() == editButton)
+//    {
+//      String firstName = firstNameField.getText();
+//      String lastName = lastNameField.getText();
+//      int points = Integer.parseInt(pointsField.getText());
+//
+//
+//      modelManager.editResident(firstName,lastName, points);
+//      updateResidentsComboBox();
+//      firstNameField.setText("");
+//      lastNameField.setText("");
+//      pointsField.setText("");
+//    }
+//
+//    else if (e.getSource() == residentsComboBox)
+//    {
+//      Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
+//
+//      if (temp != null)
+//      {
+//        firstNameField.setText(temp.getFirstName());
+//        lastNameField.setText(temp.getLastName());
+//        pointsField.setPrefColumnCount(temp.getPersonalPoints());
+//
+//      }
+//    }
+//  }
+
+  public void handleEdit(ActionEvent e) {
+    if (e.getSource() == editButton) {
+      // Get the resident currently selected in combo box
+      Resident selectedResident = residentsComboBox.getSelectionModel().getSelectedItem();
+
+
+      String oldFirstName = selectedResident.getFirstName();
+      String oldLastName = selectedResident.getLastName();
+      int oldPersonalPoints = selectedResident.getPersonalPoints();
+      String newFirstName = firstNameField.getText();
+      String newLastName = lastNameField.getText();
+      int newPoints = Integer.parseInt(pointsField.getText());
+
+      // Use old values to find, new values to update
+      modelManager.editResident(oldFirstName, oldLastName,oldPersonalPoints,
+          newFirstName, newLastName, newPoints);
+
+      updateResidentsComboBox();
+    }
+    else if (e.getSource() == residentsComboBox) {
       Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
 
-      if (temp != null)
-      {
+      if (temp != null) {
         firstNameField.setText(temp.getFirstName());
         lastNameField.setText(temp.getLastName());
-        pointsField.setPrefColumnCount(temp.getPersonalPoints());
-
+        pointsField.setText(String.valueOf(temp.getPersonalPoints()));
       }
     }
   }
+
+
 
   public void handleRemove(ActionEvent e)
   {

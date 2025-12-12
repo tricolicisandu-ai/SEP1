@@ -54,10 +54,30 @@ public class TradeController
     {
       TradeOffer tradeOffer = tradeBox.getSelectionModel().getSelectedItem();
       Resident buyer = residentBox.getSelectionModel().getSelectedItem();
-      modelManager.executeTrade(tradeOffer,buyer);
+      boolean success = modelManager.executeTrade(tradeOffer, buyer);
+
+      if (success)
+      {
+        updateTradeBox();
+        updateResidentBox();
+      }
+      else
+      {
+        Alert alert2 = new Alert(Alert.AlertType.ERROR,
+            "Buyer is fucking poor. Tell that mf to earn some points");
+        alert2.setTitle("Error");
+        alert2.setHeaderText(null);
+        alert2.showAndWait();
+      }
+
     }
-    updateTradeBox();
-    updateResidentBox();
+
+
+
+
+
+
+
 
   }
 
