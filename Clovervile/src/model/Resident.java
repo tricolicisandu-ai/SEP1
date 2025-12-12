@@ -107,8 +107,7 @@ public class Resident implements Serializable
     }
     Resident resid=(Resident) obj;
     return this.firstName.equals(resid.firstName) &&
-        this.lastName.equals(resid.lastName) &&
-        this.personalPoints==(resid.personalPoints);
+        this.lastName.equals(resid.lastName);
   }
 
 

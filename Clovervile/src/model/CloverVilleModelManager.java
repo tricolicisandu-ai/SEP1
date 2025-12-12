@@ -394,10 +394,13 @@ public void editResident(String oldFirstName, String oldLastName, int oldPersona
         if (offers.getTradeOffer(i).equals(tradeOffer))
         {
           theOffer = offers.getTradeOffer(i);
+          break;
         }
       }
 
-      if (theOffer != null) {
+      if (theOffer != null)
+      {
+        System.out.println("1");
         ResidentList residents = getAllResidents();
         Resident seller = tradeOffer.getSeller();
 
@@ -408,44 +411,101 @@ public void editResident(String oldFirstName, String oldLastName, int oldPersona
         {
           if (residents.getResident(i).equals(buyer))
           {
+            System.out.println("2");
             theBuyer = residents.getResident(i);
           }
           if (residents.getResident(i).equals(seller))
           {
+            System.out.println("3");
             theSeller = residents.getResident(i);
           }
         }
 
         if (theBuyer != null && theSeller != null)
         {
+          System.out.println("4");
           if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
           {
             theSeller.setPersonalPoints(theSeller.getPersonalPoints() + theOffer.getPointCost());
             theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - theOffer.getPointCost());
             theOffer.setBuyer(theBuyer);
 
-            removeTradeOffer(theOffer);
+//            removeTradeOffer(theOffer);
             saveResidents(residents);
+            saveTradeOffers(offers);
+            System.out.println("eguwrogwgwf");
             return true;
           }
+
 
         }
 
       }
-      Alert alert = new Alert(Alert.AlertType.ERROR,
-        "Buyer is fucking poor. Tell that mf to earn some points");
-    alert.setTitle("Error");
-    alert.setHeaderText(null);
-    alert.showAndWait();
 
-      return false;
-
-
-
+    return false;
   }
 
 
-
+//  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
+//  {
+//    TradeOfferList offers = getAllTradeOffers();
+//    TradeOffer theOffer = null;
+//    for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
+//    {
+//      if (offers.getTradeOffer(i).equals(tradeOffer))
+//      {
+//        theOffer = offers.getTradeOffer(i);
+//        break;
+//      }
+//    }
+//
+//    if (theOffer == null)
+//    {
+//      Alert alert = new Alert(Alert.AlertType.ERROR,
+//          "Trade offer not found.");
+//      alert.setTitle("Error");
+//      alert.setHeaderText(null);
+//      alert.showAndWait();
+//      return false;
+//    }
+//
+//    Resident seller = tradeOffer.getSeller();
+//    ResidentList residents = getAllResidents();
+//
+//    Resident theBuyer = null;
+//    Resident theSeller = null;
+//
+//    for (int i = 0; i < residents.getNumberOfResidents(); i++)
+//    {
+//      if (residents.getResident(i).equals(buyer))
+//      {
+//        theBuyer = residents.getResident(i);
+//      }
+//      if (residents.getResident(i).equals(seller))
+//      {
+//        theSeller = residents.getResident(i);
+//      }
+//    }
+//
+//
+//    if (theBuyer.getPersonalPoints() < theOffer.getPointCost())
+//    {
+//      Alert alert = new Alert(Alert.AlertType.ERROR,
+//          "Fckin poor.");
+//      alert.setTitle("Error");
+//      alert.setHeaderText(null);
+//      alert.showAndWait();
+//      return false;
+//    }
+//
+//    theSeller.setPersonalPoints(theSeller.getPersonalPoints() + theOffer.getPointCost());
+//    theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - theOffer.getPointCost());
+//    theOffer.setBuyer(theBuyer);
+//
+//    removeTradeOffer(theOffer);
+//    saveResidents(residents);
+//    return true;
+//  }
 
 
 
