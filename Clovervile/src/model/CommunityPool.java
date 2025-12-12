@@ -1,11 +1,14 @@
 package model;
+
+import java.io.Serializable;
+
 /**
  * A class that represents the community's total pool of points.
  * It combines personal points from residents and green points from actions.
  * @author Yuliia Iliienko
  * @version 1.0
  */
-public class CommunityPool
+public class CommunityPool implements Serializable
 {
   private int totalPoints;
 

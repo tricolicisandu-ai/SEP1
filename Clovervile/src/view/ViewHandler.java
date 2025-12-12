@@ -76,10 +76,13 @@ public class ViewHandler
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CommunityProgress/MainSetThresholdView.fxml"));
     try
     {
+      System.out.println("7777");
       Parent root = loader.load();
+      System.out.println("8888");
       Scene scene = new Scene(root);
       MainSetThresholdController controller = loader.getController();
       controller.init(this, scene, modelManager);
+      System.out.println("3");
       stage.setScene(scene);
       stage.show();
     }
