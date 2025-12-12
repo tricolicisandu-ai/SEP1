@@ -24,6 +24,8 @@ public class PersonalPointsViewController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+
+    displayResidents(); //для завантаження списку резидентів у таблицю
   }
 
   public void initialize()
@@ -31,6 +33,20 @@ public class PersonalPointsViewController
     addPoints.setText("");
     residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
   }
+
+
+  // для відображення резидентів у таблиці
+  private void displayResidents()
+  {
+    ResidentList residentTab = modelManager.getAllResidents();
+    for(int i = 0; i< residentTab.getNumberOfResidents(); i++)
+    {
+      residentList.getItems().add(residentTab.getResident(i));
+    }
+  }
+
+
+
   public void setResidentList( ListView<Resident> residentList)
   {
     this.residentList = residentList;
@@ -39,7 +55,7 @@ public class PersonalPointsViewController
 
   public void confirm(ActionEvent actionEvent)
   {
-    //if (e.getSource() == confirm)   ??
+    //if (e.getSource() == confirm)
 
     if( addPoints.getText().isEmpty())
     {
@@ -53,7 +69,7 @@ public class PersonalPointsViewController
     int newPoints = 0;
     try
     {
-      newPoints = Integer.parseInt(addPoints.getText());  //??? в дужках
+      newPoints = Integer.parseInt(addPoints.getText());
     }
     catch (NumberFormatException e)
     {
@@ -115,6 +131,9 @@ public class PersonalPointsViewController
       CommunityPool pool = modelManager.getCommunityPool();
       pool.setTotalPoints(pool.getTotalPoints()+total);
       modelManager.saveCommunityPool(pool);
+
+      //для оновлення списка резидентів
+      displayResidents();
 
     }
 
