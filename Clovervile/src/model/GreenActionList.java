@@ -1,5 +1,4 @@
 package model;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -121,5 +120,7 @@ public class GreenActionList implements Serializable
     {
       return greenActions.equals(other.greenActions);
     }
+
+
   }
 }

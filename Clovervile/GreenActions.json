@@ -1,0 +1,24 @@
+{
+  "greenActions": [
+    {
+      "name": "Bike",
+      "greenPoints": 45
+    },
+    {
+      "name": "bikes",
+      "greenPoints": 77
+    },
+    {
+      "name": "gg",
+      "greenPoints": 5
+    },
+    {
+      "name": "ff",
+      "greenPoints": 6
+    },
+    {
+      "name": "read",
+      "greenPoints": 10
+    }
+  ]
+}

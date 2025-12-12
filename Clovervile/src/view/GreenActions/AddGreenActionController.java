@@ -83,6 +83,7 @@ public class AddGreenActionController
         GreenActionList list = modelManager.getAllGreenActions();
         list.addGreenAction(newGreenAction);
         modelManager.saveGreenActions(list);
+        modelManager.saveGreenActionsAsJson(list);
 
      // }
     }
