@@ -321,7 +321,7 @@ public class CloverVilleModelManager
   public CommunityPool getCommunityPool()
   {
     // Initialize empty resident list
-    CommunityPool pool = null;
+    CommunityPool pool = new CommunityPool();
 
     try
     {

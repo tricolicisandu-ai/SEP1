@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.CloverVilleModelManager;
+import model.CommunityPool;
 import model.GreenAction;
 import model.GreenActionList;
 import javafx.scene.Scene;
@@ -82,6 +83,10 @@ public class AddGreenActionController
         //{
         GreenActionList list = modelManager.getAllGreenActions();
         list.addGreenAction(newGreenAction);
+
+        CommunityPool pool = modelManager.getCommunityPool();
+        pool.setTotalPoints( pool.getTotalPoints()+Point);
+        modelManager.saveCommunityPool(pool);
         modelManager.saveGreenActions(list);
         modelManager.saveGreenActionsAsJson(list);
 

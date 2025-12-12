@@ -142,12 +142,13 @@ public class PersonalPointsViewController
     {
       int total = modelManager.getAllResidents().getAllPersonalPoints();
 
-      modelManager.getAllResidents().resetAllPersonalPoints();
+      ResidentList allResidents = modelManager.getAllResidents();
+      allResidents.resetAllPersonalPoints();
 
       CommunityPool pool = modelManager.getCommunityPool();
       pool.setTotalPoints(pool.getTotalPoints()+total);
       modelManager.saveCommunityPool(pool);
-
+      modelManager.saveResidents(allResidents);
       //для оновлення списка резидентів
       displayResidents();
 

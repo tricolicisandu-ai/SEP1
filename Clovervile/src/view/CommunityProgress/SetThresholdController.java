@@ -30,13 +30,14 @@ public class SetThresholdController
     this.viewHandler = viewHandler;
     this.modelManager = modelManager;
     this.scene = scene;
+    handleCommunity();
   }
 
   public void initialize()
   {
     thresholdGoalField.setText("");
     pointsField.setText("");
-    handleCommunity();
+
   }
 
   @FXML private void handleAdd (ActionEvent event)
