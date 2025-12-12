@@ -40,6 +40,7 @@ public class ManageResidentsViewController
 
   }
 
+
   public void reset()
   {
     if (modelManager != null)
