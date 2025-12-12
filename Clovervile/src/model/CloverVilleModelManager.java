@@ -1,7 +1,10 @@
 package model;
 
+import parser.ParserException;
+import parser.XmlJsonParser;
 import utils.MyFileHandler;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -105,9 +108,9 @@ public class CloverVilleModelManager
     TradeOfferList allTradeOffers = new TradeOfferList();
 
     try
-  {
-    allTradeOffers = (TradeOfferList) MyFileHandler.readFromBinaryFile(tradeOffersFile);
-  }
+    {
+      allTradeOffers = (TradeOfferList) MyFileHandler.readFromBinaryFile(tradeOffersFile);
+    }
     catch (FileNotFoundException e)
     {
       System.out.println("File Not Found");
@@ -133,7 +136,7 @@ public class CloverVilleModelManager
       GreenAction greenAction = allGreenActions.getIndex(i);
 
       if (greenAction.getName().equals(name) && greenAction.getGreenPoints()==greenPoints)
-      greenAction.setName(name);
+        greenAction.setName(name);
       greenAction.setGreenPoints(greenPoints);
     }
     try
@@ -152,23 +155,23 @@ public class CloverVilleModelManager
   }
 
 
-//  // Change the country of the model.Student with the given firstname and lastname
-//  public void changeCountry(String firstName, String lastName, String country)
-//  {
-//    StudentList allStudents = getAllStudents();
-//
-//    for (int i = 0; i < allStudents.size(); i++)
-//    {
-//      Student student = allStudents.get(i);
-//
-//      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
-//      {
-//        student.setCountry(country);
-//      }
-//    }
-//
-//    saveStudents(allStudents);
-//  }
+  //  // Change the country of the model.Student with the given firstname and lastname
+  //  public void changeCountry(String firstName, String lastName, String country)
+  //  {
+  //    StudentList allStudents = getAllStudents();
+  //
+  //    for (int i = 0; i < allStudents.size(); i++)
+  //    {
+  //      Student student = allStudents.get(i);
+  //
+  //      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
+  //      {
+  //        student.setCountry(country);
+  //      }
+  //    }
+  //
+  //    saveStudents(allStudents);
+  //  }
 
   public void editResident(String firstName, String lastName, int personalPoints)
   {
@@ -352,7 +355,7 @@ public class CloverVilleModelManager
 
   public void removeTradeOffer(TradeOffer tradeOffer)
   {
-     TradeOfferList tradeOfferList = getAllTradeOffers();
+    TradeOfferList tradeOfferList = getAllTradeOffers();
     tradeOfferList.remove(tradeOffer);
     saveTradeOffers(tradeOfferList);
   }
@@ -390,15 +393,15 @@ public class CloverVilleModelManager
       ResidentList residents = getAllResidents();
       Resident seller = tradeOffer.getSeller();
 
-Resident theBuyer = null;
-Resident theSeller = null;
+      Resident theBuyer = null;
+      Resident theSeller = null;
 
       for (int i = 0; i < residents.getNumberOfResidents() ; i++)
       {
-         if(residents.getResident(i).equals(buyer))
-         {
+        if(residents.getResident(i).equals(buyer))
+        {
           theBuyer = residents.getResident(i);
-         }
+        }
         if(residents.getResident(i).equals(seller))
         {
           theSeller = residents.getResident(i);
@@ -409,13 +412,13 @@ Resident theSeller = null;
       {
         if (theSeller.getPersonalPoints() >= theOffer.getPointCost())
         {
-  theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
+          theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
           theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
-         theOffer.setBuyer(theBuyer);
+          theOffer.setBuyer(theBuyer);
 
 
-         saveTradeOffers(offers);
-         saveResidents(residents);
+          saveTradeOffers(offers);
+          saveResidents(residents);
 
 
           return true;
@@ -423,5 +426,38 @@ Resident theSeller = null;
       }
     }
     return false;
+  }
+
+  public void saveGreenActionsAsJson(GreenActionList list)
+  {
+
+    XmlJsonParser greenActionParser = new XmlJsonParser();
+    try
+    {
+      greenActionParser.toJsonFile(list, "Clovervile/GreenActions.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
+
+  }
+
+
+  public void saveResidentListAsJson(ResidentList list)
+  {
+
+    XmlJsonParser residentParser = new XmlJsonParser();
+    try
+    {
+      residentParser.toJsonFile(list, "Clovervile/Resident.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
+
   }
 }
