@@ -1,8 +1,10 @@
 package model;
 
-import javafx.scene.control.Alert;
+import parser.ParserException;
+import parser.XmlJsonParser;
 import utils.MyFileHandler;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -106,9 +108,9 @@ public class CloverVilleModelManager
     TradeOfferList allTradeOffers = new TradeOfferList();
 
     try
-  {
-    allTradeOffers = (TradeOfferList) MyFileHandler.readFromBinaryFile(tradeOffersFile);
-  }
+    {
+      allTradeOffers = (TradeOfferList) MyFileHandler.readFromBinaryFile(tradeOffersFile);
+    }
     catch (FileNotFoundException e)
     {
       System.out.println("File Not Found");
@@ -124,8 +126,7 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-  public void editGreenAction(String oldName, int oldGreenPoints,
-      String newName, int newGreenPoints)
+  public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
   {
 
     GreenActionList allGreenActions = getAllGreenActions();
@@ -135,11 +136,8 @@ public class CloverVilleModelManager
       GreenAction greenAction = allGreenActions.getIndex(i);
 
       if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
-      {
         greenAction.setName(newName);
-        greenAction.setGreenPoints(newGreenPoints);
-      }
-      saveGreenActions(allGreenActions);
+      greenAction.setGreenPoints(newGreenPoints);
     }
     try
     {
@@ -157,46 +155,41 @@ public class CloverVilleModelManager
   }
 
 
+  //  // Change the country of the model.Student with the given firstname and lastname
+  //  public void changeCountry(String firstName, String lastName, String country)
+  //  {
+  //    StudentList allStudents = getAllStudents();
+  //
+  //    for (int i = 0; i < allStudents.size(); i++)
+  //    {
+  //      Student student = allStudents.get(i);
+  //
+  //      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
+  //      {
+  //        student.setCountry(country);
+  //      }
+  //    }
+  //
+  //    saveStudents(allStudents);
+  //  }
 
-public void editResident(String oldFirstName, String oldLastName, int oldPersonalPoints,
-    String newFirstName, String newLastName, int newPersonalPoints)
-{
-  ResidentList residents = getAllResidents();
-  for (int i = 0; i < residents.getNumberOfResidents(); i++)
+  public void editResident(String firstName, String lastName, int personalPoints)
   {
-    Resident resident = residents.getResident(i);
+    ResidentList newResidents = getAllResidents();
 
-    // Find the resident by their current name
-    if (resident.getFirstName().equals(oldFirstName) && resident.getLastName()
-        .equals(oldLastName) && resident.getPersonalPoints() == oldPersonalPoints)
+    try
     {
-      // Update to new values
-      resident.setFirstName(newFirstName);
-      resident.setLastName(newLastName);
-      resident.setPersonalPoints(newPersonalPoints);
-
-      // Save the updated list back
-      saveResidents(residents); // You need this method
-      return; // Exit after finding and editing
+      MyFileHandler.writeToBinaryFile(residentsFile, newResidents);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to the file");
     }
   }
-
-      try
-      {
-        MyFileHandler.writeToBinaryFile(residentsFile, residents);
-      }
-      catch (FileNotFoundException e)
-      {
-        System.out.println("File not found");
-      }
-      catch (IOException e)
-      {
-        System.out.println("IO Error writing to the file");
-      }
-    }
-
-
-
 
   public void saveResidents(ResidentList residents)
   {
@@ -349,8 +342,6 @@ public void editResident(String oldFirstName, String oldLastName, int oldPersona
     ResidentList residentList = getAllResidents();
     residentList.removeResident(resident);
     saveResidents(residentList);
-
-
   }
 
 
@@ -364,7 +355,7 @@ public void editResident(String oldFirstName, String oldLastName, int oldPersona
 
   public void removeTradeOffer(TradeOffer tradeOffer)
   {
-     TradeOfferList tradeOfferList = getAllTradeOffers();
+    TradeOfferList tradeOfferList = getAllTradeOffers();
     tradeOfferList.remove(tradeOffer);
     saveTradeOffers(tradeOfferList);
   }
@@ -387,127 +378,86 @@ public void editResident(String oldFirstName, String oldLastName, int oldPersona
 
   public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
-      TradeOfferList offers = getAllTradeOffers();
-      TradeOffer theOffer = null;
-      for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
+    TradeOfferList offers = getAllTradeOffers();
+    TradeOffer theOffer = null;
+    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
+    {
+      if(offers.getTradeOffer(i).equals(tradeOffer))
       {
-        if (offers.getTradeOffer(i).equals(tradeOffer))
+        theOffer = offers.getTradeOffer(i);
+      }
+    }
+
+    if(theOffer!=null)
+    {
+      ResidentList residents = getAllResidents();
+      Resident seller = tradeOffer.getSeller();
+
+      Resident theBuyer = null;
+      Resident theSeller = null;
+
+      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
+      {
+        if(residents.getResident(i).equals(buyer))
         {
-          theOffer = offers.getTradeOffer(i);
-          break;
+          theBuyer = residents.getResident(i);
+        }
+        if(residents.getResident(i).equals(seller))
+        {
+          theSeller = residents.getResident(i);
         }
       }
 
-      if (theOffer != null)
+      if(theBuyer!=null && theSeller!=null)
       {
-        System.out.println("1");
-        ResidentList residents = getAllResidents();
-        Resident seller = tradeOffer.getSeller();
-
-        Resident theBuyer = null;
-        Resident theSeller = null;
-
-        for (int i = 0; i < residents.getNumberOfResidents(); i++)
+        if (theSeller.getPersonalPoints() >= theOffer.getPointCost())
         {
-          if (residents.getResident(i).equals(buyer))
-          {
-            System.out.println("2");
-            theBuyer = residents.getResident(i);
-          }
-          if (residents.getResident(i).equals(seller))
-          {
-            System.out.println("3");
-            theSeller = residents.getResident(i);
-          }
+          theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
+          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
+          theOffer.setBuyer(theBuyer);
+
+
+          saveTradeOffers(offers);
+          saveResidents(residents);
+
+
+          return true;
         }
-
-        if (theBuyer != null && theSeller != null)
-        {
-          System.out.println("4");
-          if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
-          {
-            theSeller.setPersonalPoints(theSeller.getPersonalPoints() + theOffer.getPointCost());
-            theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - theOffer.getPointCost());
-            theOffer.setBuyer(theBuyer);
-
-//            removeTradeOffer(theOffer);
-            saveResidents(residents);
-            saveTradeOffers(offers);
-            System.out.println("eguwrogwgwf");
-            return true;
-          }
-
-
-        }
-
       }
-
+    }
     return false;
   }
 
+  public void saveGreenActionsAsJson(GreenActionList list)
+  {
 
-//  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
-//  {
-//    TradeOfferList offers = getAllTradeOffers();
-//    TradeOffer theOffer = null;
-//    for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
-//    {
-//      if (offers.getTradeOffer(i).equals(tradeOffer))
-//      {
-//        theOffer = offers.getTradeOffer(i);
-//        break;
-//      }
-//    }
-//
-//    if (theOffer == null)
-//    {
-//      Alert alert = new Alert(Alert.AlertType.ERROR,
-//          "Trade offer not found.");
-//      alert.setTitle("Error");
-//      alert.setHeaderText(null);
-//      alert.showAndWait();
-//      return false;
-//    }
-//
-//    Resident seller = tradeOffer.getSeller();
-//    ResidentList residents = getAllResidents();
-//
-//    Resident theBuyer = null;
-//    Resident theSeller = null;
-//
-//    for (int i = 0; i < residents.getNumberOfResidents(); i++)
-//    {
-//      if (residents.getResident(i).equals(buyer))
-//      {
-//        theBuyer = residents.getResident(i);
-//      }
-//      if (residents.getResident(i).equals(seller))
-//      {
-//        theSeller = residents.getResident(i);
-//      }
-//    }
-//
-//
-//    if (theBuyer.getPersonalPoints() < theOffer.getPointCost())
-//    {
-//      Alert alert = new Alert(Alert.AlertType.ERROR,
-//          "Fckin poor.");
-//      alert.setTitle("Error");
-//      alert.setHeaderText(null);
-//      alert.showAndWait();
-//      return false;
-//    }
-//
-//    theSeller.setPersonalPoints(theSeller.getPersonalPoints() + theOffer.getPointCost());
-//    theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - theOffer.getPointCost());
-//    theOffer.setBuyer(theBuyer);
-//
-//    removeTradeOffer(theOffer);
-//    saveResidents(residents);
-//    return true;
-//  }
+    XmlJsonParser greenActionParser = new XmlJsonParser();
+    try
+    {
+      greenActionParser.toJsonFile(list, "Clovervile/GreenActions.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
+
+  }
 
 
+  public void saveResidentListAsJson(ResidentList list)
+  {
 
+    XmlJsonParser residentParser = new XmlJsonParser();
+    try
+    {
+      residentParser.toJsonFile(list, "Clovervile/Resident.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
 
+  }
 }

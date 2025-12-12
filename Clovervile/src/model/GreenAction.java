@@ -1,6 +1,7 @@
 package model;
-
 import java.io.Serializable;
+
+
 
 
 /**
@@ -88,5 +89,7 @@ public class GreenAction implements Serializable
 
     GreenAction other = (GreenAction) obj;
     return name.equals(other.name)&& greenPoints == other.greenPoints;
+
+
   }
 }
