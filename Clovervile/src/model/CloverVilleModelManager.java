@@ -470,6 +470,37 @@ public class CloverVilleModelManager
       System.out.println("Error");
       System.out.println(e.getMessage());
     }
+  }
+
+  public void saveTradeOfferListAsJson(TradeOfferList list)
+  {
+
+    XmlJsonParser tradeOffersParser = new XmlJsonParser();
+    try
+    {
+      tradeOffersParser.toJsonFile(list, "Clovervile/TradeOffers.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public void saveThresholdAsJson(Threshold list)
+  {
+
+    XmlJsonParser thresholdParser = new XmlJsonParser();
+    try
+    {
+      thresholdParser.toJsonFile(list, "Clovervile/Threshold.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
 
   }
+
 }
