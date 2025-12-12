@@ -124,6 +124,7 @@ public class PersonalPointsViewController
         modelManager.addPersonalPoints(selectList,
             newPoints);//чи вірно викликаний метод і чи вірно в дужках
         displayResidents();
+        addPoints.clear();
       }
     }
   }
