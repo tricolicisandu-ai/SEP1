@@ -83,6 +83,7 @@ public class ManageGreenActionController
       updateListBox();
       greenTaskField.setText("");
       pointField.setText("");
+      
     }
 
     else if (e.getSource() == listBox)
