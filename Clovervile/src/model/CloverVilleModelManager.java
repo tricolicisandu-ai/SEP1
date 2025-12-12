@@ -123,7 +123,7 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-  public void editGreenAction(String name, int greenPoints)
+  public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
   {
 
     GreenActionList allGreenActions = getAllGreenActions();
@@ -132,9 +132,9 @@ public class CloverVilleModelManager
     {
       GreenAction greenAction = allGreenActions.getIndex(i);
 
-      if (greenAction.getName().equals(name) && greenAction.getGreenPoints()==greenPoints)
-      greenAction.setName(name);
-      greenAction.setGreenPoints(greenPoints);
+      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
+      greenAction.setName(newName);
+      greenAction.setGreenPoints(newGreenPoints);
     }
     try
     {
