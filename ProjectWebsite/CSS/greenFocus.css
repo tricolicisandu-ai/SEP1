@@ -51,7 +51,7 @@ header img{
     "list image";
 }
 
-.greenFocusList{
+#greenFocusList{
     width: auto;
     min-height: 700px;
     padding: 2em;

@@ -56,7 +56,7 @@ header img{
     "image-trade list list";
 }
 
-.tradeOfferList{
+#tradeOfferList{
     margin-left: 20px;
     width: 100%;
     min-height: 700px;
@@ -92,7 +92,7 @@ footer{
     border-radius: 10px;
 }
 
-.tradeOfferList{
+#tradeOfferList{
     margin: 0px;
     margin-top: 10px;
 }

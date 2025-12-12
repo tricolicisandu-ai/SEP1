@@ -457,13 +457,13 @@ public class CloverVilleModelManager
   }
 
 
-  public void saveTradeOfferListAsJson(TradeOfferList list)
+  public void saveTradeOfferListAsJson(TradeOfferList tradeOfferList)
   {
 
     XmlJsonParser tradeOffersParser = new XmlJsonParser();
     try
     {
-      tradeOffersParser.toJsonFile(list, "Clovervile/TradeOffers.json");
+      tradeOffersParser.toJsonFile(tradeOfferList, "Clovervile/TradeOffers.json");
     }
     catch (ParserException e)
     {
@@ -472,13 +472,13 @@ public class CloverVilleModelManager
     }
   }
 
-  public void saveThresholdAsJson(Threshold list)
+  public void saveThresholdAsJson(Threshold newThreshold)
   {
 
     XmlJsonParser thresholdParser = new XmlJsonParser();
     try
     {
-      thresholdParser.toJsonFile(list, "Clovervile/Threshold.json");
+      thresholdParser.toJsonFile(newThreshold, "Clovervile/Threshold.json");
     }
     catch (ParserException e)
     {
@@ -488,13 +488,13 @@ public class CloverVilleModelManager
 
   }
 
-  public void saveCommunityPoolAsJson(CommunityPool list)
+  public void saveCommunityPoolAsJson(CommunityPool test1)
   {
 
     XmlJsonParser communityPoolParser = new XmlJsonParser();
     try
     {
-      communityPoolParser.toJsonFile(list, "Clovervile/CommunityPool.json");
+      communityPoolParser.toJsonFile(test1, "Clovervile/CommunityPool.json");
     }
     catch (ParserException e)
     {
