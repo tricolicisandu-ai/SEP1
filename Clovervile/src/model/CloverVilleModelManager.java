@@ -422,7 +422,7 @@ public class CloverVilleModelManager
 
       if(theBuyer!=null && theSeller!=null)
       {
-        if (theSeller.getPersonalPoints() >= theOffer.getPointCost())
+        if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
         {
           theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
           theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
