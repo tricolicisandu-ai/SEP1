@@ -457,21 +457,6 @@ public class CloverVilleModelManager
   }
 
 
-  public void saveResidentListAsJson(ResidentList list)
-  {
-
-    XmlJsonParser residentParser = new XmlJsonParser();
-    try
-    {
-      residentParser.toJsonFile(list, "Clovervile/Resident.json");
-    }
-    catch (ParserException e)
-    {
-      System.out.println("Error");
-      System.out.println(e.getMessage());
-    }
-  }
-
   public void saveTradeOfferListAsJson(TradeOfferList list)
   {
 
@@ -494,6 +479,22 @@ public class CloverVilleModelManager
     try
     {
       thresholdParser.toJsonFile(list, "Clovervile/Threshold.json");
+    }
+    catch (ParserException e)
+    {
+      System.out.println("Error");
+      System.out.println(e.getMessage());
+    }
+
+  }
+
+  public void saveCommunityPoolAsJson(CommunityPool list)
+  {
+
+    XmlJsonParser communityPoolParser = new XmlJsonParser();
+    try
+    {
+      communityPoolParser.toJsonFile(list, "Clovervile/CommunityPool.json");
     }
     catch (ParserException e)
     {
