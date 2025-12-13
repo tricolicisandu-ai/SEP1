@@ -61,6 +61,7 @@ public class SetThresholdController
       int Point = Integer.parseInt(pointCost);
       newThreshold= new Threshold(threshold, Point);
       modelManager.setThreshold(newThreshold);
+      modelManager.saveThresholdAsJson(newThreshold);
     }
     catch (NumberFormatException e)
     {

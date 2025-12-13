@@ -90,6 +90,7 @@ public class AddTradeOfferController
 
         tradeOfferList.add(tradeOffer);
         modelManager.saveTradeOffers(tradeOfferList);
+        modelManager.saveTradeOfferListAsJson(tradeOfferList);
       }
     }
     catch (NumberFormatException e)

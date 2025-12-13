@@ -1,0 +1,36 @@
+{
+  "offers": [
+    {
+      "offerName": "Pants",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "j",
+        "personalPoints": 34
+      }
+    },
+    {
+      "offerName": "cleaning windows",
+      "pointCost": 9,
+      "seller": {
+        "firstName": "Marina",
+        "lastName": "C",
+        "personalPoints": 50
+      },
+      "buyer": {
+        "firstName": "Marina",
+        "lastName": "C",
+        "personalPoints": 50
+      }
+    },
+    {
+      "offerName": "ba",
+      "pointCost": 9,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "j",
+        "personalPoints": 34
+      }
+    }
+  ]
+}

@@ -78,6 +78,7 @@ public class AddResidentViewController
       list.addResident(resident);
       modelManager.saveResidents(list);
 
+
     }
     catch (NumberFormatException e)
     {
