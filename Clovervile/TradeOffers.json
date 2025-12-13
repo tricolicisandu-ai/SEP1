@@ -31,6 +31,15 @@
         "lastName": "j",
         "personalPoints": 34
       }
+    },
+    {
+      "offerName": "Ananas",
+      "pointCost": 50,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "Yuliia",
+        "personalPoints": 15
+      }
     }
   ]
 }
