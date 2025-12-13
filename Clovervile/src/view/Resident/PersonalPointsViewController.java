@@ -39,6 +39,7 @@ public class PersonalPointsViewController
     if (modelManager != null)
     {
       addPoints.clear();
+      displayResidents();
     }
   }
 
@@ -148,9 +149,11 @@ public class PersonalPointsViewController
       CommunityPool pool = modelManager.getCommunityPool();
       pool.setTotalPoints(pool.getTotalPoints()+total);
       modelManager.saveCommunityPool(pool);
+      modelManager.saveCommunityPoolAsJson(pool);
       modelManager.saveResidents(allResidents);
       //для оновлення списка резидентів
       displayResidents();
+
 
     }
 

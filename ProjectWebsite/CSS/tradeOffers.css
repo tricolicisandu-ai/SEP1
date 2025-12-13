@@ -3,6 +3,8 @@
 :root{
     --background1-text-color-1--: #707351;
     --text-color2-: #ffff;
+    --list-text1--: #9f9268;
+    --list-text2--:  #7e6758;
     --list-background--: #faf9f4;
     --border--: #6f744d;
 }
@@ -58,6 +60,8 @@ header img{
 
 #tradeOfferList{
     margin-left: 20px;
+    padding: 20px 40px;
+    list-style: none;
     width: 100%;
     min-height: 700px;
     border-style: solid;
@@ -65,6 +69,40 @@ header img{
     border-width: 2px;
     border-radius: 10px;
     background-color: var(--list-background--);
+}
+
+#tradeOfferList li{
+    margin-top: 30px;
+}
+.tradeOffer-name{
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--background1-text-color-1--);
+    font-family: "Antonio", sans-serif;
+}
+
+.tradeOffer-points {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 25px;
+    margin-left: 20px;
+    font-weight: 500;
+    font-family: "Antonio", sans-serif;
+    color: var(--list-text1--);
+    
+}
+
+.tradeOffer-seller strong{
+    margin-left: 40px;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--list-text2--);
+
+}
+
+.tradeOffer-seller{
+    font-size:  22px;
+    font-weight: 400;
 }
 
 footer{
@@ -96,10 +134,11 @@ footer{
     margin: 0px;
     margin-top: 10px;
 }
-    
+
 }
 
 @media (max-width: 425px){
+
     header{
         padding-bottom: 5px;
     }
@@ -119,11 +158,36 @@ footer{
     header h3{
         font-size: 18px;
     }
+    .tradeOffer-name,
+    .tradeOffer-points {
+        text-size-adjust: 90%;
+        display: block;   /* forces new line */
+    }
+    
+    .tradeOffer-seller strong {
+    margin: 0px;
+    }
+
+    .tradeOffer-seller {
+        text-size-adjust: 80%;
+    }
+    .tradeOffer-points {
+        margin-left: 20px; 
+        margin-bottom: -10px;
+    }
+
+    #tradeOfferList li{
+    margin-top: 25px;
+    }
+    
 }
 
 @media (max-width: 375px){
     .title{
         text-size-adjust: 40%;
     }
+
+    
 }
+
 
