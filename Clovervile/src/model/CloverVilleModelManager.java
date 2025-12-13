@@ -173,7 +173,6 @@ public class CloverVilleModelManager
   //
   //    saveStudents(allStudents);
   //  }
-
   public void editResident(String oldFirstName, String oldLastName,
       int oldPersonalPoints, String newFirstName, String newLastName,
       int newPersonalPoints)
@@ -207,6 +206,9 @@ public class CloverVilleModelManager
       System.out.println("IO Error writing to the file");
     }
   }
+
+
+
 
   public void saveResidents(ResidentList residents)
   {

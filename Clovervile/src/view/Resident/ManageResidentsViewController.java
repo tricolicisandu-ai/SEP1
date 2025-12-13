@@ -97,8 +97,10 @@ public class ManageResidentsViewController
 //    }
 //  }
 
-  public void handleEdit(ActionEvent e) {
-    if (e.getSource() == editButton) {
+  public void handleEdit(ActionEvent e)
+  {
+    if (e.getSource() == editButton)
+    {
       // Get the resident currently selected in combo box
       Resident selectedResident = residentsComboBox.getSelectionModel().getSelectedItem();
 
@@ -116,7 +118,8 @@ public class ManageResidentsViewController
       modelManager.saveResidents(modelManager.getAllResidents());
       updateResidentsComboBox();
     }
-    else if (e.getSource() == residentsComboBox) {
+    else if (e.getSource() == residentsComboBox)
+    {
       Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
 
       if (temp != null) {
@@ -125,7 +128,7 @@ public class ManageResidentsViewController
         pointsField.setText(String.valueOf(temp.getPersonalPoints()));
       }
     }
-    updateResidentsComboBox();
+
   }
 
 
