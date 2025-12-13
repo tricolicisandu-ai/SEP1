@@ -4,6 +4,7 @@
     --background1-text-color-1--: #ffff;
     --text-color2-: #707351;
     --list-background--: #ffe8c6;
+    --list-textcolor--: #634b26;
 }
 
 header{
@@ -54,16 +55,40 @@ header img{
 #greenFocusList{
     width: auto;
     min-height: 700px;
-    padding: 2em;
+    padding: 3em;
     border-radius: 18px;
     background-color: var(--list-background--);
 }
+
+#greenFocusList li{
+    list-style-type: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.greenAction-name {
+    font-size: 45px;
+    font-weight: 450;
+    color: var(--text-color2-);
+    
+}
+
+.greenAction-points {
+    font-size: 25px;
+    color: var(--list-textcolor--)
+
+}
+
+
 
 @media (max-width: 768px) {
 
     header h1{
         font-size: 85px;
         line-height: 0.9;
+    }
+
+    #greenFocusList{
+        text-size-adjust: 65%;
     }
 
     .grid-container-gf
@@ -117,6 +142,10 @@ header img{
         font-size: 12px;
         padding: 0 10px;
         text-align: center;
+    }
+
+    #greenFocusList{
+        text-size-adjust: 55%;
     }
 
     .grid-container-gf {
