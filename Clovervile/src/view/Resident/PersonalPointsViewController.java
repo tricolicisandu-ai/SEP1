@@ -39,7 +39,10 @@ public class PersonalPointsViewController
     if (modelManager != null)
     {
       addPoints.clear();
+      displayResidents();
+      residentList.refresh();
     }
+
   }
 
 
@@ -126,7 +129,9 @@ public class PersonalPointsViewController
         displayResidents();
         addPoints.clear();
       }
+
     }
+
   }
 
   public void resetPoints(ActionEvent actionEvent)

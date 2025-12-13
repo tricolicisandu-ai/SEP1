@@ -113,7 +113,7 @@ public class ManageResidentsViewController
       // Use old values to find, new values to update
       modelManager.editResident(oldFirstName, oldLastName,oldPersonalPoints,
           newFirstName, newLastName, newPoints);
-
+      modelManager.saveResidents(modelManager.getAllResidents());
       updateResidentsComboBox();
     }
     else if (e.getSource() == residentsComboBox) {
@@ -125,6 +125,7 @@ public class ManageResidentsViewController
         pointsField.setText(String.valueOf(temp.getPersonalPoints()));
       }
     }
+    updateResidentsComboBox();
   }
 
 
