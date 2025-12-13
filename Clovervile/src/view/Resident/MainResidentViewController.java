@@ -90,7 +90,7 @@ public class MainResidentViewController
       {
         if (addResidentViewController != null)
         {
-          //addResidentViewController.reset();
+          addResidentViewController.reset();
         }
       }
       else if (manageResidentsTab.isSelected())
@@ -104,7 +104,7 @@ public class MainResidentViewController
       {
         if (personalPointsViewController != null)
         {
-          //personalPointsViewController.reset();
+          personalPointsViewController.reset();
         }
       }
     }
