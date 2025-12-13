@@ -79,4 +79,14 @@ public class SetThresholdController
     CommunityPool communityPool = modelManager.getCommunityPool();
     communityPointsField.setText(communityPool.getTotalPoints()+"");
   }
+
+  public void reset()
+  {
+    if (modelManager != null)
+    {
+      thresholdGoalField.clear();
+      pointsField.clear();
+      handleCommunity();
+    }
+  }
 }
