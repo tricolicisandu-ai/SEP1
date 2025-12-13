@@ -39,6 +39,7 @@ public class PersonalPointsViewController
     if (modelManager != null)
     {
       addPoints.clear();
+      displayResidents();
     }
   }
 

@@ -77,7 +77,7 @@ public class MainSetThresholdController
       {
         if (setThresholdController != null)
         {
-          //setThresholdController.reset();
+          setThresholdController.reset();
         }
       }
     }

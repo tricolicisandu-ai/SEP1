@@ -76,7 +76,7 @@ public class AddGreenActionController
     try
     {
 
-        int Point = Integer.parseInt(PointField);
+        int  Point = Integer.parseInt(PointField);
         GreenAction newGreenAction = new GreenAction(GreenTaskField, Point);
 
         // if (greenActionList != null)
