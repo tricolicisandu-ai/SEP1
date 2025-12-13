@@ -29,14 +29,13 @@ fetch("../Clovervile/TradeOffers.json")
 
         data.offers.forEach(offer => {
             html += `
-            <li>
-                <span class="tradeOffer-name">${offer.offerName}</span>
-                <span class="tradeOffer-points">— ${offer.pointCost} points</span>
-                <br>
-                <span class="tradeOffer-seller">Seller:</span>
-                <span class="tradeOffer-sellername">${offer.seller.firstName} ${offer.seller.lastName}<span>
-            </li>
-            `;
+        <li>
+            <span class="tradeOffer-name">${offer.offerName}</span>
+            <span class="tradeOffer-points">— ${offer.pointCost} points</span>
+            <br>
+            <span class="tradeOffer-seller">
+            <strong>Seller:</strong> ${offer.seller.firstName} ${offer.seller.lastName}</span>
+        </li>`;
         });
 
     document.getElementById("tradeOfferList").innerHTML = html;
@@ -57,3 +56,12 @@ fetch("../Clovervile/Threshold.json")
         `<h2>TO GET: ${data.goalName}</h2>`;
     })
     .catch(error => console.error("Error fetching threshold JSON:", error));
+
+
+
+    fetch("../Clovervile/CommunityPool.json")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("communityPool").innerHTML =
+        `<h1>${data.totalPoints}</h1>`;
+    });

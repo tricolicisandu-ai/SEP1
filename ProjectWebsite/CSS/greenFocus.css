@@ -55,7 +55,7 @@ header img{
 #greenFocusList{
     width: auto;
     min-height: 700px;
-    padding: 3em;
+    padding: 2em;
     border-radius: 18px;
     background-color: var(--list-background--);
 }
@@ -68,14 +68,15 @@ header img{
 .greenAction-name {
     font-size: 45px;
     font-weight: 450;
-    color: var(--text-color2-);
-    
+    color: var(--text-color2-);    
 }
 
 .greenAction-points {
-    font-size: 25px;
-    color: var(--list-textcolor--)
-
+    font-size: 30px;
+    font-weight: 300;
+    margin-left: 20px;
+    color: var(--list-textcolor--);
+    font-family: "Antonio", sans-serif;
 }
 
 

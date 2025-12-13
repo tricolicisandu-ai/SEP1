@@ -87,6 +87,7 @@ public class AddGreenActionController
         CommunityPool pool = modelManager.getCommunityPool();
         pool.setTotalPoints( pool.getTotalPoints()+Point);
         modelManager.saveCommunityPool(pool);
+        modelManager.saveCommunityPoolAsJson(pool);
         modelManager.saveGreenActions(list);
         modelManager.saveGreenActionsAsJson(list);
 

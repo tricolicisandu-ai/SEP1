@@ -126,32 +126,50 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
+//  public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
+//  {
+//
+//    GreenActionList allGreenActions = getAllGreenActions();
+//
+//    for (int i = 0;  i <allGreenActions.getNumberOfGreenActions(); i++)
+//    {
+//      GreenAction greenAction = allGreenActions.getIndex(i);
+//
+//      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
+//        greenAction.setName(newName);
+//        greenAction.setGreenPoints(newGreenPoints);
+//    }
+//    try
+//    {
+//      MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
+//    }
+//    catch (FileNotFoundException e)
+//    {
+//      System.out.println("File not found");
+//    }
+//    catch (IOException e)
+//    {
+//      System.out.println("IO Error writing to file");
+//    }
+//  }
+
   public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
   {
-
     GreenActionList allGreenActions = getAllGreenActions();
 
-    for (int i = 0;  i <allGreenActions.getNumberOfGreenActions(); i++)
+    for (int i = 0; i < allGreenActions.getNumberOfGreenActions(); i++)
     {
       GreenAction greenAction = allGreenActions.getIndex(i);
 
-      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
+      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints() == oldGreenPoints)
+      {
         greenAction.setName(newName);
-      greenAction.setGreenPoints(newGreenPoints);
-    }
-    try
-    {
-      MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error writing to file");
+        greenAction.setGreenPoints(newGreenPoints);
+      }
     }
 
+    saveGreenActions(allGreenActions);
+    saveGreenActionsAsJson(allGreenActions);
   }
 
 
@@ -313,7 +331,6 @@ public class CloverVilleModelManager
 
     CommunityPool pool = getCommunityPool();
     pool.setTotalPoints(pool.getTotalPoints() + total);
-    saveCommunityPool(pool);
 
   }
 
@@ -347,6 +364,7 @@ public class CloverVilleModelManager
     GreenActionList greenActionList = getAllGreenActions();
     greenActionList.removeGreenAction(greenAction);
     saveGreenActions(greenActionList);
+    saveGreenActionsAsJson(greenActionList);
   }
 
   public void removeResident(Resident resident)
@@ -362,6 +380,7 @@ public class CloverVilleModelManager
     GreenActionList greenActionList = getAllGreenActions();
     greenActionList.resetGreenAction();
     saveGreenActions(greenActionList);
+    saveGreenActionsAsJson(greenActionList);
 
   }
 
@@ -370,6 +389,7 @@ public class CloverVilleModelManager
     TradeOfferList tradeOfferList = getAllTradeOffers();
     tradeOfferList.remove(tradeOffer);
     saveTradeOffers(tradeOfferList);
+    saveTradeOfferListAsJson(tradeOfferList);
   }
 
 
@@ -488,20 +508,19 @@ public class CloverVilleModelManager
 
   }
 
-  public void saveCommunityPoolAsJson(CommunityPool test1)
+  public void saveCommunityPoolAsJson(CommunityPool communityPool)
   {
-
     XmlJsonParser communityPoolParser = new XmlJsonParser();
     try
     {
-      communityPoolParser.toJsonFile(test1, "Clovervile/CommunityPool.json");
+      communityPoolParser.toJsonFile(communityPool, "Clovervile/CommunityPool.json");
     }
     catch (ParserException e)
     {
-      System.out.println("Error");
+      System.out.println("Error saving CommunityPool as JSON");
       System.out.println(e.getMessage());
     }
-
   }
+
 
 }
