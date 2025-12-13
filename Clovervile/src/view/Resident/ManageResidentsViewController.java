@@ -110,7 +110,25 @@ public class ManageResidentsViewController
       int oldPersonalPoints = selectedResident.getPersonalPoints();
       String newFirstName = firstNameField.getText();
       String newLastName = lastNameField.getText();
-      int newPoints = Integer.parseInt(pointsField.getText());
+      //int newPoints = Integer.parseInt(pointsField.getText());
+
+      //  повідомлення для перевірки поля поінтів
+      int newPoints;
+
+
+      try
+      {
+        newPoints = Integer.parseInt(pointsField.getText());
+      }
+      catch (NumberFormatException ex)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Invalid input");
+        alert.setContentText("Personal points must be a number.");
+        alert.showAndWait();
+        return;
+      }
 
       // Use old values to find, new values to update
       modelManager.editResident(oldFirstName, oldLastName,oldPersonalPoints,
