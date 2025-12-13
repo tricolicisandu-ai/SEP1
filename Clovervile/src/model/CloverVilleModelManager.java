@@ -142,6 +142,7 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
+
     }
     catch (FileNotFoundException e)
     {
