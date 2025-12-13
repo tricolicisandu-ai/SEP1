@@ -1,10 +1,10 @@
 {
   "offers": [
     {
-      "offerName": "bls bla bla",
-      "pointCost": 80,
+      "offerName": "hello",
+      "pointCost": 88,
       "seller": {
-        "firstName": "Marina",
+        "firstName": "Anna",
         "lastName": "I",
         "personalPoints": 0
       }
