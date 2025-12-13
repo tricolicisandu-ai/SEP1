@@ -310,7 +310,9 @@ public class CloverVilleModelManager
     saveResidents(all);
 
   }
+ 
 
+  // Ask Allan  !!!!!
   public void resetPoints()// в дужках??  овторюю метод з Controller
   {
     ResidentList residents = getAllResidents();
