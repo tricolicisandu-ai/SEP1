@@ -71,14 +71,7 @@ public class TradeController
       }
 
     }
-
-
-
-
-
-
-
-
+    
   }
 
   public void updateTradeBox()

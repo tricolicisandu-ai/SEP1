@@ -1,12 +1,35 @@
 {
   "offers": [
     {
-      "offerName": "bls bla bla",
-      "pointCost": 80,
+      "offerName": "Pants",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "j",
+        "personalPoints": 34
+      }
+    },
+    {
+      "offerName": "cleaning windows",
+      "pointCost": 9,
       "seller": {
         "firstName": "Marina",
-        "lastName": "I",
-        "personalPoints": 0
+        "lastName": "C",
+        "personalPoints": 50
+      },
+      "buyer": {
+        "firstName": "Marina",
+        "lastName": "C",
+        "personalPoints": 50
+      }
+    },
+    {
+      "offerName": "ba",
+      "pointCost": 9,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "j",
+        "personalPoints": 34
       }
     },
     {
@@ -16,6 +39,24 @@
         "firstName": "Christina",
         "lastName": "Yuliia",
         "personalPoints": 15
+      }
+    },
+    {
+      "offerName": "Beers",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "LALQ",
+        "lastName": "Yuliia",
+        "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "ghfjdks",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Carl",
+        "lastName": "doivwpi",
+        "personalPoints": 0
       }
     }
   ]
