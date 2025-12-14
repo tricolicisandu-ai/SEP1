@@ -16,7 +16,6 @@ import java.io.IOException;
  * @author Yuliia Iliienko
  * @ version 1.0
  */
-
 public class CloverVilleModelManager
 {
   private String residentsFile;
@@ -32,8 +31,6 @@ public class CloverVilleModelManager
    * @param tradeOffersFile the name and path of the file where trade offers will be saved and retrieved
    * @param residentsFile the name and path of the file where residents will be saved and retrieved
    */
-
-
   public CloverVilleModelManager(String greenActionsFile, String tradeOffersFile, String residentsFile,String communityPoolFile, String thresholdsFile)
   {
     this.greenActionsFile = greenActionsFile;
@@ -47,7 +44,6 @@ public class CloverVilleModelManager
    * Uses the MyFileHandler class to retrieve a ResidentList object with all Residents.
    * @return a ResidentList object with all stored students
    */
-
   public ResidentList getAllResidents()
   {
     // Initialize empty resident list
@@ -153,6 +149,13 @@ public class CloverVilleModelManager
 //    }
 //  }
 
+  /**
+   * Edit the green action with the given old name and old green points
+   * @param oldName the old name of the green action
+   * @param oldGreenPoints the old green points of the green action
+   * @param newName the new name of the green action
+   * @param newGreenPoints the new green points of the green action
+   */
   public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
   {
     GreenActionList allGreenActions = getAllGreenActions();
@@ -167,7 +170,6 @@ public class CloverVilleModelManager
         greenAction.setGreenPoints(newGreenPoints);
       }
     }
-
     saveGreenActions(allGreenActions);
     saveGreenActionsAsJson(allGreenActions);
   }
@@ -190,6 +192,16 @@ public class CloverVilleModelManager
   //
   //    saveStudents(allStudents);
   //  }
+
+  /**
+   * Edit the resident with the given old first name, old last name and old personal points
+   * @param oldFirstName the old first name of the resident
+   * @param oldLastName the old last name of the resident
+   * @param oldPersonalPoints the old personal points of the resident
+   * @param newFirstName the new first name of the resident
+   * @param newLastName the new last name of the resident
+   * @param newPersonalPoints the new personal points of the resident
+   */
   public void editResident(String oldFirstName, String oldLastName,
       int oldPersonalPoints, String newFirstName, String newLastName,
       int newPersonalPoints)
@@ -224,9 +236,9 @@ public class CloverVilleModelManager
     }
   }
 
-
-
-
+/**Uses MyFileHandler class to save the given ResidentList object to file
+   * @param residents the ResidentList object to be saved
+   */
   public void saveResidents(ResidentList residents)
   {
     try
@@ -243,6 +255,9 @@ public class CloverVilleModelManager
     }
   }
 
+/** Uses MyFileHandler class to save the given GreenActionList object to file
+   * @param greenActions the GreenActionList object to be saved
+   */
   public void saveGreenActions(GreenActionList greenActions)
   {
     try
@@ -259,6 +274,9 @@ public class CloverVilleModelManager
     }
   }
 
+  /** Uses MyFileHandler class to save the given TradeOfferList object to file
+   * @param tradeOffers the TradeOfferList object to be saved
+   */
   public void saveTradeOffers(TradeOfferList tradeOffers)
   {
     try
@@ -275,7 +293,9 @@ public class CloverVilleModelManager
     }
   }
 
-
+/** Uses MyFileHandler class to save the given CommunityPool object to file
+   * @param communityPool the CommunityPool object to be saved
+   */
   public void saveCommunityPool(CommunityPool communityPool)
   {
     try
@@ -292,6 +312,9 @@ public class CloverVilleModelManager
     }
   }
 
+  /** Uses MyFileHandler class to save the given Threshold object to file
+   * @param threshold the Threshold object to be saved
+   */
   public void saveThresholds(Threshold threshold)
   {
     try
@@ -308,6 +331,10 @@ public class CloverVilleModelManager
     }
   }
 
+/**   * Adds the given points to each resident in the given ResidentList
+   * @param residents the ResidentList object containing the residents to add points to
+   * @param points the number of points to add to each resident
+   */
   public void addPersonalPoints(ResidentList residents, int points){
 
     ResidentList all = getAllResidents();
@@ -323,11 +350,11 @@ public class CloverVilleModelManager
         }
       }
     }
-
     saveResidents(all);
-
   }
 
+/**   * Resets the personal points of all residents and adds the total to the community pool
+   */
   public void resetPoints()// в дужках??  овторюю метод з Controller
   {
     ResidentList residents = getAllResidents();
@@ -340,7 +367,9 @@ public class CloverVilleModelManager
 
   }
 
-
+/**Retrieves the CommunityPool object from file
+   * @return the CommunityPool object
+   */
   public CommunityPool getCommunityPool()
   {
     // Initialize empty resident list
@@ -365,6 +394,9 @@ public class CloverVilleModelManager
     return pool;
   }
 
+  /**Retrieves the Threshold object from file
+   * @return the Threshold object
+   */
   public void removeGreenAction(GreenAction greenAction)
   {
     GreenActionList greenActionList = getAllGreenActions();
@@ -372,7 +404,9 @@ public class CloverVilleModelManager
     saveGreenActions(greenActionList);
     saveGreenActionsAsJson(greenActionList);
   }
-
+  /**Removes the given resident from the ResidentList and saves the updated list to file
+   * @param resident the Resident object to be removed
+   */
   public void removeResident(Resident resident)
   {
     ResidentList residentList = getAllResidents();
@@ -380,16 +414,19 @@ public class CloverVilleModelManager
     saveResidents(residentList);
   }
 
-
+  /** Resets all green actions in the GreenActionList and saves the updated list to file
+   */
   public void resetGreenAction()
   {
     GreenActionList greenActionList = getAllGreenActions();
     greenActionList.resetGreenAction();
     saveGreenActions(greenActionList);
     saveGreenActionsAsJson(greenActionList);
-
   }
 
+  /**Removes the given trade offer from the TradeOfferList and saves the updated list to file
+   * @param tradeOffer the TradeOffer object to be removed
+   */
   public void removeTradeOffer(TradeOffer tradeOffer)
   {
     TradeOfferList tradeOfferList = getAllTradeOffers();
@@ -398,7 +435,9 @@ public class CloverVilleModelManager
     saveTradeOfferListAsJson(tradeOfferList);
   }
 
-
+/**Retrieves the Threshold object from file
+   * @return the Threshold object
+   */
   public void setThreshold(Threshold threshold)
   {
 
@@ -413,7 +452,11 @@ public class CloverVilleModelManager
 
   }
 
-
+/** Executes the given trade offer for the given buyer resident
+   * @param tradeOffer the TradeOffer object to be executed
+   * @param buyer the Resident object representing the buyer
+   * @return true if the trade offer was successfully executed, false otherwise
+   */
   public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
     TradeOfferList offers = getAllTradeOffers();
@@ -454,10 +497,8 @@ public class CloverVilleModelManager
           theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
           theOffer.setBuyer(theBuyer);
 
-
           saveTradeOffers(offers);
           saveResidents(residents);
-
 
           return true;
         }
@@ -466,6 +507,9 @@ public class CloverVilleModelManager
     return false;
   }
 
+/** Saves the given GreenActionList object as a JSON file
+   * @param list the GreenActionList object to be saved as JSON
+   */
   public void saveGreenActionsAsJson(GreenActionList list)
   {
 
@@ -482,7 +526,9 @@ public class CloverVilleModelManager
 
   }
 
-
+/** Saves the given TradeOfferList object as a JSON file
+   * @param tradeOfferList the TradeOfferList object to be saved as JSON
+   */
   public void saveTradeOfferListAsJson(TradeOfferList tradeOfferList)
   {
 
@@ -498,6 +544,9 @@ public class CloverVilleModelManager
     }
   }
 
+/** Saves the given Threshold object as a JSON file
+   * @param newThreshold the Threshold object to be saved as JSON
+   */
   public void saveThresholdAsJson(Threshold newThreshold)
   {
 
@@ -514,6 +563,9 @@ public class CloverVilleModelManager
 
   }
 
+/** Saves the given CommunityPool object as a JSON file
+   * @param communityPool the CommunityPool object to be saved as JSON
+   */
   public void saveCommunityPoolAsJson(CommunityPool communityPool)
   {
     XmlJsonParser communityPoolParser = new XmlJsonParser();
@@ -527,6 +579,4 @@ public class CloverVilleModelManager
       System.out.println(e.getMessage());
     }
   }
-
-
 }
