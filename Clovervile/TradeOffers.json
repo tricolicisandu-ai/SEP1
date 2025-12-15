@@ -8,6 +8,92 @@
         "lastName": "I",
         "personalPoints": 0
       }
+    },
+    {
+      "offerName": "",
+      "pointCost": 32,
+      "seller": {
+        "firstName": "Yulliaaa",
+        "lastName": "I",
+        "personalPoints": 85
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 6,
+      "seller": {
+        "firstName": "Shrek",
+        "lastName": "I",
+        "personalPoints": 40
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 2,
+      "seller": {
+        "firstName": "bam",
+        "lastName": "",
+        "personalPoints": -22
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 55,
+      "seller": {
+        "firstName": "bam",
+        "lastName": "",
+        "personalPoints": -22
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 54,
+      "seller": {
+        "firstName": "",
+        "lastName": "Tricolici",
+        "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 54,
+      "seller": {
+        "firstName": "Sandu",
+        "lastName": "Tricolici",
+        "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 34,
+      "seller": {
+        "firstName": "Anna",
+        "lastName": "I",
+        "personalPoints": 85
+      }
+    },
+    {
+      "offerName": "",
+      "pointCost": 55,
+      "seller": {
+        "firstName": "",
+        "lastName": "",
+        "personalPoints": 44
+      }
+    },
+    {
+      "offerName": "heeeyyyyyyyyyy",
+      "pointCost": -20,
+      "seller": {
+        "firstName": "Shrek",
+        "lastName": "I",
+        "personalPoints": 40
+      },
+      "buyer": {
+        "firstName": "Green",
+        "lastName": "I",
+        "personalPoints": 105
+      }
     }
   ]
 }
