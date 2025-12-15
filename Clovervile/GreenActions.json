@@ -1,3 +1,8 @@
 {
-  "greenActions": []
+  "greenActions": [
+    {
+      "name": "GO CYCLING FOR A DAY",
+      "greenPoints": 90
+    }
+  ]
 }

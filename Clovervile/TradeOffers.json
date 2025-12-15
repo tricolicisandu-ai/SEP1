@@ -7,6 +7,11 @@
         "firstName": "Anna",
         "lastName": "I",
         "personalPoints": 0
+      },
+      "buyer": {
+        "firstName": "Christina",
+        "lastName": "I",
+        "personalPoints": 812
       }
     }
   ]
