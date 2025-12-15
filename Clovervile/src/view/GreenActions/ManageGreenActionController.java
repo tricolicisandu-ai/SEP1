@@ -48,6 +48,8 @@ public class ManageGreenActionController
       greenTaskField.clear();
       pointField.clear();
       updateListBox();
+      greenTaskField.clear();
+      pointField.clear();
 
     }
   }
@@ -156,6 +158,7 @@ public class ManageGreenActionController
 
         modelManager.resetGreenAction();
         updateListBox();
+        reset();
     }
 
     if (e.getSource() == listBox)

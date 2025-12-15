@@ -25,6 +25,7 @@ public class CloverVilleModelManager
   private String thresholdsFile;
 
 
+
   /**
    * 3-argument constructor setting the file name
    * @param greenActionsFile the name and path of the file where green actions will be saved and retrieved
@@ -633,4 +634,60 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
       System.out.println(e.getMessage());
     }
   }
+
+
+/** Checks if the given resident is involved in any trade offers
+   * @param resident the Resident object to check
+   * @return true if the resident is involved in any trade offers, false otherwise
+   */
+
+  public boolean isResidentInTradeOffer(Resident resident)
+  {
+    TradeOfferList tradeOfferList = getAllTradeOffers();
+
+    if (resident == null)
+    {
+      return false;
+    }
+
+    for (int i = 0; i < tradeOfferList.getNumberOfTradeOffers(); i++)
+    {
+      TradeOffer offer = tradeOfferList.getTradeOffer(i);
+
+      if (resident.equals(offer.getSeller()) ||
+          resident.equals(offer.getBuyer()))
+      {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+
+/** Removes all trade offers associated with the given seller resident
+   * @param seller the Resident object representing the seller
+   */
+
+  public void removeTradeOffersBySeller(Resident seller)
+  {
+    TradeOfferList tradeOfferList = getAllTradeOffers();
+
+    for (int i = tradeOfferList.getNumberOfTradeOffers() - 1; i >= 0; i--)
+    {
+      TradeOffer offer = tradeOfferList.getTradeOffer(i);
+
+      if (offer.getSeller().equals(seller))
+      {
+        tradeOfferList.remove(offer);
+      }
+    }
+
+    saveTradeOffers(tradeOfferList);
+    saveTradeOfferListAsJson(tradeOfferList);
+  }
+
+
+
+
 }
