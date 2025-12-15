@@ -582,7 +582,10 @@ public class CloverVilleModelManager
   }
 
 
-
+/** Checks if the given resident is involved in any trade offers
+   * @param resident the Resident object to check
+   * @return true if the resident is involved in any trade offers, false otherwise
+   */
 
   public boolean isResidentInTradeOffer(Resident resident)
   {
@@ -608,7 +611,9 @@ public class CloverVilleModelManager
   }
 
 
-
+/** Removes all trade offers associated with the given seller resident
+   * @param seller the Resident object representing the seller
+   */
 
   public void removeTradeOffersBySeller(Resident seller)
   {
