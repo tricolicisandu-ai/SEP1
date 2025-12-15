@@ -10,20 +10,6 @@
       }
     },
     {
-      "offerName": "cleaning windows",
-      "pointCost": 9,
-      "seller": {
-        "firstName": "Marina",
-        "lastName": "C",
-        "personalPoints": 50
-      },
-      "buyer": {
-        "firstName": "Marina",
-        "lastName": "C",
-        "personalPoints": 50
-      }
-    },
-    {
       "offerName": "ba",
       "pointCost": 9,
       "seller": {
@@ -57,6 +43,15 @@
         "firstName": "Carl",
         "lastName": "doivwpi",
         "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "gay club",
+      "pointCost": 50,
+      "seller": {
+        "firstName": "LALQ",
+        "lastName": "Yuliia",
+        "personalPoints": 50
       }
     }
   ]
