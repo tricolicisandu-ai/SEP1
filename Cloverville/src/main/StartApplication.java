@@ -10,7 +10,7 @@ public class StartApplication extends Application
   @Override
   public void start(Stage stage)
   {
-    CloverVilleModelManager modelManager = new CloverVilleModelManager("Clovervile/greenActions.bin",  "Clovervile/tradeOffers.bin", "Clovervile/residents.bin", "Clovervile/communityPool.bin", "Clovervile/thresholds.bin");
+    CloverVilleModelManager modelManager = new CloverVilleModelManager("Cloverville/greenActions.bin",  "Cloverville/tradeOffers.bin", "Cloverville/residents.bin", "Cloverville/communityPool.bin", "Cloverville/thresholds.bin");
     ViewHandler viewHandler = new ViewHandler(stage, modelManager);
     viewHandler.start();
   }
