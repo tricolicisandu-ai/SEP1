@@ -176,23 +176,6 @@ public class CloverVilleModelManager
   }
 
 
-  //  // Change the country of the model.Student with the given firstname and lastname
-  //  public void changeCountry(String firstName, String lastName, String country)
-  //  {
-  //    StudentList allStudents = getAllStudents();
-  //
-  //    for (int i = 0; i < allStudents.size(); i++)
-  //    {
-  //      Student student = allStudents.get(i);
-  //
-  //      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
-  //      {
-  //        student.setCountry(country);
-  //      }
-  //    }
-  //
-  //    saveStudents(allStudents);
-  //  }
 
   /**
    * Edit the resident with the given old first name, old last name and old personal points
