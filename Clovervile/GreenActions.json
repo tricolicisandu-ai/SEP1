@@ -1,6 +1,8 @@
 {
   "greenActions": [
     {
+      "name": "GO CYCLING FOR A DAY",
+      "greenPoints": 90,
       "name": "ibo",
       "greenPoints": 66
     }
