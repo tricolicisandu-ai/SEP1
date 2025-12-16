@@ -1,3 +1,63 @@
 {
-  "offers": []
+  "offers": [
+    {
+      "offerName": "Pants",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "j",
+        "personalPoints": 34
+      }
+    },
+    {
+      "offerName": "ba",
+      "pointCost": 9,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "j",
+        "personalPoints": 34
+      }
+    },
+    {
+      "offerName": "Ananas",
+      "pointCost": 50,
+      "seller": {
+        "firstName": "Christina",
+        "lastName": "Yuliia",
+        "personalPoints": 15
+      }
+    },
+    {
+      "offerName": "Beers",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "LALQ",
+        "lastName": "Yuliia",
+        "personalPoints": 0
+      },
+      "buyer": {
+        "firstName": "Christina",
+        "lastName": "I",
+        "personalPoints": 812
+      }
+    },
+    {
+      "offerName": "ghfjdks",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Carl",
+        "lastName": "doivwpi",
+        "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "gay club",
+      "pointCost": 50,
+      "seller": {
+        "firstName": "LALQ",
+        "lastName": "Yuliia",
+        "personalPoints": 50
+      }
+    }
+  ]
 }
