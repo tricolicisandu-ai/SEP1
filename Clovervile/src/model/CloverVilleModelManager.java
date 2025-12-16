@@ -122,33 +122,6 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-//  public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
-//  {
-//
-//    GreenActionList allGreenActions = getAllGreenActions();
-//
-//    for (int i = 0;  i <allGreenActions.getNumberOfGreenActions(); i++)
-//    {
-//      GreenAction greenAction = allGreenActions.getIndex(i);
-//
-//      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
-//        greenAction.setName(newName);
-//        greenAction.setGreenPoints(newGreenPoints);
-//    }
-//    try
-//    {
-//      MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
-//    }
-//    catch (FileNotFoundException e)
-//    {
-//      System.out.println("File not found");
-//    }
-//    catch (IOException e)
-//    {
-//      System.out.println("IO Error writing to file");
-//    }
-//  }
-
   /**
    * Edit the green action with the given old name and old green points
    * @param oldName the old name of the green action
@@ -175,23 +148,6 @@ public class CloverVilleModelManager
   }
 
 
-  //  // Change the country of the model.Student with the given firstname and lastname
-  //  public void changeCountry(String firstName, String lastName, String country)
-  //  {
-  //    StudentList allStudents = getAllStudents();
-  //
-  //    for (int i = 0; i < allStudents.size(); i++)
-  //    {
-  //      Student student = allStudents.get(i);
-  //
-  //      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
-  //      {
-  //        student.setCountry(country);
-  //      }
-  //    }
-  //
-  //    saveStudents(allStudents);
-  //  }
 
   /**
    * Edit the resident with the given old first name, old last name and old personal points
@@ -353,17 +309,24 @@ public class CloverVilleModelManager
     saveResidents(all);
   }
 
-/**   * Resets the personal points of all residents and adds the total to the community pool
+/** Resets the personal points of all residents and adds the total to the community pool
    */
-  public void resetPoints()// в дужках??  овторюю метод з Controller
+  public void resetPoints()
+  // method without parameters and the same logic as in Controller
   {
     ResidentList residents = getAllResidents();
+    // get the list of all residents
     int total = residents.getAllPersonalPoints();
-    residents.resetAllPersonalPoints();  // скидаю персональні бали
-    saveResidents(residents); //чи потрібно зберігати оновлений список резидентів
+    // calculate total personal points of all residents
+    residents.resetAllPersonalPoints();
+    // reset personal points of each resident to zero
+    saveResidents(residents);
+    //save the updated residents list after resetting points
 
     CommunityPool pool = getCommunityPool();
+    // get the community pool object
     pool.setTotalPoints(pool.getTotalPoints() + total);
+    // add the collected points to the community pool
 
   }
 
@@ -460,51 +423,74 @@ public class CloverVilleModelManager
   public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
     TradeOfferList offers = getAllTradeOffers();
+    // get the list of all trade offers
     TradeOffer theOffer = null;
+    // variable to store the matched trade offer
     for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
     {
       if(offers.getTradeOffer(i).equals(tradeOffer))
       {
+        // check if the current offer matches the given offer
         theOffer = offers.getTradeOffer(i);
+        // store the matching offer
       }
     }
 
     if(theOffer!=null)
     {
+      // continue only if the trade offer exists
       ResidentList residents = getAllResidents();
+      // get the list of all residents
       Resident seller = tradeOffer.getSeller();
+      // get the seller from the trade offer
 
       Resident theBuyer = null;
+      // variable to store the actual buyer from the residents list
       Resident theSeller = null;
+      // variable to store the actual seller from the residents list
+
 
       for (int i = 0; i < residents.getNumberOfResidents() ; i++)
       {
         if(residents.getResident(i).equals(buyer))
         {
+          // check if this resident is the buyer
           theBuyer = residents.getResident(i);
+          // store the buyer
         }
         if(residents.getResident(i).equals(seller))
         {
+          // check if this resident is the seller
           theSeller = residents.getResident(i);
+          // store the seller
         }
       }
 
       if(theBuyer!=null && theSeller!=null)
       {
+        // make sure both buyer and seller exist
         if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
         {
+          // check if buyer has enough points
           theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
+          // add points to the seller
           theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
+          // subtract points from the buyer
           theOffer.setBuyer(theBuyer);
+          // set the buyer for the trade offer
 
           saveTradeOffers(offers);
+          // save updated trade offers
           saveResidents(residents);
+          // save updated residents data
 
           return true;
+          // trade executed successfully
         }
       }
     }
     return false;
+    // trade failed
   }
 
 /** Saves the given GreenActionList object as a JSON file

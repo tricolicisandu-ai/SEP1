@@ -135,24 +135,37 @@ public class PersonalPointsViewController
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
         "Do you really want to reset?",
         ButtonType.YES, ButtonType.NO);
+    // create a confirmation dialog with YES and NO buttons
     alert.setTitle("Exit");
+    // set the title of the alert window
     alert.setHeaderText(null);
+    // remove the header text from the alert
     alert.showAndWait();
+    // show the alert and wait for the user response
 
     if (alert.getResult() == ButtonType.YES)
     {
+      // check if the user clicked YES
       int total = modelManager.getAllResidents().getAllPersonalPoints();
+      // get total personal points from all residents
 
       ResidentList allResidents = modelManager.getAllResidents();
+      // get the list of all residents
       allResidents.resetAllPersonalPoints();
+      // reset personal points of all residents to zero
 
       CommunityPool pool = modelManager.getCommunityPool();
+      // get the community pool
       pool.setTotalPoints(pool.getTotalPoints()+total);
+      // add collected points to the community pool
       modelManager.saveCommunityPool(pool);
+      // save the updated community pool
       modelManager.saveCommunityPoolAsJson(pool);
+      // save the community pool as a JSON file
       modelManager.saveResidents(allResidents);
-      //для оновлення списка резидентів
+      // save the updated residents list
       displayResidents();
+      // refresh the residents list
 
 
     }
