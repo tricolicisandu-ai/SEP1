@@ -122,8 +122,9 @@ h1{
     margin: 30px 20px 30px;
     justify-self: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.4;
+    font-weight: 350;
 }
 
 /* GRID */
@@ -198,6 +199,7 @@ h1{
         margin: 0 auto;
         width: 100%;
     }
+
 }
 
 
@@ -241,7 +243,13 @@ h1{
     .id {
         font-size: 14px;
     }
+
+    .description
+    {
+        text-size-adjust: 80%;
+    }
 }
+
 
 
 
@@ -324,8 +332,8 @@ h1{
 
     /* DESCRIPCIÓN */
     .description {
-        margin: 20px 5px;
-        font-size: 13px;
+        margin: 30px 5px;
+        font-size: 16px;
     }
 
     .grid {

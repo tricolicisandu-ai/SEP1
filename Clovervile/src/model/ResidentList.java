@@ -60,7 +60,11 @@ public class ResidentList implements Serializable
     residents.remove(resident);
   }
 
-
+  /**
+   * adds personal points to residents
+   * @param resident the selected resident to add points to.
+   * @param points the amount of points resident gets
+   */
 
 public void addPersonalPoints(Resident resident, int points)
 {
@@ -73,6 +77,10 @@ public void addPersonalPoints(Resident resident, int points)
 
   }
 }
+
+  /**
+   * resets all residents personal points to 0
+   */
 
   public void resetAllPersonalPoints()
   {

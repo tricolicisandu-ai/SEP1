@@ -54,6 +54,26 @@ public class TradeController
     {
       TradeOffer tradeOffer = tradeBox.getSelectionModel().getSelectedItem();
       Resident buyer = residentBox.getSelectionModel().getSelectedItem();
+
+      if (tradeOffer == null || buyer == null)
+      {
+        Alert error3 = new Alert(Alert.AlertType.ERROR,
+            "You must select both a trade offer and a buyer.");
+        error3.setHeaderText(null);
+        error3.showAndWait();
+        return;
+      }
+
+      if (tradeOffer.getSeller().equals(buyer))
+      {
+        Alert error4 = new Alert(Alert.AlertType.ERROR,
+            "The seller cannot be the buyer of their own trade offer, Change the buyer.");
+        error4.setTitle("Invalid trade");
+        error4.setHeaderText(null);
+        error4.showAndWait();
+        return;
+      }
+
       boolean success = modelManager.executeTrade(tradeOffer, buyer);
 
       if (success)
@@ -71,14 +91,7 @@ public class TradeController
       }
 
     }
-
-
-
-
-
-
-
-
+    
   }
 
   public void updateTradeBox()

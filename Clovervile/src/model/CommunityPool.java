@@ -23,6 +23,11 @@ public class CommunityPool implements Serializable
     return totalPoints;
   }
 
+  /**
+   * sets the total points
+   * @param totalPoints the total points (green points + personal points)
+   */
+
   public void setTotalPoints(int totalPoints)
   {
     this.totalPoints = totalPoints;

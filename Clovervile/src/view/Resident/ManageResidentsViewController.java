@@ -135,6 +135,7 @@ public class ManageResidentsViewController
           newFirstName, newLastName, newPoints);
       modelManager.saveResidents(modelManager.getAllResidents());
       updateResidentsComboBox();
+      reset();
     }
     else if (e.getSource() == residentsComboBox)
     {
@@ -149,8 +150,6 @@ public class ManageResidentsViewController
 
   }
 
-
-
   public void handleRemove(ActionEvent e)
   {
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
@@ -164,8 +163,37 @@ public class ManageResidentsViewController
     if (alert.getResult() == ButtonType.YES)
     {
       Resident resident = residentsComboBox.getSelectionModel().getSelectedItem();
-      modelManager.removeResident(resident);
-      updateResidentsComboBox();
+
+      if (resident == null)
+      {
+        return;
+      }
+
+      if (modelManager.isResidentInTradeOffer(resident))
+      {
+        Alert tradeAlert = new Alert(
+            Alert.AlertType.CONFIRMATION,
+            "This resident is part of a trade offer.\n\n" +
+                "Do you want to remove the resident and the trade offer?",
+            ButtonType.YES, ButtonType.NO);
+
+        tradeAlert.setTitle("Resident in trade offer");
+        tradeAlert.setHeaderText(null);
+        tradeAlert.showAndWait();
+
+        if (tradeAlert.getResult() == ButtonType.YES)
+        {
+          modelManager.removeTradeOffersBySeller(resident);
+          modelManager.removeResident(resident);
+          updateResidentsComboBox();
+          reset();
+        }
+      }
+      else
+      {
+        modelManager.removeResident(resident);
+        reset();
+      }
     }
 
     else if (e.getSource() == residentsComboBox)
@@ -177,10 +205,41 @@ public class ManageResidentsViewController
         firstNameField.setText(temp.getFirstName());
         lastNameField.setText(temp.getLastName());
         pointsField.setPrefColumnCount(temp.getPersonalPoints());
-
       }
     }
   }
+
+
+//  public void handleRemove(ActionEvent e)
+//  {
+//    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+//        "Do you really want to remove?",
+//        ButtonType.YES, ButtonType.NO);
+//    alert.setTitle("Exit");
+//    alert.setHeaderText(null);
+//
+//    alert.showAndWait();
+//
+//    if (alert.getResult() == ButtonType.YES)
+//    {
+//      Resident resident = residentsComboBox.getSelectionModel().getSelectedItem();
+//      modelManager.removeResident(resident);
+//      updateResidentsComboBox();
+//    }
+//
+//    else if (e.getSource() == residentsComboBox)
+//    {
+//      Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
+//
+//      if (temp != null)
+//      {
+//        firstNameField.setText(temp.getFirstName());
+//        lastNameField.setText(temp.getLastName());
+//        pointsField.setPrefColumnCount(temp.getPersonalPoints());
+//
+//      }
+//    }
+//  }
 
 
   private void updateResidentsComboBox()
