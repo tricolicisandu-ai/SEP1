@@ -61,7 +61,7 @@ public class AddResidentViewController
     if (firstName.isEmpty() || lastName.isEmpty() || points.isEmpty())
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
-          "All fields must be filled out");
+          "All fields must be completed");
       alert.setTitle("Error");
       alert.setHeaderText(null);
       alert.showAndWait();
@@ -83,7 +83,7 @@ public class AddResidentViewController
     catch (NumberFormatException e)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
-          "Points must be a non-negative number.");
+          "Invalid input. Please enter a whole number (0 or greater).");
       alert.setHeaderText(null);
       alert.showAndWait();
     }
