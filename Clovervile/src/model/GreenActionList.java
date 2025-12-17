@@ -72,22 +72,6 @@ public class GreenActionList implements Serializable
 
   }
 
-//  /**
-//   * returns all green points from all greenActions
-//   * @return all green points
-//   */
-//  public int getAllGreenPoints()
-//  {
-//    int total = 0;
-//
-//    for (int i = 0; i < greenActions.size(); i++)
-//    {
-//      total += greenActions.get(i).getGreenPoints();
-//    }
-//
-//    return total;
-//
-//  }
 
 
   /**
