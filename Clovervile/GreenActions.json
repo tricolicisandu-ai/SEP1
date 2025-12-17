@@ -1,6 +1,7 @@
 {
   "greenActions": [
     {
+<<<<<<< HEAD
       "name": "Bicycling",
       "greenPoints": 30
     },
@@ -15,6 +16,10 @@
     {
       "name": "ghu",
       "greenPoints": 10
+=======
+      "name": "Cycle for a week",
+      "greenPoints": 70
+>>>>>>> bd8fb540c6c4cc8fec43920b192b776a083dde88
     }
   ]
 }

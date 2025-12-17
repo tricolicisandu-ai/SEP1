@@ -15,6 +15,7 @@
       }
     },
     {
+<<<<<<< HEAD
       "offerName": "Pants",
       "pointCost": 30,
       "seller": {
@@ -31,6 +32,15 @@
         "lastName": "I",
         "personalPoints": 0
       }
+=======
+      "offerName": " cd,ns d ",
+      "pointCost": 99,
+      "seller": {
+        "firstName": "Marina",
+        "lastName": "lo",
+        "personalPoints": 0
+      }
+>>>>>>> bd8fb540c6c4cc8fec43920b192b776a083dde88
     }
   ]
 }
