@@ -1,10 +1,20 @@
 {
   "greenActions": [
     {
-      "name": "GO CYCLING FOR A DAY",
-      "greenPoints": 90,
-      "name": "ibo",
-      "greenPoints": 66
+      "name": "Bicycling",
+      "greenPoints": 30
+    },
+    {
+      "name": "Eating vegan",
+      "greenPoints": 10
+    },
+    {
+      "name": "Planting trees",
+      "greenPoints": 40
+    },
+    {
+      "name": "ghu",
+      "greenPoints": 10
     }
   ]
 }
