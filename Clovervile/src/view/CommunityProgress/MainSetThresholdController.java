@@ -29,7 +29,6 @@ public class MainSetThresholdController
 
     if (setThresholdController != null)
     {
-      System.out.println("8999999");
       setThresholdController.init(viewHandler, scene, modelManager);
     }
     else

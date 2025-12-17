@@ -38,23 +38,36 @@ public class RemoveTradeOfferController
 
   public void handleRemove(ActionEvent e)
   {
+    TradeOffer tradeOffer = TradeComboBox.getSelectionModel().getSelectedItem();
+
+    // 1. No selection - error
+    if (tradeOffer == null)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+          "Please select a trade offer to remove.");
+      alert.setTitle("Error");
+      alert.setHeaderText(null);
+      alert.showAndWait();
+      return;
+    }
+
+    // 2. Confirmation dialog
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
         "Do you really want to remove?",
         ButtonType.YES, ButtonType.NO);
-    alert.setTitle("Exit");
+    alert.setTitle("Confirm removal");
     alert.setHeaderText(null);
 
     alert.showAndWait();
 
+    // 3. Remove if confirmed
     if (alert.getResult() == ButtonType.YES)
     {
-      TradeOffer tradeOffer = TradeComboBox.getSelectionModel().getSelectedItem();
       modelManager.removeTradeOffer(tradeOffer);
       updateListBox();
     }
-
-
   }
+
 
 
   private void updateListBox()

@@ -72,8 +72,6 @@ public class GreenActionList implements Serializable
 
   }
 
-
-
   /**
    * returns a string representation of GreenAction
    * @return a string representation of the GreenAction in the format: name , greenPoints
@@ -112,7 +110,5 @@ public class GreenActionList implements Serializable
     {
       return greenActions.equals(other.greenActions);
     }
-
-
   }
 }

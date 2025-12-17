@@ -1,9 +1,6 @@
 package model;
 import java.io.Serializable;
 
-
-
-
 /**
  * A class representing a GreenAction with name and green points
  * @author Christina Jacob
@@ -14,7 +11,6 @@ public class GreenAction implements Serializable
 {
   private String name;
   private int greenPoints;
-
 
   /**
    * Two-argument constructor.

@@ -3,6 +3,8 @@ package model;
 import parser.ParserException;
 import parser.XmlJsonParser;
 import utils.MyFileHandler;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -121,8 +123,6 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-
-
   /**
    * Edit the green action with the given old name and old green points
    * @param oldName the old name of the green action
@@ -147,8 +147,6 @@ public class CloverVilleModelManager
     saveGreenActions(allGreenActions);
     saveGreenActionsAsJson(allGreenActions);
   }
-
-
 
   /**
    * Edit the resident with the given old first name, old last name and old personal points
@@ -324,8 +322,6 @@ public class CloverVilleModelManager
 
   }
 
-
-
 /**Retrieves the CommunityPool object from file
    * @return the CommunityPool object
    */
@@ -416,58 +412,57 @@ public class CloverVilleModelManager
    * @param buyer the Resident object representing the buyer
    * @return true if the trade offer was successfully executed, false otherwise
    */
-
-
-public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
-{
-  TradeOfferList offers = getAllTradeOffers();
-  ResidentList residents = getAllResidents();
-
-  for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
+  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
-    TradeOffer current = offers.getTradeOffer(i);
-
-    if (current.equals(tradeOffer))
+    TradeOfferList offers = getAllTradeOffers();
+    TradeOffer theOffer = null;
+    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
     {
-      Resident seller = current.getSeller();
+      if(offers.getTradeOffer(i).equals(tradeOffer))
+      {
+        theOffer = offers.getTradeOffer(i);
+      }
+    }
+
+    if(theOffer!=null)
+    {
+      ResidentList residents = getAllResidents();
+      Resident seller = tradeOffer.getSeller();
 
       Resident theBuyer = null;
       Resident theSeller = null;
 
-      for (int j = 0; j < residents.getNumberOfResidents(); j++)
+      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
       {
-        if (residents.getResident(j).equals(buyer))
-          theBuyer = residents.getResident(j);
-
-        if (residents.getResident(j).equals(seller))
-          theSeller = residents.getResident(j);
+        if(residents.getResident(i).equals(buyer))
+        {
+          theBuyer = residents.getResident(i);
+        }
+        if(residents.getResident(i).equals(seller))
+        {
+          theSeller = residents.getResident(i);
+        }
       }
 
-      if (theBuyer == null || theSeller == null)
-        return false;
+      if(theBuyer!=null && theSeller!=null)
+      {
+        if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
+        {
+          theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
+          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
+          theOffer.setBuyer(theBuyer);
 
-      if (theBuyer.getPersonalPoints() < current.getPointCost())
-        return false;
+          saveTradeOffers(offers);
+          saveResidents(residents);
 
-
-      theSeller.setPersonalPoints(theSeller.getPersonalPoints() + current.getPointCost());
-      theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - current.getPointCost());
-
-      offers.remove(current);
-
-
-      saveTradeOffers(offers);
-      saveResidents(residents);
-      saveTradeOfferListAsJson(offers);
-
-      return true;
+          return true;
+        }
+      }
     }
+    return false;
   }
-  return false;
-}
 
-
-  /** Saves the given GreenActionList object as a JSON file
+/** Saves the given GreenActionList object as a JSON file
    * @param list the GreenActionList object to be saved as JSON
    */
   public void saveGreenActionsAsJson(GreenActionList list)
