@@ -3,8 +3,6 @@ package model;
 import parser.ParserException;
 import parser.XmlJsonParser;
 import utils.MyFileHandler;
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -123,32 +121,7 @@ public class CloverVilleModelManager
     return allTradeOffers;
   }
 
-//  public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
-//  {
-//
-//    GreenActionList allGreenActions = getAllGreenActions();
-//
-//    for (int i = 0;  i <allGreenActions.getNumberOfGreenActions(); i++)
-//    {
-//      GreenAction greenAction = allGreenActions.getIndex(i);
-//
-//      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
-//        greenAction.setName(newName);
-//        greenAction.setGreenPoints(newGreenPoints);
-//    }
-//    try
-//    {
-//      MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
-//    }
-//    catch (FileNotFoundException e)
-//    {
-//      System.out.println("File not found");
-//    }
-//    catch (IOException e)
-//    {
-//      System.out.println("IO Error writing to file");
-//    }
-//  }
+
 
   /**
    * Edit the green action with the given old name and old green points
@@ -176,23 +149,6 @@ public class CloverVilleModelManager
   }
 
 
-  //  // Change the country of the model.Student with the given firstname and lastname
-  //  public void changeCountry(String firstName, String lastName, String country)
-  //  {
-  //    StudentList allStudents = getAllStudents();
-  //
-  //    for (int i = 0; i < allStudents.size(); i++)
-  //    {
-  //      Student student = allStudents.get(i);
-  //
-  //      if (student.getFirstName().equals(firstName) && student.getLastName().equals(lastName))
-  //      {
-  //        student.setCountry(country);
-  //      }
-  //    }
-  //
-  //    saveStudents(allStudents);
-  //  }
 
   /**
    * Edit the resident with the given old first name, old last name and old personal points
@@ -368,6 +324,8 @@ public class CloverVilleModelManager
 
   }
 
+
+
 /**Retrieves the CommunityPool object from file
    * @return the CommunityPool object
    */
@@ -458,55 +416,6 @@ public class CloverVilleModelManager
    * @param buyer the Resident object representing the buyer
    * @return true if the trade offer was successfully executed, false otherwise
    */
-//  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
-//  {
-//    TradeOfferList offers = getAllTradeOffers();
-//    TradeOffer theOffer = null;
-//    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
-//    {
-//      if(offers.getTradeOffer(i).equals(tradeOffer))
-//      {
-//        theOffer = offers.getTradeOffer(i);
-//      }
-//    }
-//
-//    if(theOffer!=null)
-//    {
-//      ResidentList residents = getAllResidents();
-//      Resident seller = tradeOffer.getSeller();
-//
-//      Resident theBuyer = null;
-//      Resident theSeller = null;
-//
-//      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
-//      {
-//        if(residents.getResident(i).equals(buyer))
-//        {
-//          theBuyer = residents.getResident(i);
-//        }
-//        if(residents.getResident(i).equals(seller))
-//        {
-//          theSeller = residents.getResident(i);
-//        }
-//      }
-//
-//      if(theBuyer!=null && theSeller!=null)
-//      {
-//        if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
-//        {
-//          theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
-//          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
-//          theOffer.setBuyer(theBuyer);
-//
-//          saveTradeOffers(offers);
-//          saveResidents(residents);
-//
-//          return true;
-//        }
-//      }
-//    }
-//    return false;
-//  }
 
 
 public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
@@ -540,17 +449,13 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
       if (theBuyer.getPersonalPoints() < current.getPointCost())
         return false;
 
-      // Transfer points
-      theSeller.setPersonalPoints(
-          theSeller.getPersonalPoints() + current.getPointCost()
-      );
-      theBuyer.setPersonalPoints(
-          theBuyer.getPersonalPoints() - current.getPointCost()
-      );
+
+      theSeller.setPersonalPoints(theSeller.getPersonalPoints() + current.getPointCost());
+      theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - current.getPointCost());
 
       offers.remove(current);
 
-      // Save everything
+
       saveTradeOffers(offers);
       saveResidents(residents);
       saveTradeOfferListAsJson(offers);
