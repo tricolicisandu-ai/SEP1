@@ -70,22 +70,71 @@ public class ManageGreenActionController
   {
     if (e.getSource() == editButton)
     {
+      GreenAction selectedGreenTask =
+          listBox.getSelectionModel().getSelectedItem();
 
-      GreenAction selectedGreenTask = listBox.getSelectionModel().getSelectedItem();
+      // 1. Must select a green action first
+      if (selectedGreenTask == null)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "You must select a green action to edit.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
 
-      String oldGreenTask =selectedGreenTask.getName();
+      String newGreenTask = greenTaskField.getText().trim();
+      String pointsText = pointField.getText().trim();
+
+      // 2. Fields must be filled
+      if (newGreenTask.isEmpty() || pointsText.isEmpty())
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "All fields must be filled out.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
+      int newGreenPoints;
+
+      // 3. Points must be an integer
+      try
+      {
+        newGreenPoints = Integer.parseInt(pointsText);
+      }
+      catch (NumberFormatException ex)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Points must be a valid number.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
+      // 4. No negative numbers
+      if (newGreenPoints < 0)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Points must be a non-negative number.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
+      // Old values
+      String oldGreenTask = selectedGreenTask.getName();
       int oldPersonalPoints = selectedGreenTask.getGreenPoints();
 
-      String newGreenTask = greenTaskField.getText();
-      int newGreenPoints = Integer.parseInt(pointField.getText());
+      modelManager.editGreenAction(
+          oldGreenTask,
+          oldPersonalPoints,
+          newGreenTask,
+          newGreenPoints
+      );
 
-
-      modelManager.editGreenAction(oldGreenTask, oldPersonalPoints,
-          newGreenTask, newGreenPoints);
       updateListBox();
-      greenTaskField.setText("");
-      pointField.setText("");
-
+      reset();
     }
 
     else if (e.getSource() == listBox)
@@ -94,18 +143,28 @@ public class ManageGreenActionController
 
       if (temp != null)
       {
-        greenTaskField.setPromptText(temp.getName());
-        pointField.setPrefColumnCount(temp.getGreenPoints());
-
+        greenTaskField.setText(temp.getName());
+        pointField.setText(String.valueOf(temp.getGreenPoints()));
       }
     }
-
   }
 
 
 
-    public void handleRemove(ActionEvent e)
+
+  public void handleRemove(ActionEvent e)
     {
+      GreenAction greenTask = listBox.getSelectionModel().getSelectedItem();
+
+      if (greenTask == null)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Please select a Green Action to remove.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
           "Do you really want to remove?",
           ButtonType.YES, ButtonType.NO);
@@ -116,9 +175,8 @@ public class ManageGreenActionController
 
       if (alert.getResult() == ButtonType.YES)
       {
-        GreenAction greenTask = listBox.getSelectionModel().getSelectedItem();
         modelManager.removeGreenAction(greenTask);
-        updateListBox();
+        reset();
       }
 
       else if (e.getSource() == listBox)
@@ -132,13 +190,7 @@ public class ManageGreenActionController
 
         }
       }
-
   }
-
-
-
-
-
 
 
   public void handleReset(ActionEvent e)
@@ -175,12 +227,8 @@ public class ManageGreenActionController
   }
 
 
-
-
-
   private void updateListBox()
   {
-    int currentIndex = listBox.getSelectionModel().getSelectedIndex();
     listBox.getItems().clear();
 
     GreenActionList greenActions = modelManager.getAllGreenActions();
@@ -190,16 +238,8 @@ public class ManageGreenActionController
       listBox.getItems().add(greenActions.getIndex(i));
     }
 
-    if (currentIndex == -1 && listBox.getItems().size() > 0)
-    {
-      listBox.getSelectionModel().select(0);
-    }
-    else
-    {
-      listBox.getSelectionModel().select(currentIndex);
-   }
+    listBox.getSelectionModel().clearSelection();
   }
-
 }
 
 

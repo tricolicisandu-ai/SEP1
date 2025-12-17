@@ -40,51 +40,45 @@ public class TradeController
     }
 
   }
-  public void handleConfirm(ActionEvent e )
+  public void handleConfirm(ActionEvent e)
   {
-    // Handles the confirmation action triggered by the user
+    TradeOffer tradeOffer = tradeBox.getSelectionModel().getSelectedItem();
+    Resident buyer = residentBox.getSelectionModel().getSelectedItem();
+
+    // 1. Validate selections FIRST
+    if (tradeOffer == null || buyer == null)
+    {
+      Alert error = new Alert(Alert.AlertType.ERROR,
+          "You must select both a trade offer and a buyer.");
+      error.setTitle("Error");
+      error.setHeaderText(null);
+      error.showAndWait();
+      return;
+    }
+
+    // 2. Prevent seller = buyer
+    if (tradeOffer.getSeller().equals(buyer))
+    {
+      Alert error = new Alert(Alert.AlertType.ERROR,
+          "The seller cannot be the buyer of their own trade offer.");
+      error.setTitle("Invalid trade");
+      error.setHeaderText(null);
+      error.showAndWait();
+      return;
+    }
+
+    // 3. Confirmation dialog AFTER validation
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-        // Creates a confirmation alert asking the user to confirm the action
         "Do you really want to confirm?",
         ButtonType.YES, ButtonType.NO);
-    alert.setTitle("Exit");
-    // Sets the title of the confirmation dialog
+    alert.setTitle("Confirm trade");
     alert.setHeaderText(null);
     alert.showAndWait();
-    // Displays the alert and waits for the user response
 
     if (alert.getResult() == ButtonType.YES)
     {
-      TradeOffer tradeOffer = tradeBox.getSelectionModel().getSelectedItem();
-      // Gets the selected trade offer from the trade selection box
-      Resident buyer = residentBox.getSelectionModel().getSelectedItem();
-      // Gets the selected resident (buyer) from the resident selection box
-
-      if (tradeOffer == null || buyer == null)
-      // Checks if either the trade offer or buyer was not selected
-      {
-        Alert error3 = new Alert(Alert.AlertType.ERROR,
-            "You must select both a trade offer and a buyer.");
-        error3.setHeaderText(null);
-        // Removes the header text from the error dialog
-        error3.showAndWait();
-        // Displays the error message
-        return;
-      }
-
-      if (tradeOffer.getSeller().equals(buyer))
-      // Checks if the buyer is the same person as the seller
-      {
-        Alert error4 = new Alert(Alert.AlertType.ERROR,
-            "The seller cannot be the buyer of their own trade offer, Change the buyer.");
-        error4.setTitle("Invalid trade");
-        error4.setHeaderText(null);
-        error4.showAndWait();
-        return;
-      }
-
       boolean success = modelManager.executeTrade(tradeOffer, buyer);
-      // Attempts to execute the trade using the model manager
+
       if (success)
       {
         updateTradeBox();
@@ -98,10 +92,9 @@ public class TradeController
         alert2.setHeaderText(null);
         alert2.showAndWait();
       }
-
     }
-    
   }
+
 
   public void updateTradeBox()
   {

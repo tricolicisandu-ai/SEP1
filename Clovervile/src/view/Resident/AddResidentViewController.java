@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import model.CloverVilleModelManager;
 import view.ViewHandler;
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import model.Resident;
@@ -52,12 +52,13 @@ public class AddResidentViewController
     }
   }
 
-  @FXML private void AddResident(ActionEvent actionEvent)
+  @FXML private void AddResident(Event e)
   {
     String firstName = this.firstName.getText();
     String lastName = this.lastName.getText();
     String points = this.points.getText();
 
+    // Empty field validation
     if (firstName.isEmpty() || lastName.isEmpty() || points.isEmpty())
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
@@ -65,30 +66,38 @@ public class AddResidentViewController
       alert.setTitle("Error");
       alert.setHeaderText(null);
       alert.showAndWait();
+      return;
     }
 
     try
     {
       int point = Integer.parseInt(points);
+
+      // Negative number validation
+      if (point < 0)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Points must be a non-negative number.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return; // stop execution
+      }
+
       Resident resident = new Resident(firstName, lastName, point);
 
-   //   if (residentList != null)
-      //{
       ResidentList list = modelManager.getAllResidents();
       list.addResident(resident);
       modelManager.saveResidents(list);
 
-
+      reset(); // reset ONLY after successful add
     }
-    catch (NumberFormatException e)
+    catch (NumberFormatException ex)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
           "Points must be a non-negative number.");
       alert.setHeaderText(null);
       alert.showAndWait();
     }
-    reset();
-
   }
 }
 

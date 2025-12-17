@@ -15,32 +15,13 @@
       }
     },
     {
-<<<<<<< HEAD
-      "offerName": "Pants",
-      "pointCost": 30,
+      "offerName": "ef",
+      "pointCost": 32,
       "seller": {
-        "firstName": "Carl",
+        "firstName": "Christina",
         "lastName": "I",
-        "personalPoints": 0
+        "personalPoints": 704
       }
-    },
-    {
-      "offerName": "touching grass",
-      "pointCost": 20,
-      "seller": {
-        "firstName": "VIKTOR",
-        "lastName": "I",
-        "personalPoints": 0
-      }
-=======
-      "offerName": " cd,ns d ",
-      "pointCost": 99,
-      "seller": {
-        "firstName": "Marina",
-        "lastName": "lo",
-        "personalPoints": 0
-      }
->>>>>>> bd8fb540c6c4cc8fec43920b192b776a083dde88
     }
   ]
 }

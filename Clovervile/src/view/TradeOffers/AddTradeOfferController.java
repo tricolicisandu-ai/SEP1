@@ -58,50 +58,58 @@ public class AddTradeOfferController
 
   }
 
-  /*public void setTradeOfferList(TradeOfferList tradeOfferList)
-  {
-    this.tradeOfferList = tradeOfferList;
-  }
-*/
-  @FXML private void handleAdd(ActionEvent actionEvent)
+  @FXML
+  private void handleAdd(ActionEvent actionEvent)
   {
     String tradeOfferName = this.tradeOfferName.getText();
     String pointValue = this.pointValue.getText();
+    Resident seller = sellerBox.getSelectionModel().getSelectedItem();
 
-    if (tradeOfferName.isEmpty() || pointValue.isEmpty())
+    // 1. Validate required inputs
+    if (seller == null || tradeOfferName.isEmpty() || pointValue.isEmpty())
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
-          "All fields must be filled out");
+          "Please select a seller and fill out all fields.");
       alert.setTitle("Error");
       alert.setHeaderText(null);
       alert.showAndWait();
+      return;
     }
 
+    // 2. Validate points
+    int tradePoint;
     try
     {
-      int tradePoint = Integer.parseInt(pointValue);
+      tradePoint = Integer.parseInt(pointValue);
 
-      Resident seller = sellerBox.getSelectionModel().getSelectedItem(); //???
-      TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint, seller);
-
-      if (seller!=null)
+      if (tradePoint < 0)
       {
-        TradeOfferList tradeOfferList = modelManager.getAllTradeOffers();
-
-        tradeOfferList.add(tradeOffer);
-        modelManager.saveTradeOffers(tradeOfferList);
-        modelManager.saveTradeOfferListAsJson(tradeOfferList);
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Points must be a non-negative number.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
       }
     }
     catch (NumberFormatException e)
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,
-          "Points must be a non-negative number.");
+          "Points must be a valid number.");
       alert.setHeaderText(null);
       alert.showAndWait();
+      return;
     }
+
+    // 3. Create and save trade offer
+    TradeOffer tradeOffer = new TradeOffer(tradeOfferName, tradePoint, seller);
+    TradeOfferList tradeOfferList = modelManager.getAllTradeOffers();
+    tradeOfferList.add(tradeOffer);
+    modelManager.saveTradeOffers(tradeOfferList);
+    modelManager.saveTradeOfferListAsJson(tradeOfferList);
+
     reset();
   }
+
 
   private void updateTable()
   {
