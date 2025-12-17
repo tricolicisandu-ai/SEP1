@@ -25,7 +25,6 @@ public class CloverVilleModelManager
   private String thresholdsFile;
 
 
-
   /**
    * 3-argument constructor setting the file name
    * @param greenActionsFile the name and path of the file where green actions will be saved and retrieved
@@ -122,33 +121,6 @@ public class CloverVilleModelManager
     }
     return allTradeOffers;
   }
-
-//  public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
-//  {
-//
-//    GreenActionList allGreenActions = getAllGreenActions();
-//
-//    for (int i = 0;  i <allGreenActions.getNumberOfGreenActions(); i++)
-//    {
-//      GreenAction greenAction = allGreenActions.getIndex(i);
-//
-//      if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints()==oldGreenPoints)
-//        greenAction.setName(newName);
-//        greenAction.setGreenPoints(newGreenPoints);
-//    }
-//    try
-//    {
-//      MyFileHandler.writeToBinaryFile(greenActionsFile, allGreenActions);
-//    }
-//    catch (FileNotFoundException e)
-//    {
-//      System.out.println("File not found");
-//    }
-//    catch (IOException e)
-//    {
-//      System.out.println("IO Error writing to file");
-//    }
-//  }
 
   /**
    * Edit the green action with the given old name and old green points
@@ -337,17 +309,24 @@ public class CloverVilleModelManager
     saveResidents(all);
   }
 
-/**   * Resets the personal points of all residents and adds the total to the community pool
+/** Resets the personal points of all residents and adds the total to the community pool
    */
-  public void resetPoints()// в дужках??  овторюю метод з Controller
+  public void resetPoints()
+  // method without parameters and the same logic as in Controller
   {
     ResidentList residents = getAllResidents();
+    // get the list of all residents
     int total = residents.getAllPersonalPoints();
-    residents.resetAllPersonalPoints();  // скидаю персональні бали
-    saveResidents(residents); //чи потрібно зберігати оновлений список резидентів
+    // calculate total personal points of all residents
+    residents.resetAllPersonalPoints();
+    // reset personal points of each resident to zero
+    saveResidents(residents);
+    //save the updated residents list after resetting points
 
     CommunityPool pool = getCommunityPool();
+    // get the community pool object
     pool.setTotalPoints(pool.getTotalPoints() + total);
+    // add the collected points to the community pool
 
   }
 
@@ -441,111 +420,80 @@ public class CloverVilleModelManager
    * @param buyer the Resident object representing the buyer
    * @return true if the trade offer was successfully executed, false otherwise
    */
-//  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
-//  {
-//    TradeOfferList offers = getAllTradeOffers();
-//    TradeOffer theOffer = null;
-//    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
-//    {
-//      if(offers.getTradeOffer(i).equals(tradeOffer))
-//      {
-//        theOffer = offers.getTradeOffer(i);
-//      }
-//    }
-//
-//    if(theOffer!=null)
-//    {
-//      ResidentList residents = getAllResidents();
-//      Resident seller = tradeOffer.getSeller();
-//
-//      Resident theBuyer = null;
-//      Resident theSeller = null;
-//
-//      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
-//      {
-//        if(residents.getResident(i).equals(buyer))
-//        {
-//          theBuyer = residents.getResident(i);
-//        }
-//        if(residents.getResident(i).equals(seller))
-//        {
-//          theSeller = residents.getResident(i);
-//        }
-//      }
-//
-//      if(theBuyer!=null && theSeller!=null)
-//      {
-//        if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
-//        {
-//          theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
-//          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
-//          theOffer.setBuyer(theBuyer);
-//
-//          saveTradeOffers(offers);
-//          saveResidents(residents);
-//
-//          return true;
-//        }
-//      }
-//    }
-//    return false;
-//  }
-
-
-public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
-{
-  TradeOfferList offers = getAllTradeOffers();
-  ResidentList residents = getAllResidents();
-
-  for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
+  public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
-    TradeOffer current = offers.getTradeOffer(i);
-
-    if (current.equals(tradeOffer))
+    TradeOfferList offers = getAllTradeOffers();
+    // get the list of all trade offers
+    TradeOffer theOffer = null;
+    // variable to store the matched trade offer
+    for (int i = 0; i < offers.getNumberOfTradeOffers() ; i++)
     {
-      Resident seller = current.getSeller();
+      if(offers.getTradeOffer(i).equals(tradeOffer))
+      {
+        // check if the current offer matches the given offer
+        theOffer = offers.getTradeOffer(i);
+        // store the matching offer
+      }
+    }
+
+    if(theOffer!=null)
+    {
+      // continue only if the trade offer exists
+      ResidentList residents = getAllResidents();
+      // get the list of all residents
+      Resident seller = tradeOffer.getSeller();
+      // get the seller from the trade offer
 
       Resident theBuyer = null;
+      // variable to store the actual buyer from the residents list
       Resident theSeller = null;
+      // variable to store the actual seller from the residents list
 
-      for (int j = 0; j < residents.getNumberOfResidents(); j++)
+
+      for (int i = 0; i < residents.getNumberOfResidents() ; i++)
       {
-        if (residents.getResident(j).equals(buyer))
-          theBuyer = residents.getResident(j);
-
-        if (residents.getResident(j).equals(seller))
-          theSeller = residents.getResident(j);
+        if(residents.getResident(i).equals(buyer))
+        {
+          // check if this resident is the buyer
+          theBuyer = residents.getResident(i);
+          // store the buyer
+        }
+        if(residents.getResident(i).equals(seller))
+        {
+          // check if this resident is the seller
+          theSeller = residents.getResident(i);
+          // store the seller
+        }
       }
 
-      if (theBuyer == null || theSeller == null)
-        return false;
+      if(theBuyer!=null && theSeller!=null)
+      {
+        // make sure both buyer and seller exist
+        if (theBuyer.getPersonalPoints() >= theOffer.getPointCost())
+        {
+          // check if buyer has enough points
+          theSeller.setPersonalPoints(theSeller.getPersonalPoints()+theOffer.getPointCost());
+          // add points to the seller
+          theBuyer.setPersonalPoints(theBuyer.getPersonalPoints()-theOffer.getPointCost());
+          // subtract points from the buyer
+          theOffer.setBuyer(theBuyer);
+          // set the buyer for the trade offer
 
-      if (theBuyer.getPersonalPoints() < current.getPointCost())
-        return false;
+          saveTradeOffers(offers);
+          // save updated trade offers
+          saveResidents(residents);
+          // save updated residents data
 
-      // Transfer points
-      theSeller.setPersonalPoints(
-          theSeller.getPersonalPoints() + current.getPointCost()
-      );
-      theBuyer.setPersonalPoints(
-          theBuyer.getPersonalPoints() - current.getPointCost()
-      );
-
-      offers.remove(current);
-
-      // Save everything
-      saveTradeOffers(offers);
-      saveResidents(residents);
-      saveTradeOfferListAsJson(offers);
-
-      return true;
+          return true;
+          // trade executed successfully
+        }
+      }
     }
+    return false;
+    // trade failed
   }
-  return false;
-}
 
-
-  /** Saves the given GreenActionList object as a JSON file
+/** Saves the given GreenActionList object as a JSON file
    * @param list the GreenActionList object to be saved as JSON
    */
   public void saveGreenActionsAsJson(GreenActionList list)
@@ -617,60 +565,4 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
       System.out.println(e.getMessage());
     }
   }
-
-
-/** Checks if the given resident is involved in any trade offers
-   * @param resident the Resident object to check
-   * @return true if the resident is involved in any trade offers, false otherwise
-   */
-
-  public boolean isResidentInTradeOffer(Resident resident)
-  {
-    TradeOfferList tradeOfferList = getAllTradeOffers();
-
-    if (resident == null)
-    {
-      return false;
-    }
-
-    for (int i = 0; i < tradeOfferList.getNumberOfTradeOffers(); i++)
-    {
-      TradeOffer offer = tradeOfferList.getTradeOffer(i);
-
-      if (resident.equals(offer.getSeller()) ||
-          resident.equals(offer.getBuyer()))
-      {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-
-/** Removes all trade offers associated with the given seller resident
-   * @param seller the Resident object representing the seller
-   */
-
-  public void removeTradeOffersBySeller(Resident seller)
-  {
-    TradeOfferList tradeOfferList = getAllTradeOffers();
-
-    for (int i = tradeOfferList.getNumberOfTradeOffers() - 1; i >= 0; i--)
-    {
-      TradeOffer offer = tradeOfferList.getTradeOffer(i);
-
-      if (offer.getSeller().equals(seller))
-      {
-        tradeOfferList.remove(offer);
-      }
-    }
-
-    saveTradeOffers(tradeOfferList);
-    saveTradeOfferListAsJson(tradeOfferList);
-  }
-
-
-
-
 }
