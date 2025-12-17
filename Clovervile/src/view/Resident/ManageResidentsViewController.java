@@ -101,24 +101,37 @@ public class ManageResidentsViewController
   {
     if (e.getSource() == editButton)
     {
-      // Get the resident currently selected in combo box
+      // 1. Check if a resident is selected
       Resident selectedResident = residentsComboBox.getSelectionModel().getSelectedItem();
+      if (selectedResident == null)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Please select a resident to edit.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
 
-
-      String oldFirstName = selectedResident.getFirstName();
-      String oldLastName = selectedResident.getLastName();
-      int oldPersonalPoints = selectedResident.getPersonalPoints();
+      // 2. Check empty fields
       String newFirstName = firstNameField.getText();
       String newLastName = lastNameField.getText();
-      //int newPoints = Integer.parseInt(pointsField.getText());
+      String pointsText = pointsField.getText();
 
-      //  повідомлення для перевірки поля поінтів
+      if (newFirstName.isEmpty() || newLastName.isEmpty() || pointsText.isEmpty())
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "All fields must be filled out.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
       int newPoints;
 
-
+      // 3. Check numeric input
       try
       {
-        newPoints = Integer.parseInt(pointsField.getText());
+        newPoints = Integer.parseInt(pointsText);
       }
       catch (NumberFormatException ex)
       {
@@ -130,9 +143,26 @@ public class ManageResidentsViewController
         return;
       }
 
-      // Use old values to find, new values to update
-      modelManager.editResident(oldFirstName, oldLastName,oldPersonalPoints,
+      // 4. Check negative values
+      if (newPoints < 0)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Personal points cannot be negative.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
+      // Old values
+      String oldFirstName = selectedResident.getFirstName();
+      String oldLastName = selectedResident.getLastName();
+      int oldPersonalPoints = selectedResident.getPersonalPoints();
+
+      // 5. Update resident
+      modelManager.editResident(
+          oldFirstName, oldLastName, oldPersonalPoints,
           newFirstName, newLastName, newPoints);
+
       modelManager.saveResidents(modelManager.getAllResidents());
       updateResidentsComboBox();
       reset();
@@ -141,34 +171,39 @@ public class ManageResidentsViewController
     {
       Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
 
-      if (temp != null) {
+      if (temp != null)
+      {
         firstNameField.setText(temp.getFirstName());
         lastNameField.setText(temp.getLastName());
         pointsField.setText(String.valueOf(temp.getPersonalPoints()));
       }
     }
-
   }
 
   public void handleRemove(ActionEvent e)
   {
+    // 1. Check if a resident is selected BEFORE showing confirmation
+    Resident resident = residentsComboBox.getSelectionModel().getSelectedItem();
+
+    if (resident == null)
+    {
+      Alert alert = new Alert(Alert.AlertType.ERROR,
+          "Please select a resident to remove.");
+      alert.setHeaderText(null);
+      alert.showAndWait();
+      return;
+    }
+
+    // 2. Now show confirmation
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
         "Do you really want to remove?",
         ButtonType.YES, ButtonType.NO);
-    alert.setTitle("Exit");
+    alert.setTitle("Confirm removal");
     alert.setHeaderText(null);
-
     alert.showAndWait();
 
     if (alert.getResult() == ButtonType.YES)
     {
-      Resident resident = residentsComboBox.getSelectionModel().getSelectedItem();
-
-      if (resident == null)
-      {
-        return;
-      }
-
       if (modelManager.isResidentInTradeOffer(resident))
       {
         Alert tradeAlert = new Alert(
@@ -192,25 +227,15 @@ public class ManageResidentsViewController
       else
       {
         modelManager.removeResident(resident);
+        updateResidentsComboBox();
         reset();
-      }
-    }
-
-    else if (e.getSource() == residentsComboBox)
-    {
-      Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
-
-      if (temp != null)
-      {
-        firstNameField.setText(temp.getFirstName());
-        lastNameField.setText(temp.getLastName());
-        pointsField.setPrefColumnCount(temp.getPersonalPoints());
       }
     }
   }
 
 
-//  public void handleRemove(ActionEvent e)
+
+  //  public void handleRemove(ActionEvent e)
 //  {
 //    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
 //        "Do you really want to remove?",

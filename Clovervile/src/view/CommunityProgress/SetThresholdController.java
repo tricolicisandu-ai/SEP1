@@ -37,7 +37,6 @@ public class SetThresholdController
   {
     thresholdGoalField.setText("");
     pointsField.setText("");
-
   }
 
   @FXML private void handleAdd (ActionEvent event)

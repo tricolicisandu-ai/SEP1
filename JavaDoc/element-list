@@ -1,0 +1,9 @@
+main
+model
+utils
+view
+view.CommunityProgress
+view.GreenActions
+view.MainView
+view.Resident
+view.TradeOffers

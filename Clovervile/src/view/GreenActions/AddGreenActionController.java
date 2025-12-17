@@ -40,10 +40,6 @@ public class AddGreenActionController
 
   }
 
-  /*public void setGreenActionList(GreenActionList greenActionList)
-  {
-    this.greenActionList = greenActionList;
-  }*/
 
   public void reset()
   {
@@ -70,17 +66,24 @@ public class AddGreenActionController
 
       alert.showAndWait();
       return;
-
     }
 
     try
     {
-
         int  Point = Integer.parseInt(PointField);
+
+      // NEW: reject negative values
+      if (Point < 0)
+      {
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+            "Points must be a non-negative number.");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return;
+      }
+
         GreenAction newGreenAction = new GreenAction(GreenTaskField, Point);
 
-        // if (greenActionList != null)
-        //{
         GreenActionList list = modelManager.getAllGreenActions();
         list.addGreenAction(newGreenAction);
 
@@ -90,8 +93,6 @@ public class AddGreenActionController
         modelManager.saveCommunityPoolAsJson(pool);
         modelManager.saveGreenActions(list);
         modelManager.saveGreenActionsAsJson(list);
-
-     // }
     }
     catch (NumberFormatException e)
     {
@@ -103,8 +104,5 @@ public class AddGreenActionController
       alert.showAndWait();
     }
     reset();
-
-
-
   }
 }

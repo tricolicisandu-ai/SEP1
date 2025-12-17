@@ -144,12 +144,6 @@ public void addPersonalPoints(Resident resident, int points)
     return returnStr;
   }
 
-  /*
-
-  public List<Resident> getAllResidents(){
-    return residents;
-  }
-  */
 
 
 }
