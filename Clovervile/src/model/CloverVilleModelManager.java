@@ -308,19 +308,6 @@ public class CloverVilleModelManager
     saveResidents(all);
   }
 
-/**   * Resets the personal points of all residents and adds the total to the community pool
-   */
-  public void resetPoints()// в дужках??  овторюю метод з Controller
-  {
-    ResidentList residents = getAllResidents();
-    int total = residents.getAllPersonalPoints();
-    residents.resetAllPersonalPoints();  // скидаю персональні бали
-    saveResidents(residents); //чи потрібно зберігати оновлений список резидентів
-
-    CommunityPool pool = getCommunityPool();
-    pool.setTotalPoints(pool.getTotalPoints() + total);
-
-  }
 
 /**Retrieves the CommunityPool object from file
    * @return the CommunityPool object
