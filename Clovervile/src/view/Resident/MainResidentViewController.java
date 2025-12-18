@@ -55,7 +55,7 @@ public class MainResidentViewController
     if (e.getSource() == exitMenuItem)
     {
       Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-          "Do you really want to exit the program?", ButtonType.YES,
+          "Are you sure you want to exit the program?", ButtonType.YES,
           ButtonType.NO);
       alert.setTitle("Exit");
       alert.setHeaderText(null);
@@ -73,7 +73,7 @@ public class MainResidentViewController
       alert.setHeaderText(null);
       alert.setTitle("About");
       alert.setContentText(
-          "---------About---------.");
+          "Add, edit, or remove residents. Give personal points or reset them. Residents must be added before using trades or points");
       alert.showAndWait();
     }
     else if (e.getSource() == backButton)
