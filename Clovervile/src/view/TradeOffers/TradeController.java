@@ -21,6 +21,10 @@ public class TradeController
   @FXML private Button confirmButton;
 
 
+  /**
+   * Initializes this controller with references to the view handler,
+   * scene, and model manager.
+   */
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.viewHandler = viewHandler;
@@ -30,7 +34,9 @@ public class TradeController
     updateResidentBox();
   }
 
-
+  /**
+   * This method refreshes both the trade offer list and the resident list
+   */
   public void reset()
   {
     if (modelManager != null)
@@ -40,6 +46,12 @@ public class TradeController
     }
 
   }
+
+  /**
+   * This method validates that both a trade offer and a buyer are selected,
+   * prevents the seller from buying their own offer,
+   * and then attempts to execute the trade through the model.
+   */
   public void handleConfirm(ActionEvent e)
   {
     TradeOffer tradeOffer = tradeBox.getSelectionModel().getSelectedItem();
@@ -109,6 +121,10 @@ public class TradeController
   }
 
 
+  /**
+   * This method reloads all trade offers from the model and displays
+   * only those that do not yet have a buyer.
+   */
   public void updateTradeBox()
   {
     int currentIndex = tradeBox.getSelectionModel().getSelectedIndex();
@@ -126,6 +142,10 @@ public class TradeController
 
   }
 
+  /**
+   * This method reloads all residents from the model so the user
+   * can select any resident as a potential buyer.
+   */
   public void updateResidentBox()
   {
     int currentIndex = residentBox.getSelectionModel().getSelectedIndex();

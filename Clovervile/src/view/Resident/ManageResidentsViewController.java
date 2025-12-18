@@ -24,6 +24,11 @@ public class ManageResidentsViewController
 
 
 
+  /**
+   * Initializes this controller with view, scene, and model references.
+   * It also immediately loads residents into the ComboBox so the user can
+   * select and edit/remove residents right away.
+   */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
   {
@@ -32,6 +37,10 @@ public class ManageResidentsViewController
     this.modelManager = modelManager;
     updateResidentsComboBox();
   }
+
+  /**
+   * Clears all input fields so the form starts empty.
+   */
  public void initialize()
   {
     firstNameField.setText("");
@@ -41,6 +50,10 @@ public class ManageResidentsViewController
   }
 
 
+ /**
+  * Resets the view state after actions like edit/remove.
+  * Clears input fields and refreshes the residents list in the ComboBox.
+  */
   public void reset()
   {
     if (modelManager != null)
@@ -54,6 +67,10 @@ public class ManageResidentsViewController
 
   }
 
+  /**
+   * When a resident is selected, their first name, last name, and points
+   * are displayed in the input fields for editing.
+   */
   public void handleResidentList(ActionEvent e)
   {
     Resident selected = residentsComboBox.getSelectionModel().getSelectedItem();
@@ -65,38 +82,10 @@ public class ManageResidentsViewController
     }
   }
 
-
-//  public void handleEdit(ActionEvent e)
-//  {
-//
-//    if (e.getSource() == editButton)
-//    {
-//      String firstName = firstNameField.getText();
-//      String lastName = lastNameField.getText();
-//      int points = Integer.parseInt(pointsField.getText());
-//
-//
-//      modelManager.editResident(firstName,lastName, points);
-//      updateResidentsComboBox();
-//      firstNameField.setText("");
-//      lastNameField.setText("");
-//      pointsField.setText("");
-//    }
-//
-//    else if (e.getSource() == residentsComboBox)
-//    {
-//      Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
-//
-//      if (temp != null)
-//      {
-//        firstNameField.setText(temp.getFirstName());
-//        lastNameField.setText(temp.getLastName());
-//        pointsField.setPrefColumnCount(temp.getPersonalPoints());
-//
-//      }
-//    }
-//  }
-
+  /**
+   * This method validates that a resident is selected, checks that all fields
+   * are filled and then updates the resident data in the model.
+   */
   public void handleEdit(ActionEvent e)
   {
     if (e.getSource() == editButton)
@@ -180,6 +169,11 @@ public class ManageResidentsViewController
     }
   }
 
+  /**
+   * checks that a resident is selected,
+   * If the resident is part of a trade offer, it asks for extra confirmation and can
+   * remove both the resident and related trade offers.
+   */
   public void handleRemove(ActionEvent e)
   {
     // 1. Check if a resident is selected BEFORE showing confirmation
@@ -233,40 +227,9 @@ public class ManageResidentsViewController
     }
   }
 
-
-
-  //  public void handleRemove(ActionEvent e)
-//  {
-//    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-//        "Do you really want to remove?",
-//        ButtonType.YES, ButtonType.NO);
-//    alert.setTitle("Exit");
-//    alert.setHeaderText(null);
-//
-//    alert.showAndWait();
-//
-//    if (alert.getResult() == ButtonType.YES)
-//    {
-//      Resident resident = residentsComboBox.getSelectionModel().getSelectedItem();
-//      modelManager.removeResident(resident);
-//      updateResidentsComboBox();
-//    }
-//
-//    else if (e.getSource() == residentsComboBox)
-//    {
-//      Resident temp = residentsComboBox.getSelectionModel().getSelectedItem();
-//
-//      if (temp != null)
-//      {
-//        firstNameField.setText(temp.getFirstName());
-//        lastNameField.setText(temp.getLastName());
-//        pointsField.setPrefColumnCount(temp.getPersonalPoints());
-//
-//      }
-//    }
-//  }
-
-
+  /**
+   * It clears old items and adds all residents from storage
+   */
   private void updateResidentsComboBox()
   {
     int currentIndex = residentsComboBox.getSelectionModel().getSelectedIndex();

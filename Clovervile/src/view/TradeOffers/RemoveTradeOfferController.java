@@ -17,7 +17,10 @@ public class RemoveTradeOfferController
   @FXML private ComboBox<TradeOffer> TradeComboBox;
 
 
-
+  /**
+   * Initializes this controller with references to the view handler,
+   * scene, and model manager.
+   */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
   {
@@ -27,6 +30,9 @@ public class RemoveTradeOfferController
     updateListBox();
   }
 
+  /**
+   * This method refreshes the trade offers list.
+   */
   public void reset()
   {
     if (modelManager != null)
@@ -36,6 +42,10 @@ public class RemoveTradeOfferController
     }
   }
 
+  /**
+   * This method validates that a trade offer is selected,
+   * and removes the trade offer from the model if confirmed.
+   */
   public void handleRemove(ActionEvent e)
   {
     TradeOffer tradeOffer = TradeComboBox.getSelectionModel().getSelectedItem();
@@ -68,8 +78,9 @@ public class RemoveTradeOfferController
     }
   }
 
-
-
+  /**
+   * Clears existing items and reloads all trade offers
+   */
   private void updateListBox()
   {
     int currentIndex = TradeComboBox.getSelectionModel().getSelectedIndex();

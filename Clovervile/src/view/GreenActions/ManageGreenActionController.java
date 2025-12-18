@@ -252,7 +252,7 @@ public class ManageGreenActionController
       }
      }
   }
-  
+
   /**
    * This method retrieves the latest green actions
    * from the model and displays them in the UI list.
