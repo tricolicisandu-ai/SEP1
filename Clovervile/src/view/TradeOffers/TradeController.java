@@ -43,21 +43,29 @@ public class TradeController
   public void handleConfirm(ActionEvent e)
   {
     TradeOffer tradeOffer = tradeBox.getSelectionModel().getSelectedItem();
+    // Get selected trade offer from the list
     Resident buyer = residentBox.getSelectionModel().getSelectedItem();
+    // Get selected buyer from UI
 
-    // 1. Validate selections FIRST
     if (tradeOffer == null || buyer == null)
+    // Check if trade offer or buyer is not selected
     {
       Alert error = new Alert(Alert.AlertType.ERROR,
           "You must select both a trade offer and a buyer.");
+      // Create error message
       error.setTitle("Error");
+      // Set alert window title
       error.setHeaderText(null);
+      // Remove header text
       error.showAndWait();
+      // Show alert and wait for user
       return;
+      // Stop method execution
     }
 
-    // 2. Prevent seller = buyer
+
     if (tradeOffer.getSeller().equals(buyer))
+    // Check if seller and buyer are the same person
     {
       Alert error = new Alert(Alert.AlertType.ERROR,
           "The seller cannot be the buyer of their own trade offer.");
@@ -67,27 +75,32 @@ public class TradeController
       return;
     }
 
-    // 3. Confirmation dialog AFTER validation
+
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
         "Do you really want to confirm?",
+        // Create confirmation alert
         ButtonType.YES, ButtonType.NO);
     alert.setTitle("Confirm trade");
     alert.setHeaderText(null);
     alert.showAndWait();
 
     if (alert.getResult() == ButtonType.YES)
+    // Check if user clicked YES
     {
       boolean success = modelManager.executeTrade(tradeOffer, buyer);
-
+      // Try to execute the trade
       if (success)
       {
         updateTradeBox();
+        // Refresh trade list
         updateResidentBox();
+        // Refresh resident list
       }
-      else
+      else  // If trade failed
       {
         Alert alert2 = new Alert(Alert.AlertType.ERROR,
-            "Buyer is fucking poor. Tell that mf to earn some points");
+            "The buyer does not have enough points ");
+        // Create error message
         alert2.setTitle("Error");
         alert2.setHeaderText(null);
         alert2.showAndWait();
