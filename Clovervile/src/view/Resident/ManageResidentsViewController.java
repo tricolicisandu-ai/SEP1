@@ -24,10 +24,10 @@ public class ManageResidentsViewController
 
 
 
-  /**
-   * Initializes this controller with view, scene, and model references.
-   * It also immediately loads residents into the ComboBox so the user can
-   * select and edit/remove residents right away.
+  /*
+   Initializes this controller with view, scene, and model references.
+   It also immediately loads residents into the ComboBox so the user can
+   select and edit/remove residents right away.
    */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -38,8 +38,8 @@ public class ManageResidentsViewController
     updateResidentsComboBox();
   }
 
-  /**
-   * Clears all input fields so the form starts empty.
+  /*
+   Clears all input fields so the form starts empty.
    */
  public void initialize()
   {
@@ -50,9 +50,9 @@ public class ManageResidentsViewController
   }
 
 
- /**
-  * Resets the view state after actions like edit/remove.
-  * Clears input fields and refreshes the residents list in the ComboBox.
+ /*
+  Resets the view state after actions like edit/remove.
+  Clears input fields and refreshes the residents list in the ComboBox.
   */
   public void reset()
   {
@@ -67,9 +67,9 @@ public class ManageResidentsViewController
 
   }
 
-  /**
-   * When a resident is selected, their first name, last name, and points
-   * are displayed in the input fields for editing.
+  /*
+   When a resident is selected, their first name, last name, and points
+   are displayed in the input fields for editing.
    */
   public void handleResidentList(ActionEvent e)
   {
@@ -82,9 +82,9 @@ public class ManageResidentsViewController
     }
   }
 
-  /**
-   * This method validates that a resident is selected, checks that all fields
-   * are filled and then updates the resident data in the model.
+  /*
+   This method validates that a resident is selected, checks that all fields
+   are filled and then updates the resident data in the model.
    */
   public void handleEdit(ActionEvent e)
   {
@@ -169,10 +169,10 @@ public class ManageResidentsViewController
     }
   }
 
-  /**
-   * checks that a resident is selected,
-   * If the resident is part of a trade offer, it asks for extra confirmation and can
-   * remove both the resident and related trade offers.
+  /*
+   checks that a resident is selected,
+   If the resident is part of a trade offer, it asks for extra confirmation and can
+   remove both the resident and related trade offers.
    */
   public void handleRemove(ActionEvent e)
   {
@@ -227,8 +227,8 @@ public class ManageResidentsViewController
     }
   }
 
-  /**
-   * It clears old items and adds all residents from storage
+  /*
+   It clears old items and adds all residents from storage
    */
   private void updateResidentsComboBox()
   {

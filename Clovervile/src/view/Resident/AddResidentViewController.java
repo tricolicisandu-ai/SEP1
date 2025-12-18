@@ -21,9 +21,9 @@ public class AddResidentViewController
   @FXML private TextField lastName;
   @FXML private TextField points;
 
-  /**
-   * Initializes the controller with references to the view handler,
-   * scene, and model manager.
+  /*
+   Initializes the controller with references to the view handler,
+   scene, and model manager.
    */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -34,9 +34,9 @@ public class AddResidentViewController
 
   }
 
-  /**
-   * This method clears all input fields so the user
-   * starts with empty values.
+  /*
+   This method clears all input fields so the user
+   starts with empty values.
    */
   public void initialize()
   {
@@ -45,8 +45,8 @@ public class AddResidentViewController
     points.setText("");
   }
 
-  /**
-   * This method clears all fields
+  /*
+   This method clears all fields
    */
   public void reset()
   {
@@ -58,11 +58,11 @@ public class AddResidentViewController
     }
   }
 
-  /**
-   * This method reads user input, validates that all fields
-   * are filled and that the points value is a non-negative number,
-   * creates a new Resident object, saves it to the model,
-   * and resets the input fields after a successful add.
+  /*
+   This method reads user input, validates that all fields
+   are filled and that the points value is a non-negative number,
+   creates a new Resident object, saves it to the model,
+   and resets the input fields after a successful add.
    */
   @FXML private void AddResident(Event e)
   {

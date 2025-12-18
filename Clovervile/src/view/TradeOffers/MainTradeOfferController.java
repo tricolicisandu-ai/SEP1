@@ -25,8 +25,8 @@ public class MainTradeOfferController
   private CloverVilleModelManager modelManager;
   private ViewHandler viewHandler;
 
-  /**
-   * Initializes this controller and all related trade controllers.
+  /*
+   Initializes this controller and all related trade controllers.
    */
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
@@ -50,9 +50,9 @@ public class MainTradeOfferController
     }
   }
 
-  /**
-   * Manages exiting the application, showing information dialogs,
-   * and navigating back to the main view.
+  /*
+   Manages exiting the application, showing information dialogs,
+   and navigating back to the main view.
    */
   public void handleActions(ActionEvent e)
   {
@@ -86,8 +86,8 @@ public class MainTradeOfferController
     }
   }
 
-  /**
-   * Detects which tab is selected and resets the corresponding controller.
+  /*
+   Detects which tab is selected and resets the corresponding controller.
    */
   public void tabChanged(Event event)
   {

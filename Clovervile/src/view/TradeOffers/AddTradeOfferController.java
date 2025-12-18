@@ -27,8 +27,8 @@ public class AddTradeOfferController
   @FXML private TableColumn<Resident, Integer> pointsColumn;
 
 
-  /**
-   * Initializes this controller with the view handler, scene, and model manager.
+  /*
+   Initializes this controller with the view handler, scene, and model manager.
    */
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
@@ -39,8 +39,8 @@ public class AddTradeOfferController
 
   }
 
-  /**
-   * refreshes the seller list and clears input fields.
+  /*
+    refreshes the seller list and clears input fields.
    */
   public void reset()
   {
@@ -52,9 +52,9 @@ public class AddTradeOfferController
     }
 
   }
-  /**
-   * Clears input fields and sets up table column mappings so the TableView
-   * can display Resident data
+  /*
+   Clears input fields and sets up table column mappings so the TableView
+   can display Resident data
    */
   public void initialize()
   {
@@ -68,9 +68,9 @@ public class AddTradeOfferController
 
   }
 
-  /**
+  /*
    Reads the trade name, point cost, and selected seller,checks the data
-   * and creates a TradeOffer, saves it to the model (binary and JSON), and resets the form.
+    and creates a TradeOffer, saves it to the model (binary and JSON), and resets the form.
    */
   @FXML
   private void handleAdd(ActionEvent actionEvent)
@@ -124,9 +124,9 @@ public class AddTradeOfferController
     reset();
   }
 
-  /**
-   * Refreshes the seller ComboBox.
-   * Clears existing items and reloads all residents
+  /*
+   Refreshes the seller ComboBox.
+   Clears existing items and reloads all residents
    */
   private void updateTable()
   {

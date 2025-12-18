@@ -18,8 +18,8 @@ public class PersonalPointsViewController
   @FXML private ListView<Resident> residentList;
   @FXML private Button confirm;
 
-  /**
-   * Initializes this controller with the view handler, scene, and model manager.
+  /*
+   Initializes this controller with the view handler, scene, and model manager.
    */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -31,9 +31,9 @@ public class PersonalPointsViewController
     displayResidents();
   }
 
-  /**
-   * Clears the points input field and sets the ListView selection mode
-   * to MULTIPLE so the user can select more than one resident.
+  /*
+   Clears the points input field and sets the ListView selection mode
+   to MULTIPLE so the user can select more than one resident.
    */
   public void initialize()
   {
@@ -41,8 +41,8 @@ public class PersonalPointsViewController
     residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
   }
 
-  /**
-   * Clears the points field and reloads the residents list
+  /*
+   Clears the points field and reloads the residents list
    */
   public void reset()
   {
@@ -54,8 +54,8 @@ public class PersonalPointsViewController
   }
 
 
-  /**
-   * Loads residents from the model and displays them in the ListView.
+  /*
+   Loads residents from the model and displays them in the ListView.
    */
   private void displayResidents()
   {
@@ -67,8 +67,8 @@ public class PersonalPointsViewController
     }
   }
 
-  /**
-   * Sets the ListView reference from outside (another controller).
+  /*
+   Sets the ListView reference from outside (another controller).
    */
   public void setResidentList( ListView<Resident> residentList)
   {
@@ -76,11 +76,11 @@ public class PersonalPointsViewController
     this.residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //хочу передати вже готовий ListView  іншого вікна
   }
 
-  /**
-   * This method validates input (not empty, numeric, non-negative),
-   * checks that at least one resident is selected, builds a temporary ResidentList
-   * from selected items, and then calls the model method to add points.
-   * And  refreshes the list and clears the input field
+  /*
+   This method validates input (not empty, numeric, non-negative),
+   checks that at least one resident is selected, builds a temporary ResidentList
+   from selected items, and then calls the model method to add points.
+   And  refreshes the list and clears the input field
    */
   public void confirm(ActionEvent actionEvent)
   {

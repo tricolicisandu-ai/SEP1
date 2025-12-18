@@ -25,8 +25,8 @@ public class ManageGreenActionController
   @FXML private Button editButton;
 
 
-  /**
-   * Initializes the controller with view, scene, and model references.
+  /*
+   Initializes the controller with view, scene, and model references.
    */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
@@ -36,8 +36,8 @@ public class ManageGreenActionController
     this.modelManager = modelManager;
   }
 
-  /**
-   * Clears input fields when the view is loaded.
+  /*
+   Clears input fields when the view is loaded.
    */
   public void initialize()
   {
@@ -45,10 +45,10 @@ public class ManageGreenActionController
     pointField.setText("");
   }
 
-  /**
-   * Resets the view to its default state.
-   * This method refreshes the list of green actions
-   * and clears all input fields if the model is available.
+  /*
+   Resets the view to its default state.
+   This method refreshes the list of green actions
+   and clears all input fields if the model is available.
    */
   public void reset()
   {
@@ -66,10 +66,10 @@ public class ManageGreenActionController
   }
 
 
-  /**
-   * Handles selection changes in the list.
-   * When a green action is selected, its name and points
-   * are shown in the input fields for viewing or editing.
+  /*
+   Handles selection changes in the list.
+   When a green action is selected, its name and points
+   are shown in the input fields for viewing or editing.
    */
   public void handleList(ActionEvent e)
   {
@@ -82,10 +82,10 @@ public class ManageGreenActionController
   }
 
 
-  /**
-   * This method validates user input, ensures a green action
-   * is selected, checks that the points value is valid,
-   * and updates the selected green action in the mode
+  /*
+   This method validates user input, ensures a green action
+   is selected, checks that the points value is valid,
+   and updates the selected green action in the mode
    */
   public void handleEdit(ActionEvent e)
   {
@@ -170,9 +170,9 @@ public class ManageGreenActionController
     }
   }
 
-  /**
-   * This method ensures a green action is selected,
-   * asks the user for confirmation, and then removes
+  /*
+   This method ensures a green action is selected,
+   asks the user for confirmation, and then removes
    */
   public void handleRemove(ActionEvent e)
     {
@@ -215,10 +215,10 @@ public class ManageGreenActionController
   }
 
 
-  /**
-   * This method asks for user confirmation,
-   * resets green actions in the model,
-   * refreshes the list, and clears the input fields.
+  /*
+   This method asks for user confirmation,
+   resets green actions in the model,
+   refreshes the list, and clears the input fields.
    */
   public void handleReset(ActionEvent e)
   {
@@ -253,9 +253,9 @@ public class ManageGreenActionController
      }
   }
 
-  /**
-   * This method retrieves the latest green actions
-   * from the model and displays them in the UI list.
+  /*
+   This method retrieves the latest green actions
+   from the model and displays them in the UI list.
    */
   private void updateListBox()
   {

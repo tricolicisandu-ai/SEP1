@@ -26,8 +26,8 @@ public class MainResidentViewController
   private CloverVilleModelManager modelManager;
   private ViewHandler viewHandler;
 
-  /**
-   * This method stores references to the view handler, scene, and model manager
+  /*
+   This method stores references to the view handler, scene, and model manager
    */
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
@@ -53,9 +53,9 @@ public class MainResidentViewController
     }
   }
 
-  /**
-   * This method manages exiting the application, showing
-   * information about residents functionality.
+  /*
+   This method manages exiting the application, showing
+   information about residents functionality.
    */
   public void handleActions(ActionEvent e)
   {
@@ -89,10 +89,10 @@ public class MainResidentViewController
     }
   }
 
-  /**
-   * This method detects which tab is selected and resets
-   * the corresponding controller to ensure the view shows
-   * fresh and updated data.
+  /*
+   This method detects which tab is selected and resets
+   the corresponding controller to ensure the view shows
+   fresh and updated data.
    */
   public void tabChanged(Event event)
   {
