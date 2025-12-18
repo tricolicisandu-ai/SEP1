@@ -23,6 +23,9 @@ public class MainGreenActionController
   private CloverVilleModelManager modelManager;
   private ViewHandler viewHandler;
 
+  /**
+   * Initializes this controller and its child controllers.
+   */
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.modelManager = modelManager;
@@ -40,6 +43,13 @@ public class MainGreenActionController
     }
   }
 
+  /**
+   * Handles user actions from menu items and buttons.
+   * This method checks which element triggered the event
+   * and performs the corresponding action:
+   * exiting the application, showing the "About" dialog,
+   * or navigating back to the main view.
+   */
   public void handleActions(ActionEvent e)
   {
     if (e.getSource() == exitMenuItem)
@@ -72,6 +82,12 @@ public class MainGreenActionController
     }
   }
 
+  /**
+   * Handles tab change events.
+   * This method detects which tab is currently selected
+   * and resets the corresponding controller to ensure
+   * fresh and updated data is displayed when switching tabs.
+   */
   public void tabChanged(Event event)
   {
     if (modelManager != null)
