@@ -21,14 +21,18 @@ header{
 }
 
 #threshold-area{
+    margin: 45px 0px;
     place-self: center;
     font-family: "Poppins";
     text-align: center;
 }
+
 h1{
     color: var(--text-color-1--);
     font-size: 89px;
     font-weight: 700;
+    line-height: 1;
+    margin-bottom: 20px;
 }
 
 h2{

@@ -1,3 +1,40 @@
 {
-  "offers": []
+  "offers": [
+    {
+      "offerName": "Mending your pants",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Hetty",
+        "lastName": "Mendings",
+        "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "Guided Meditations",
+      "pointCost": 5,
+      "seller": {
+        "firstName": "Ana",
+        "lastName": "Madesen",
+        "personalPoints": 0
+      }
+    },
+    {
+      "offerName": "Cleaning  Windows (per section)",
+      "pointCost": 5,
+      "seller": {
+        "firstName": "Tom",
+        "lastName": "Golden",
+        "personalPoints": 5
+      }
+    },
+    {
+      "offerName": "Bike repair help",
+      "pointCost": 10,
+      "seller": {
+        "firstName": "Johny",
+        "lastName": "Mc\u0027Donald",
+        "personalPoints": 0
+      }
+    }
+  ]
 }
