@@ -1,32 +1,3 @@
 {
-  "offers": [
-    {
-      "offerName": "hello",
-      "pointCost": 88,
-      "seller": {
-        "firstName": "Anna",
-        "lastName": "I",
-        "personalPoints": 0
-      },
-      "buyer": {
-        "firstName": "Christina",
-        "lastName": "I",
-        "personalPoints": 812
-      }
-    },
-    {
-      "offerName": "ef",
-      "pointCost": 32,
-      "seller": {
-        "firstName": "Christina",
-        "lastName": "I",
-        "personalPoints": 704
-      },
-      "buyer": {
-        "firstName": "Anna",
-        "lastName": "I",
-        "personalPoints": 56
-      }
-    }
-  ]
+  "offers": []
 }
