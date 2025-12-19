@@ -2,7 +2,7 @@
   "greenActions": [
     {
       "name": "Bicycling",
-      "greenPoints": 40
+      "greenPoints": 30
     },
     {
       "name": "Eating vegan",
@@ -17,8 +17,8 @@
       "greenPoints": 10
     },
     {
-      "name": "ok",
-      "greenPoints": 20
+      "name": "gg",
+      "greenPoints": 10
     }
   ]
 }

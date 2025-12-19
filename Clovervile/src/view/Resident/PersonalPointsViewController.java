@@ -18,6 +18,9 @@ public class PersonalPointsViewController
   @FXML private ListView<Resident> residentList;
   @FXML private Button confirm;
 
+  /*
+   Initializes this controller with the view handler, scene, and model manager.
+   */
   public void init(ViewHandler viewHandler, Scene scene,
       CloverVilleModelManager modelManager)
   {
@@ -25,15 +28,22 @@ public class PersonalPointsViewController
     this.modelManager = modelManager;
     this.scene = scene;
 
-    displayResidents(); //для завантаження списку резидентів у таблицю
+    displayResidents();
   }
 
+  /*
+   Clears the points input field and sets the ListView selection mode
+   to MULTIPLE so the user can select more than one resident.
+   */
   public void initialize()
   {
     addPoints.setText("");
     residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
   }
 
+  /*
+   Clears the points field and reloads the residents list
+   */
   public void reset()
   {
     if (modelManager != null)
@@ -44,7 +54,9 @@ public class PersonalPointsViewController
   }
 
 
-  // для відображення резидентів у таблиці
+  /*
+   Loads residents from the model and displays them in the ListView.
+   */
   private void displayResidents()
   {
     residentList.getItems().clear();
@@ -55,18 +67,23 @@ public class PersonalPointsViewController
     }
   }
 
-
-
+  /*
+   Sets the ListView reference from outside (another controller).
+   */
   public void setResidentList( ListView<Resident> residentList)
   {
     this.residentList = residentList;
     this.residentList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //хочу передати вже готовий ListView  іншого вікна
   }
 
+  /*
+   This method validates input (not empty, numeric, non-negative),
+   checks that at least one resident is selected, builds a temporary ResidentList
+   from selected items, and then calls the model method to add points.
+   And  refreshes the list and clears the input field
+   */
   public void confirm(ActionEvent actionEvent)
   {
-    //if (e.getSource() == confirm)
-
     if( addPoints.getText().isEmpty())
     {
       Alert alert = new Alert(Alert.AlertType.ERROR,

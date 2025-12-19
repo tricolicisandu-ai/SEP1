@@ -15,6 +15,7 @@ import java.io.IOException;
  * @ version 1.0
  */
 public class CloverVilleModelManager
+  // Main model manager class
 {
   private String residentsFile;
   private String greenActionsFile;
@@ -45,26 +46,32 @@ public class CloverVilleModelManager
    */
   public ResidentList getAllResidents()
   {
-    // Initialize empty resident list
+
     ResidentList allResidents = new ResidentList();
+    // Create empty resident list
 
     try
     {
       allResidents = (ResidentList) MyFileHandler.readFromBinaryFile(residentsFile);
+    // Read residents from file
     }
     catch (FileNotFoundException e)
+    // If file is missing
     {
       System.out.println("File not found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error reading file");
     }
     catch (ClassNotFoundException e)
+        // if class not found
     {
       System.out.println("Class Not Found");
     }
     return allResidents;
+    // return resident list
   }
 
   /**
@@ -76,14 +83,18 @@ public class CloverVilleModelManager
     GreenActionList allGreenActions = new GreenActionList();
 
     try
+        // try to read data from file
     {
       allGreenActions = (GreenActionList) MyFileHandler.readFromBinaryFile(greenActionsFile);
+      // read green actions from file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File Not Found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error reading file");
     }
@@ -103,14 +114,18 @@ public class CloverVilleModelManager
     TradeOfferList allTradeOffers = new TradeOfferList();
 
     try
+    // try read data from file
     {
       allTradeOffers = (TradeOfferList) MyFileHandler.readFromBinaryFile(tradeOffersFile);
+      // read trade offers from file
     }
     catch (FileNotFoundException e)
+    // if file is not found
     {
       System.out.println("File Not Found");
     }
     catch (IOException e)
+        //if error happens
     {
       System.out.println("IO Error reading file");
     }
@@ -133,19 +148,27 @@ public class CloverVilleModelManager
   public void editGreenAction(String oldName, int oldGreenPoints, String newName, int newGreenPoints)
   {
     GreenActionList allGreenActions = getAllGreenActions();
+    // Get all green actions from file
 
     for (int i = 0; i < allGreenActions.getNumberOfGreenActions(); i++)
+    // loop through all green actions
     {
       GreenAction greenAction = allGreenActions.getIndex(i);
+      // get green action at index i
 
       if (greenAction.getName().equals(oldName) && greenAction.getGreenPoints() == oldGreenPoints)
+      // check if points match ald points
       {
         greenAction.setName(newName);
+        // set new name
         greenAction.setGreenPoints(newGreenPoints);
+        // set new green points
       }
     }
     saveGreenActions(allGreenActions);
+    // save updated actions to file
     saveGreenActionsAsJson(allGreenActions);
+    // save updated to JSON
   }
 
 
@@ -164,30 +187,38 @@ public class CloverVilleModelManager
       int newPersonalPoints)
   {
     ResidentList newResidents = getAllResidents();
+    // get all residents from file
 
     for (int i = 0; i < newResidents.getNumberOfResidents(); i++)
+    // loop through all residents
     {
       Resident resident = newResidents.getResident(i);
+      // get resident at index i
 
       if (resident.getFirstName().equals(oldFirstName) &&
           resident.getLastName().equals(oldLastName) &&
           resident.getPersonalPoints() == oldPersonalPoints)
+      // check old first name, old last name, old pers.points
       {
         resident.setFirstName(newFirstName);
         resident.setLastName(newLastName);
         resident.setPersonalPoints(newPersonalPoints);
-      }
+      } // set new first name, new last name, new pers.points
     }
 
     try
+    // try to save residents to file
     {
       MyFileHandler.writeToBinaryFile(residentsFile, newResidents);
+      // write residents to file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File not found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error writing to the file");
     }
@@ -199,14 +230,18 @@ public class CloverVilleModelManager
   public void saveResidents(ResidentList residents)
   {
     try
+
     {
       MyFileHandler.writeToBinaryFile(residentsFile, residents);
+      // write residents to file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File not found ");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error writing to file");
     }
@@ -220,12 +255,15 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile(greenActionsFile, greenActions);
+      // write green action to file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File not found ");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error writing to file ");
     }
@@ -239,12 +277,15 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile(tradeOffersFile, tradeOffers);
+      //write trade offer to file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File not found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error writing to file");
     }
@@ -258,18 +299,21 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile(communityPoolFile, communityPool);
+      // write commun.pool to file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File Not found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error writing to file");
     }
   }
 
-  /** Uses MyFileHandler class to save the given Threshold object to file
+  /**  *Uses MyFileHandler class to save the given Threshold object to file
    * @param threshold the Threshold object to be saved
    */
   public void saveThresholds(Threshold threshold)
@@ -277,12 +321,15 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile(thresholdsFile, threshold);
+      // write thresholds to file
     }
     catch (FileNotFoundException e)
+        // if file is not found
     {
       System.out.println("File not found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error writing to file");
     }
@@ -295,19 +342,26 @@ public class CloverVilleModelManager
   public void addPersonalPoints(ResidentList residents, int points){
 
     ResidentList all = getAllResidents();
+    // get all residents from file
 
     for (int i = 0; i < residents.getNumberOfResidents() ; i++)
+    // loop through given residents
     {
       for (int j = 0; j < all.getNumberOfResidents() ; j++)
+      // loop through all residents
       {
         if(all.getResident(j).equals(residents.getResident(i)))
+        // check if residents are the same
         {
           all.getResident(j).setPersonalPoints(all.getResident(j).getPersonalPoints()+points);
+          // update pers. points and add points
           break;
+          // stop inner loop when resident is found
         }
       }
     }
     saveResidents(all);
+    // save updated residents to file
   }
 
 
@@ -324,16 +378,20 @@ public class CloverVilleModelManager
     try
     {
       pool = (CommunityPool) MyFileHandler.readFromBinaryFile(communityPoolFile);
+      // read commun. pool from file
     }
     catch (FileNotFoundException e)
+        //if file is not found
     {
       System.out.println("File not found");
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error reading file");
     }
     catch (ClassNotFoundException e)
+        // if class is not found
     {
       System.out.println("Class Not Found");
     }
@@ -346,9 +404,13 @@ public class CloverVilleModelManager
   public void removeGreenAction(GreenAction greenAction)
   {
     GreenActionList greenActionList = getAllGreenActions();
+    // get all green actions from file
     greenActionList.removeGreenAction(greenAction);
+    // remove given green action from list
     saveGreenActions(greenActionList);
+    // save updated green actions to file
     saveGreenActionsAsJson(greenActionList);
+    // save updated to JSON
   }
   /**Removes the given resident from the ResidentList and saves the updated list to file
    * @param resident the Resident object to be removed
@@ -356,8 +418,11 @@ public class CloverVilleModelManager
   public void removeResident(Resident resident)
   {
     ResidentList residentList = getAllResidents();
+    // get all residents from file
     residentList.removeResident(resident);
+    // remove given resident from list
     saveResidents(residentList);
+    // save updated residents to file
   }
 
   /** Resets all green actions in the GreenActionList and saves the updated list to file
@@ -365,8 +430,11 @@ public class CloverVilleModelManager
   public void resetGreenAction()
   {
     GreenActionList greenActionList = getAllGreenActions();
+    //get all green actions from file
     greenActionList.resetGreenAction();
+    // reset green action values
     saveGreenActions(greenActionList);
+    // save updated green action to file
     saveGreenActionsAsJson(greenActionList);
   }
 
@@ -377,6 +445,7 @@ public class CloverVilleModelManager
   {
     TradeOfferList tradeOfferList = getAllTradeOffers();
     tradeOfferList.remove(tradeOffer);
+    // remove given trade offer
     saveTradeOffers(tradeOfferList);
     saveTradeOfferListAsJson(tradeOfferList);
   }
@@ -390,8 +459,10 @@ public class CloverVilleModelManager
     try
     {
       MyFileHandler.writeToBinaryFile("thresholds.bin", threshold);
+      // write threshold to binary file
     }
     catch (IOException e)
+        // if error happens
     {
       System.out.println("IO Error reading file");
     }
@@ -408,39 +479,56 @@ public class CloverVilleModelManager
 public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
 {
   TradeOfferList offers = getAllTradeOffers();
+  // load all trade offers from file
   ResidentList residents = getAllResidents();
+  // load all residents from file
 
   for (int i = 0; i < offers.getNumberOfTradeOffers(); i++)
+  // loop through all trade offers
   {
     TradeOffer current = offers.getTradeOffer(i);
+    // get trade offer at index i
 
     if (current.equals(tradeOffer))
+    // check if this offer is the one we want to execute
     {
       Resident seller = current.getSeller();
+      // get the seller from the trade offer
 
       Resident theBuyer = null;
+      // will store the buyer object from the main residents list
       Resident theSeller = null;
+      // will store the seller object from the main residents list
 
       for (int j = 0; j < residents.getNumberOfResidents(); j++)
+      // loop through all residents
       {
         if (residents.getResident(j).equals(buyer))
+          // if this resident matches the buyer
           theBuyer = residents.getResident(j);
+        // save the real buyer reference from the list
 
         if (residents.getResident(j).equals(seller))
+          // if this resident matches the seller
           theSeller = residents.getResident(j);
+        // save the real seller reference from the list
       }
 
       if (theBuyer == null || theSeller == null)
+        // if buyer or seller was not found in residents list
         return false;
 
       if (theBuyer.getPersonalPoints() < current.getPointCost())
+        // check if buyer has enough points
         return false;
 
 
       theSeller.setPersonalPoints(theSeller.getPersonalPoints() + current.getPointCost());
+      // add points to seller
       theBuyer.setPersonalPoints(theBuyer.getPersonalPoints() - current.getPointCost());
-
+      // subtract points from buyer
       offers.remove(current);
+      // remove the trade offer after it is completed
 
 
       saveTradeOffers(offers);
@@ -461,14 +549,19 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
 
     XmlJsonParser greenActionParser = new XmlJsonParser();
+    // create JSON parser
     try
+    // try to save green actions to JSON file
     {
       greenActionParser.toJsonFile(list, "Clovervile/GreenActions.json");
+    // convert list to JSON file
     }
     catch (ParserException e)
+    // if parsing error happens
     {
       System.out.println("Error");
       System.out.println(e.getMessage());
+      // print detailed error message
     }
 
   }
@@ -480,11 +573,15 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
 
     XmlJsonParser tradeOffersParser = new XmlJsonParser();
+    // create JSON parser
     try
+    // try to save trade offers to JSON file
     {
       tradeOffersParser.toJsonFile(tradeOfferList, "Clovervile/TradeOffers.json");
+    // convert list to JSON file
     }
     catch (ParserException e)
+        // if parsing error happens
     {
       System.out.println("Error");
       System.out.println(e.getMessage());
@@ -498,11 +595,15 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   {
 
     XmlJsonParser thresholdParser = new XmlJsonParser();
+    // create JSON parser
     try
+    // try to save threshold to JSON file
     {
       thresholdParser.toJsonFile(newThreshold, "Clovervile/Threshold.json");
+    // convert threshold to JSON file
     }
     catch (ParserException e)
+        // if parsing error happens
     {
       System.out.println("Error");
       System.out.println(e.getMessage());
@@ -516,11 +617,14 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
   public void saveCommunityPoolAsJson(CommunityPool communityPool)
   {
     XmlJsonParser communityPoolParser = new XmlJsonParser();
+    // create Json parser
     try
     {
       communityPoolParser.toJsonFile(communityPool, "Clovervile/CommunityPool.json");
+      // convert community pool to JSON file
     }
     catch (ParserException e)
+        // if parsing error happens
     {
       System.out.println("Error saving CommunityPool as JSON");
       System.out.println(e.getMessage());
@@ -540,20 +644,26 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
     if (resident == null)
     {
       return false;
+      // return false if resident does not exist
     }
 
     for (int i = 0; i < tradeOfferList.getNumberOfTradeOffers(); i++)
+    //Loop through all trade offers
     {
       TradeOffer offer = tradeOfferList.getTradeOffer(i);
+      // get trade offer at index i
 
       if (resident.equals(offer.getSeller()) ||
           resident.equals(offer.getBuyer()))
+      // check if resident is the seller and if the resident is the buyer
       {
         return true;
+        // resident is found in a trade offer
       }
     }
 
     return false;
+    // resident is not in any trade offer
   }
 
 
@@ -566,17 +676,23 @@ public boolean executeTrade(TradeOffer tradeOffer, Resident buyer)
     TradeOfferList tradeOfferList = getAllTradeOffers();
 
     for (int i = tradeOfferList.getNumberOfTradeOffers() - 1; i >= 0; i--)
+    // loop backwards through trade offers
     {
       TradeOffer offer = tradeOfferList.getTradeOffer(i);
+      // get trade offer at index i
 
       if (offer.getSeller().equals(seller))
+      // check if seller matches
       {
         tradeOfferList.remove(offer);
+        // remove trade offer
       }
     }
 
     saveTradeOffers(tradeOfferList);
+    // save updated trade offers to file
     saveTradeOfferListAsJson(tradeOfferList);
+    // save updated trade offers to JSON
   }
 
 

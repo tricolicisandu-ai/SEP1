@@ -24,6 +24,11 @@ public class MainViewController
   @FXML MenuItem exitMenuItem;
   @FXML MenuItem aboutMenuItem;
 
+  /*
+   This method stores the ViewHandler, ModelManager, and Scene
+   so the controller can handle navigation and interact with
+   the application data.
+   */
   public void init(ViewHandler viewHandler, CloverVilleModelManager ClovervilleModelManager, Scene scene)
   {
     this.viewHandler = viewHandler;
@@ -31,6 +36,11 @@ public class MainViewController
     this.scene = scene;
   }
 
+  /*
+   This method determines which button or menu item
+   triggered the event and opens the corresponding view,
+   shows informational dialogs, or exits the application
+   */
   public void handleActions(ActionEvent e)
   {
     if (viewHandler == null)

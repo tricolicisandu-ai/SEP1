@@ -21,6 +21,14 @@ public class MainSetThresholdController
   private CloverVilleModelManager modelManager;
   private ViewHandler viewHandler;
 
+  /*
+   Initializes this controller.
+   This method receives references to the ViewHandler, Scene, and ModelManager,
+   stores them in the controller, and passes them further to the
+   setThresholdController if it exists.
+    It ensures that all needed dependencies are connected before the view is used.
+   */
+
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.modelManager = modelManager;
@@ -36,6 +44,13 @@ public class MainSetThresholdController
       System.out.println("It is null :(");
     }
   }
+  /*
+   Handles all user actions from menu items and buttons.
+   This method checks which UI element triggered the event
+   and performs the correct action:
+   exiting the program, showing the "About" dialog,
+   or navigating back to the main view.
+   */
 
   public void handleActions(ActionEvent e)
   {
@@ -68,6 +83,13 @@ public class MainSetThresholdController
     }
   }
 
+  /*
+    Handles tab change events.
+    This method checks if the model is initialized and
+    if the "Set Threshold" tab is selected.
+    When the tab becomes active, it resets the
+   SetThresholdController to ensure fresh data is shown.
+   */
   public void tabChanged(Event event)
   {
     if (modelManager != null)

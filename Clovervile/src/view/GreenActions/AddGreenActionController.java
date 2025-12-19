@@ -23,7 +23,12 @@ public class AddGreenActionController
   private ViewHandler viewHandler;
 
 
-
+  /*
+    Initializes this controller.
+   This method receives and stores references to the ViewHandler,
+   Scene, and ModelManager so the controller can interact
+   with the application logic and navigation.
+   */
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
     this.viewHandler = viewHandler;
@@ -32,7 +37,11 @@ public class AddGreenActionController
 
   }
 
-
+  /*
+   Initializes the view when it is loaded.
+   This method clears all input fields to ensure
+   the user starts with empty fields
+   */
   public void initialize()
   {
     GreenTaskField.setText("");
@@ -40,7 +49,11 @@ public class AddGreenActionController
 
   }
 
-
+  /*
+   Resets the view to its default state.
+   This method clears all input fields if the model
+   manager is available.
+   */
   public void reset()
   {
     if (modelManager != null)
@@ -50,7 +63,12 @@ public class AddGreenActionController
     }
   }
 
-
+  /*
+   Handles the action of adding a new green action.
+   This method reads user input, validates that all fields are filled
+   and that the points value is non-negative, creates a new GreenAction,
+   updates the CommunityPool points, saves all changes to files and JSON.
+   */
   @FXML private void handleAdd (ActionEvent event)
   {
     String GreenTaskField = this.GreenTaskField.getText().trim();
