@@ -24,6 +24,12 @@ public class SetThresholdController
 
   private Threshold newThreshold;
 
+  /*
+    Initializes this controller with references to the ViewHandler, Scene,
+   and ModelManager.
+    This method stores these references and immediately updates
+    the community points shown in the view
+   */
 
   public void init(ViewHandler viewHandler, Scene scene, CloverVilleModelManager modelManager)
   {
@@ -33,12 +39,25 @@ public class SetThresholdController
     handleCommunity();
   }
 
+  /*
+   Initializes fields when the view is loaded.
+   This method clears the threshold goal and points input fields
+   to ensure the user starts with empty inputs.
+   */
   public void initialize()
   {
     thresholdGoalField.setText("");
     pointsField.setText("");
   }
 
+
+  /*
+   Handles the action of adding or updating a threshold.
+   This method reads user input, validates that all fields are filled,
+   converts the point value to an integer, creates a new Threshold object,
+   and saves it using the model manager.
+   If the input is invalid, an error message is shown.
+   */
   @FXML private void handleAdd (ActionEvent event)
   {
     String threshold = this.thresholdGoalField.getText().trim();
@@ -73,12 +92,22 @@ public class SetThresholdController
     }
   }
 
+  /*
+   Updates the community points shown in the view.
+   This method retrieves the current CommunityPool from the model
+   and displays the total points
+   */
   @FXML private void handleCommunity()
   {
     CommunityPool communityPool = modelManager.getCommunityPool();
     communityPointsField.setText(communityPool.getTotalPoints()+"");
   }
 
+  /*
+   Resets the view to its default state.
+   This method clears all input fields and refreshes
+   the displayed community points when the model is available.
+    */
   public void reset()
   {
     if (modelManager != null)
