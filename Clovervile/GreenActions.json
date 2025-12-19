@@ -1,25 +1,24 @@
 {
   "greenActions": [
     {
-<<<<<<< HEAD
-      "name": "Bicycling",
-      "greenPoints": 30
-    },
-    {
-      "name": "Eating vegan",
-      "greenPoints": 10
-    },
-    {
-      "name": "Planting trees",
+      "name": "Cycled to work all week",
       "greenPoints": 40
     },
     {
-      "name": "ghu",
+      "name": "Ate vegan for one week",
       "greenPoints": 10
-=======
-      "name": "Cycle for a week",
-      "greenPoints": 70
->>>>>>> bd8fb540c6c4cc8fec43920b192b776a083dde88
+    },
+    {
+      "name": "Composting food waste",
+      "greenPoints": 20
+    },
+    {
+      "name": "Replaced old light bulbs with LED",
+      "greenPoints": 50
+    },
+    {
+      "name": "Planting a tree",
+      "greenPoints": 30
     }
   ]
 }
