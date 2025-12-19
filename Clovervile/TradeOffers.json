@@ -21,6 +21,20 @@
         "firstName": "Christina",
         "lastName": "I",
         "personalPoints": 704
+      },
+      "buyer": {
+        "firstName": "Anna",
+        "lastName": "I",
+        "personalPoints": 56
+      }
+    },
+    {
+      "offerName": "fg",
+      "pointCost": 34,
+      "seller": {
+        "firstName": "Yulliaaa",
+        "lastName": "I",
+        "personalPoints": 9
       }
     }
   ]
